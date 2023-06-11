@@ -1,1 +1,0 @@
-console.log("sugi pula cu git tau cu tot")
