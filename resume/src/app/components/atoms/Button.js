@@ -4,7 +4,7 @@ const Button = ({ onClick, text }) => {
     return (
       <button className={styles.customButton} onClick={onClick}>
         <div className={styles.slideText}>
-          <span>{text} </span>
+          <h3>{text} </h3>
           
 
           

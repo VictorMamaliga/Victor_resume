@@ -1,11 +1,11 @@
 import Button from "./components/atoms/Button.js";
-import ProfileCard from './components/ProfileCard';
+import ProfileCard from './components/molecules/ProfileCard.js';
 
 export default function Home() {
   return (
     <>
       <h1>Welcome to Guta World!</h1>
-      <Button text="King Guta!"/>
+      <Button text="King Guuta!"/>
       <ProfileCard 
       name="Regele Manelelor!" 
       job="bo$$ de bo$$" 

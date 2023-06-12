@@ -4,8 +4,8 @@ const ProfileCard = ({ name, job, imageUrl, order }) => {
     return (
       <div className={`${styles.profileCard} ${styles[order]}`}>
         <div className={styles.profileInfo}>
-          <div className={styles.name}>{name}</div>
-          <div className={styles.job}>{job}</div>
+          <h2 className={styles.name}>{name}</h2>
+          <small className={styles.job}>{job}</small>
         </div>
         <div className={styles.profileImageWrapper}>
           <div 
