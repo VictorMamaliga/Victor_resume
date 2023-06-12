@@ -3,8 +3,11 @@ import Button from "./components/atoms/Button";
 export default function Home() {
   return (
     <>
-      <h1>Welcome to my site</h1>
-      <Button />
+      <header>Header</header>
+      <main>
+        <Button />
+        <footer>Footer</footer>
+      </main>
     </>
   )
 }
