@@ -1,12 +1,30 @@
 @import './variables.scss';
+@import './mixins.scss';
 
 
-
-
-h1 {
-    color: var(--secondary);
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.btn {
-    padding: 100px;
+header {
+    position: fixed;
+    left: toRem(28);
+    right: toRem(28);
+    background-color: red;
+    padding: 1rem;
+}
+
+main {
+    padding: 150vh toRem(28);
+    background-color: green;
+}
+
+footer {
+    background-color: blue;
+    padding: 1rem;
+    color: white;
 }
