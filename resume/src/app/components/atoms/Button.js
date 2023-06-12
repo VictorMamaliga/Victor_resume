@@ -5,11 +5,6 @@ const Button = ({ onClick, text }) => {
       <button className={styles.customButton} onClick={onClick}>
         <div className={styles.slideText}>
           <h3>{text} </h3>
-          
-
-          
-
-         
         </div>
       </button>
     );
