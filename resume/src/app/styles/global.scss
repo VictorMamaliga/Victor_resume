@@ -10,16 +10,18 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: var(--background-primary);
+}
+
 header {
-    position: fixed;
-    left: toRem(28);
-    right: toRem(28);
+    @include position(fixed, $left: var(--padding-main), $right: var(--padding-main));
     background-color: red;
     padding: 1rem;
 }
 
 main {
-    padding: 150vh toRem(28);
+    padding: var(--padding-main-top) var(--padding-main) 0;
     background-color: green;
 }
 
