@@ -1,3 +1,4 @@
+
 .customButton {
     display: inline-block;
     overflow: hidden;
@@ -41,3 +42,9 @@
       transform: translateX(-100%);
     }
   }
+
+.btn {
+    padding: 1rem;
+    color: var(--background-primary);
+}
+
