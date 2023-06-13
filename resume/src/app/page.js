@@ -1,45 +1,10 @@
-<<<<<<< HEAD
-import ProfileCard from './components/molecules/ProfileCard.js';
 import { getProjects } from "../../sanity/sanity-utils";
-import Button from "./components/atoms/Button.js";
-//import { projects } from './helpers'
 
-export const projects = [
-  {
-    slug: 'project-2',
-    image: 'https://i.ytimg.com/vi/XelWZr_B7E4/maxresdefault.jpg',
-    url: 'http://google.com',
-    description: 'desssspfkgijidfkdg4234',
-    _id: '6d848ad8-fd77-457c-a88c-9ca63149e1d5',
-    _createdAt: '2023-06-12T15:45:04Z',
-    name: 'Project 2'
-  },
-  {
-    slug: 'project-3',
-    image: 'https://i.ytimg.com/vi/XelWZr_B7E4/maxresdefault.jpg',
-    url: 'http://google.com',
-    description: 'desssspfkgijidfkdg4234',
-    _id: '6d848ad8-fd77-457c-a88c-9ca6314',
-    _createdAt: '2023-06-12T15:45:04Z',
-    name: 'Project 2'
-  },
-  {
-    url: 'http://youtube.com',
-    description: 'descriere mica',
-    _id: '8113fe78-faa9-4f23-b15d-abd017074b78',
-    _createdAt: '2023-06-12T15:42:40Z',
-    name: 'Proiect 1',
-    slug: 'proiect-1',
-    image: 'https://i.ytimg.com/vi/XelWZr_B7E4/maxresdefault.jpg'
-  }
-];
-=======
 import Header from "./components/organisms/Header";
 import Button from "./components/atoms/Button";
+import ProfileCard from "./components/molecules/ProfileCard";
 import { projects } from './helpers'
->>>>>>> 6f0271b55e74717c950d4c3b1fcadf4edf0ee162
 
-import { getProjects } from "../../sanity/sanity-utils";
 
 export default async function Home() {
   // NU DECOMMENTA URMATOAREA LINIE PLS
