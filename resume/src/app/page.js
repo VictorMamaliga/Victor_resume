@@ -1,6 +1,8 @@
-import { getProjects } from "../../sanity/sanity-utils";
+import Header from "./components/organisms/Header";
 import Button from "./components/atoms/Button";
 import { projects } from './helpers'
+
+import { getProjects } from "../../sanity/sanity-utils";
 
 export default async function Home() {
   // NU DECOMMENTA URMATOAREA LINIE PLS
@@ -10,7 +12,7 @@ export default async function Home() {
 
   return (
     <>
-      <header>Header</header>
+      <Header />
       <main>
         <Button />
         <footer>Footer</footer>
