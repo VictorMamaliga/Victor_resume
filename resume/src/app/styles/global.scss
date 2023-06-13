@@ -1,7 +1,6 @@
 @import './variables.scss';
 @import './mixins.scss';
 
-
 *,
 *::before,
 *::after {
@@ -13,16 +12,11 @@
 
 body {
     background-color: var(--background-primary);
-}
-
-header {
-    @include position(fixed, $left: var(--padding-main), $right: var(--padding-main));
-    background-color: red;
-    padding: 1rem;
+    color: var(--accent-primary);
 }
 
 main {
-    padding: var(--padding-main-top) var(--padding-main) 0;
+    padding: var(--header-height) var(--padding-main) 0;
     background-color: green;
 }
 
