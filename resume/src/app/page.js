@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import ProfileCard from './components/molecules/ProfileCard.js';
 import { getProjects } from "../../sanity/sanity-utils";
 import Button from "./components/atoms/Button.js";
@@ -32,6 +33,13 @@ export const projects = [
     image: 'https://i.ytimg.com/vi/XelWZr_B7E4/maxresdefault.jpg'
   }
 ];
+=======
+import Header from "./components/organisms/Header";
+import Button from "./components/atoms/Button";
+import { projects } from './helpers'
+>>>>>>> 6f0271b55e74717c950d4c3b1fcadf4edf0ee162
+
+import { getProjects } from "../../sanity/sanity-utils";
 
 export default async function Home() {
   // NU DECOMMENTA URMATOAREA LINIE PLS
@@ -47,7 +55,7 @@ export default async function Home() {
 
   return (
     <>
-      <header>Header</header>
+      <Header />
       <main>
         <Button text={'my button'} />
         <section>
