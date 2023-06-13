@@ -1,8 +1,13 @@
 import styles from './button.module.scss'
 
-export default function Button() {
-    console.log(234235)
+const Button = ({ text }) => {
     return (
-        <button className={styles.btn}>My jghjghj</button>
-    )
-}
+      <button className={styles.button}>
+        <div className={styles.buttonSlider}>
+          <h3>{text} </h3>
+        </div>
+      </button>
+    );
+  };
+  
+  export default Button;
