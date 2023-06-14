@@ -1,4 +1,6 @@
 const express = require('express');
+const { db } = require('./firebaseSetup');
+
 const app = express();
 const port = 8080;
 
@@ -8,15 +10,25 @@ app.use((req, res, next) => {
   next();
 })
 
-app.use(express.json())
+app.get('/api', async (req, res) => {
+  const projectsRef = db.collection('projects');
+  const snapshot = await projectsRef.get();
+  const result = [];
 
-app.get('/api', (req, res) => {
-  res.json({id:1, name: 'cristian diaconecsu'})
+  snapshot.forEach(doc => {
+    result.push({id: doc.id, data: doc.data()})
+  })
+  
+  res.json(result)
 })
 
-app.post('/api/posts', (req, res) => {
-  console.log(req.body)
-  res.json({thanks: 'nicolae'})
+app.post('/api/posts', async (req, res) => {
+  const projectsRef = db.collection('projects');
+
+  await projectsRef.add({
+    name: 'San Francisco', state: 'CA', country: 'USA',
+    capital: false, population: 860000
+  });
 })
 
 app.listen(port, () => {
