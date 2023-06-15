@@ -2,7 +2,7 @@ import Header from "./components/organisms/Header";
 import Button from './components/atoms/Button';
 import ProjectCreate from "./components/molecules/ProjectCreate";
 import { useState } from "react";
-import Modal from "./components/Modal";
+import Modal from "./components/organisms/Modal";
 import ProjectList from "./components/molecules/ProjectList";
 
 
