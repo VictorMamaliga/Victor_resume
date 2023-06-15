@@ -3,8 +3,18 @@ import Button from './components/atoms/Button';
 import ProfileCard from "./components/molecules/ProfileCard";
 import { projects } from './helpers'
 import CreateProject from "./components/molecules/CreateProject";
+import { useState } from "react";
+import Modal from "./components/Modal";
+
 
 function App() {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
+
   const cere = () => {
     console.log('iata clickul')
     // fetch('http://localhost:8080/api/posts', {
@@ -42,6 +52,7 @@ function App() {
 
   return (
     <>
+    
       <Header />
       <main>
         <button onClick={postare}>posteaza</button>
@@ -51,7 +62,12 @@ function App() {
           {projects.map(e => <ProfileCard key={e._id} name={e.name} job={e.description} imageUrl={e.image} />)}
         </section>
         
-        <CreateProject/>
+        <div>
+            <button onClick={openModal}>Open Submit Project</button>
+            <Modal isOpen={isModalOpen} onClose={closeModal}>
+                <CreateProject />
+            </Modal>
+        </div>
         <footer>Footer</footer>
       </main>
     </>
