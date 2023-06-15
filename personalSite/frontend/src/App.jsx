@@ -9,12 +9,8 @@ import useApi from "./api/useApi";
 import { projects } from './helpers';
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
+  // nu decomenta urmatoarea linie !!!!
   // const { projects } = useApi();
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
-
 
   const cere = () => {
     // fetch('http://localhost:8080/api/posts', {
@@ -47,13 +43,6 @@ function App() {
         <button onClick={cere}>cere</button>
         <Button text={'my button'} />
         <ProjectList data={projects} />
-        
-        <div>
-            <button onClick={openModal}>Open Submit Project</button>
-            <Modal isOpen={isModalOpen} onClose={closeModal}>
-                <ProjectCreate />
-            </Modal>
-        </div>
         <footer>Footer</footer>
       </main>
     </>
