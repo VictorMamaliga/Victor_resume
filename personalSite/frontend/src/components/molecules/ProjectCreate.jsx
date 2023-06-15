@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './createProject.module.scss';
+import styles from './projectCreate.module.scss';
 
 const SubmitProject = () => {
     const [project, setProject] = useState({
