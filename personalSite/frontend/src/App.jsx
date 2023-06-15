@@ -32,7 +32,12 @@ function App() {
     })
   }
 
-  // creeaza o componenta noua cu un nume potrivit pentru a adauga
+  // creeaza o componenta noua pentru a adauga proiecte noi
+  // componenta trebuie sa includa un <form> in care sa existe:
+  // - cate un <label> si un <input /> pentru fiecare intrare (nume, descriere etc)
+  // - un buton pentru submit
+
+  // va trebui apoi sa creezi state pentru fiecare intrare, care se va sincroniza la fiecare apasare de tasta (onChange)
 
   return (
     <>
