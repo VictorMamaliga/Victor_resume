@@ -1,4 +1,4 @@
-import styles from './ProfileCard.module.scss'
+import styles from './projectCard.module.scss';
 
 const ProfileCard = ({ name, job, imageUrl, order }) => {
     return (
