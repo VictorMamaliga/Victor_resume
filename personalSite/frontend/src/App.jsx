@@ -1,10 +1,9 @@
 import Header from "./components/organisms/Header";
 import Button from './components/atoms/Button';
-import ProjectCard from "./components/molecules/ProjectCard";
-import { projects } from './helpers'
 import ProjectCreate from "./components/molecules/ProjectCreate";
 import { useState } from "react";
 import Modal from "./components/Modal";
+import ProjectList from "./components/molecules/ProjectList";
 
 
 function App() {
@@ -51,9 +50,7 @@ function App() {
         <button onClick={postare}>posteaza</button>
         <button onClick={cere}>cere</button>
         <Button text={'my button'} />
-        <section>
-          {projects.map(e => <ProjectCard key={e._id} name={e.name} job={e.description} imageUrl={e.image} />)}
-        </section>
+        <ProjectList />
         
         <div>
             <button onClick={openModal}>Open Submit Project</button>
