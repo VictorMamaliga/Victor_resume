@@ -32,7 +32,7 @@ function App() {
     })
   }
 
-  // fa asta
+  // creeaza o componenta noua cu un nume potrivit pentru a adauga
 
   return (
     <>
