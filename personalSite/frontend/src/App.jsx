@@ -1,9 +1,5 @@
-import { useState } from "react";
-
 import Header from "./components/organisms/Header";
 import Button from './components/atoms/Button';
-import ProjectCreate from "./components/molecules/ProjectCreate";
-import Modal from "./components/organisms/Modal";
 import ProjectList from "./components/molecules/ProjectList";
 import useApi from "./api/useApi";
 import { projects } from './helpers';
