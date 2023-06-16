@@ -13,10 +13,37 @@ const SubmitProject = () => {
         });
     }
 
+    const cere = () => {
+        fetch('http://localhost:8080/api/posts', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({name: 'kyle'})
+        }).then(r => r.json()).then(r => console.log(r))
+    }
+
     const handleSubmit = event => {
         event.preventDefault();
-        // You should put your project submission API or function here.
-        console.log('Submitted:', project);
+        const projectRef = {};
+
+        for (let item of event.target) {
+            if (item.name) projectRef[item.name] = item.value;
+        }
+
+        console.log(projectRef)
+        console.log(JSON.stringify(projectRef))
+
+        // api post
+        fetch('http://localhost:8080/api/posts', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                // 'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(projectRef, null, 2)
+        })
     }
 
     return (
@@ -48,7 +75,7 @@ const SubmitProject = () => {
             <label>
                 Project Link:
                 <input
-                    type='url'
+                    type='string'
                     name='redirrect'
                     value={project?.redirrect}
                     onChange={handleChange}
@@ -59,7 +86,7 @@ const SubmitProject = () => {
             <label>
                 Image URL:
                 <input
-                    type='url'
+                    type='string'
                     name='imgURL'
                     value={project?.imgURL}
                     onChange={handleChange}

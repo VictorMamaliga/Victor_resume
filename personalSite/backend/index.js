@@ -1,4 +1,5 @@
 const express = require('express');
+var bodyParser = require('body-parser');
 const { db } = require('./firebaseSetup');
 
 const app = express();
@@ -9,6 +10,8 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   next();
 })
+
+app.use(bodyParser.json());
 
 app.get('/api', async (req, res) => {
   const projectsRef = db.collection('projects');
@@ -23,12 +26,13 @@ app.get('/api', async (req, res) => {
 })
 
 app.post('/api/posts', async (req, res) => {
-  const projectsRef = db.collection('projects');
+  console.log(req.body)
+  // const projectsRef = db.collection('projects');
 
-  await projectsRef.add({
-    name: 'San Francisco', state: 'CA', country: 'USA',
-    capital: false, population: 860000
-  });
+  // await projectsRef.add({
+  //   name: 'San Francisco', state: 'CA', country: 'USA',
+  //   capital: false, population: 860000
+  // });
 })
 
 app.listen(port, () => {

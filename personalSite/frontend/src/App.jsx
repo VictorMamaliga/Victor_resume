@@ -19,17 +19,6 @@ function App() {
   const handleOpenModal = () => {
     setIsModalOpen(true);
   }
-
-  const cere = () => {
-    // fetch('http://localhost:8080/api/posts', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({name: 'kyle'})
-    //   }).then(r => r.json()).then(r => console.log(r))
-  }
       
   const postare = () => {
     console.log('iata clickul')
