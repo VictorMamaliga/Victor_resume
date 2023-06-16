@@ -6,7 +6,7 @@ import ProjectList from "./components/molecules/ProjectList";
 import Modal from "./components/organisms/Modal";
 import ProjectCreate from './components/molecules/ProjectCreate';
 import { projects } from './helpers';
-import { ModalDataContext, ModalDataDispatchContext } from "./contexts/ModalDataContext";
+import { ModalDataContext, ModalDataDispatchContext, modalDataReducer } from "./contexts/ModalDataContext";
 import useApi from "./api/useApi";
 
 function App() {
@@ -60,20 +60,6 @@ function App() {
       </ModalDataContext.Provider>
     </>
   )
-}
-
-function modalDataReducer(project, action) {
-  switch (action.type) {
-    case 'create': {
-      return null;
-    }
-    case 'edit': {
-      return action.data;
-    }    
-    default: {
-      throw Error('Unknown action: ' + action.type);
-    }
-  }
 }
 
 export default App;
