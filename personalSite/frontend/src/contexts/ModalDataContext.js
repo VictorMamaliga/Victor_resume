@@ -6,11 +6,14 @@ export const ModalDataDispatchContext = createContext(null);
 export function modalDataReducer(project, action) {
     switch (action.type) {
         case 'create': {
-            return null;
+            return { requestType: action.type };
         }
         case 'edit': {
-            return action.data;
-        }    
+            return { requestType: action.type, data: action.data };
+        }
+        case 'delete': {
+            return { requestType: action.type };
+        }
         default: {
             throw Error('Unknown action: ' + action.type);
         }

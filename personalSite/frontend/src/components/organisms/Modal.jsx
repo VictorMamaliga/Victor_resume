@@ -1,6 +1,6 @@
 import styles from './Modal.module.scss';
 
-const Modal = ({ isOpen, children, onClose }) => {
+const Modal = ({ isOpen, children, onToggleModal }) => {
     if (!isOpen) {
         return null;
     }
@@ -8,7 +8,7 @@ const Modal = ({ isOpen, children, onClose }) => {
     return (
         <div className={styles.modalOverlay}>
             <div className={styles.modal}>
-                <button className={styles.closeButton} onClick={onClose}>Close</button>
+                <button className={styles.closeButton} onClick={onToggleModal}>Close</button>
                 {children}
             </div>
         </div>

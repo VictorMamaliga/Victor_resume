@@ -26,13 +26,16 @@ app.get('/api', async (req, res) => {
 })
 
 app.post('/api/posts', async (req, res) => {
-  console.log(req.body)
-  // const projectsRef = db.collection('projects');
+  console.log(req.body, typeof req.body)
+  const { name, description, redirrect, imgURL } = req.body; 
+  const projectsRef = db.collection('projects');
 
-  // await projectsRef.add({
-  //   name: 'San Francisco', state: 'CA', country: 'USA',
-  //   capital: false, population: 860000
-  // });
+  await projectsRef.add({
+    name,
+    description,
+    redirrect,
+    imgURL,
+  });
 })
 
 app.listen(port, () => {

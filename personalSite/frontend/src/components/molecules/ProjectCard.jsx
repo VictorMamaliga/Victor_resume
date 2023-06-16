@@ -3,7 +3,7 @@ import { ModalDataDispatchContext } from '../../contexts/ModalDataContext';
 
 import { useContext } from 'react';
 
-const ProfileCard = ({ id, name, description, imgURL, redirrect, order, onOpenModal }) => {
+const ProfileCard = ({ id, name, description, imgURL, redirrect, order, onToggleModal }) => {
   const dispatch = useContext(ModalDataDispatchContext);
 
   const handleEditProject = () => {
@@ -12,7 +12,16 @@ const ProfileCard = ({ id, name, description, imgURL, redirrect, order, onOpenMo
       data: { id, name, description, imgURL, redirrect }
     });
 
-    onOpenModal();
+    onToggleModal();
+  }
+
+  const handleDeleteProject = () => {
+    dispatch({
+      type: 'delete',
+      data: { id, name, description, imgURL, redirrect }
+    });
+
+    onToggleModal();
   }
 
   return (
@@ -28,6 +37,7 @@ const ProfileCard = ({ id, name, description, imgURL, redirrect, order, onOpenMo
         /> 
       </div>
       <button onClick={handleEditProject}>Edit</button>
+      <button onClick={handleDeleteProject}>Delete</button>
     </div>
   );
 };
