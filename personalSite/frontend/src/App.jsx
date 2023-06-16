@@ -42,7 +42,11 @@ function App() {
           </main>
           <Modal isOpen={isModalOpen} onToggleModal={() => setIsModalOpen(!isModalOpen)}>
               {modalData?.requestType === 'delete' ? (
-                <h1>Are you sure?</h1>
+                <>
+                  <h1>Are you sure?</h1>
+                  <button>Yes</button>
+                  <button>No</button>
+                </>
               ) : (
                 <ProjectCreate  onToggleModal={() => setIsModalOpen(!isModalOpen)} />
               )}
