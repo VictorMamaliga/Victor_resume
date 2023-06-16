@@ -1,21 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styles from './projectCreate.module.scss';
+import { ModalDataContext } from '../../contexts/ModalDataContext';
 
 const SubmitProject = () => {
-    const [project, setProject] = useState({
-        name: '',
-        description: '',
-        link: ''
-    });
+    const projectData = useContext(ModalDataContext);
+    const [project, setProject] = useState(projectData);
 
-    const handleChange = (event) => {
+    const handleChange = event => {
         setProject({
             ...project,
             [event.target.name]: event.target.value
         });
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = event => {
         event.preventDefault();
         // You should put your project submission API or function here.
         console.log('Submitted:', project);
@@ -24,11 +22,11 @@ const SubmitProject = () => {
     return (
         <form onSubmit={handleSubmit} className={styles.form}>
             <label>
-                Project Name:
+                Name:
                 <input
                     type='text'
                     name='name'
-                    value={project.name}
+                    value={project?.name}
                     onChange={handleChange}
                     required
                     className={styles.input}
@@ -36,10 +34,11 @@ const SubmitProject = () => {
             </label>
             <br />
             <label>
-                Project Description:
-                <textarea
+                Description:
+                <input
+                    type='text'
                     name='description'
-                    value={project.description}
+                    value={project?.description}
                     onChange={handleChange}
                     required
                     className={styles.input}
@@ -50,8 +49,19 @@ const SubmitProject = () => {
                 Project Link:
                 <input
                     type='url'
-                    name='link'
-                    value={project.link}
+                    name='redirrect'
+                    value={project?.redirrect}
+                    onChange={handleChange}
+                    required
+                    className={styles.input}
+                />
+            </label>
+            <label>
+                Image URL:
+                <input
+                    type='url'
+                    name='imgURL'
+                    value={project?.imgURL}
                     onChange={handleChange}
                     required
                     className={styles.input}

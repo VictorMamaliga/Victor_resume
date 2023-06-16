@@ -16,7 +16,7 @@ app.get('/api', async (req, res) => {
   const result = [];
 
   snapshot.forEach(doc => {
-    result.push({id: doc.id, data: doc.data()})
+    result.push({id: doc.id, ...doc.data()})
   })
   
   res.json(result)

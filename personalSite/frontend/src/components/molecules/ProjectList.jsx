@@ -1,32 +1,23 @@
 import styles from './projectList.module.scss';
-import Modal from "../organisms/Modal";
 import ProjectCard from "./ProjectCard";
-import ProjectCreate from "./ProjectCreate";
+import { useContext } from 'react';
+import { ModalDataDispatchContext } from '../../contexts/ModalDataContext';
 
-import { useState } from 'react';
+export default function ProjectList({ data, onOpenModal, handleCreste }) {
+    const dispatch = useContext(ModalDataDispatchContext);
 
+    const handleModalOpen = () => {
+        dispatch({
+            type: 'create'
+        });
 
-export default function ProjectList({ data }) {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [modalData, setModalData] = useState(null);
-
-    const handleOpenModal = () => {
-        setModalData(null);
-        setIsModalOpen(true);
+        onOpenModal();
     }
-
-    const handleOpenModalWithData = data => {
-        // setModalData(data)
-        console.log(data)
-    }
-
+    console.log(data)
     return (
         <section className={styles.list}>
-            {data.map(project => <ProjectCard key={project.id} name={project.data.name} description={project.data.description} imageURL={project.data.imgURL} redirrect={project.data.redirrect} />)}
-            <Modal isOpen={isModalOpen} modalData={modalData} onClose={() => setIsModalOpen(false)}>
-                <ProjectCreate />
-            </Modal>
-            <button onClick={handleOpenModal}>Open Submit Project</button>
+            {data.map(project => <ProjectCard key={project.id} id={project.id} onOpenModal={onOpenModal} handleCreste={handleCreste} name={project.name} description={project.description} imgURL={project.imgURL} redirrect={project.redirrect} />)}
+            <button onClick={handleModalOpen}>Open Submit Project</button>
         </section>
     );
 }

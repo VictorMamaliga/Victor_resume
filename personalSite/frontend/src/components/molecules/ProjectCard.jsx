@@ -1,8 +1,20 @@
+import { useContext } from 'react';
 import styles from './projectCard.module.scss';
+import { ProjectContext } from '../../contexts/ProjectContext';
+import { ModalDataDispatchContext } from '../../contexts/ModalDataContext';
 
-const ProfileCard = ({ name, description, imageURL, redirrect, order }) => {
+const ProfileCard = ({ id, name, description, imgURL, redirrect, order, onOpenModal }) => {
+  const dispatch = useContext(ModalDataDispatchContext);
 
-  
+  const handleEditProject = () => {
+    dispatch({
+      type: 'edit',
+      data: { id, name, description, imgURL, redirrect}
+    });
+
+    onOpenModal();
+  }
+
   return (
     <div className={`${styles.profileCard} ${styles[order]}`}>
       <div className={styles.profileInfo}>
@@ -12,10 +24,10 @@ const ProfileCard = ({ name, description, imageURL, redirrect, order }) => {
       <div className={styles.profileImageWrapper}>
         <div 
           className={styles.profileImage} 
-          style={{backgroundImage: `url(${imageURL})`}}
+          style={{backgroundImage: `url(${imgURL})`}}
         /> 
       </div>
-      <button>Edit</button>
+      <button onClick={handleEditProject}>Edit</button>
     </div>
   );
 };

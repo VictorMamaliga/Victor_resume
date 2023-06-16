@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import styles from './Modal.module.scss';
+import { ModalDataContext } from '../../contexts/ModalDataContext';
 
 const Modal = ({ isOpen, children, onClose }) => {
     if (!isOpen) {
