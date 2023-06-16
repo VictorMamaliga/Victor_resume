@@ -1,7 +1,7 @@
-import { useContext } from 'react';
 import styles from './projectCard.module.scss';
-import { ProjectContext } from '../../contexts/ProjectContext';
 import { ModalDataDispatchContext } from '../../contexts/ModalDataContext';
+
+import { useContext } from 'react';
 
 const ProfileCard = ({ id, name, description, imgURL, redirrect, order, onOpenModal }) => {
   const dispatch = useContext(ModalDataDispatchContext);
@@ -9,7 +9,7 @@ const ProfileCard = ({ id, name, description, imgURL, redirrect, order, onOpenMo
   const handleEditProject = () => {
     dispatch({
       type: 'edit',
-      data: { id, name, description, imgURL, redirrect}
+      data: { id, name, description, imgURL, redirrect }
     });
 
     onOpenModal();

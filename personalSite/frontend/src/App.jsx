@@ -1,31 +1,23 @@
-import { useContext, useReducer, useState } from "react";
+import { useReducer, useState } from "react";
 
 import Header from "./components/organisms/Header";
 import Button from './components/atoms/Button';
 import ProjectList from "./components/molecules/ProjectList";
-import useApi from "./api/useApi";
-import { projects } from './helpers';
 import Modal from "./components/organisms/Modal";
 import ProjectCreate from './components/molecules/ProjectCreate';
-import { ProjectContext } from "./contexts/ProjectContext";
+import { projects } from './helpers';
 import { ModalDataContext, ModalDataDispatchContext } from "./contexts/ModalDataContext";
+import useApi from "./api/useApi";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalData, setModalData] = useState(0);
-  const [georgeData, dispatch] = useReducer(modalDataReducer, null);
-
+  const [modalData, dispatch] = useReducer(modalDataReducer, null);
 
   // nu decomenta urmatoarea linie !!!!
   // const { projects } = useApi();
 
   const handleOpenModal = () => {
-    setModalData(null);
     setIsModalOpen(true);
-  }
-
-  const creste = () => {
-    setModalData(modalData + 1);
   }
 
   const cere = () => {
@@ -54,17 +46,14 @@ function App() {
   return (
     <>
       <Header />
-      <ModalDataContext.Provider value={georgeData}>
+      <ModalDataContext.Provider value={modalData}>
         <ModalDataDispatchContext.Provider value={dispatch}>
-          {console.log(georgeData)}
           <main>
-            <button onClick={postare}>posteaza</button>
-            <button onClick={cere}>cere</button>
             <Button text={'my button'} />
-            <ProjectList data={projects} onOpenModal={handleOpenModal} handleCreste={creste} />
+            <ProjectList data={projects} onOpenModal={handleOpenModal} />
             <footer>Numarul 1 in top</footer>
           </main>
-          <Modal isOpen={isModalOpen} modalData={modalData} onClose={() => setIsModalOpen(false)}>
+          <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
               <ProjectCreate />
           </Modal>
         </ModalDataDispatchContext.Provider>
@@ -73,7 +62,7 @@ function App() {
   )
 }
 
-function modalDataReducer(values, action) {
+function modalDataReducer(project, action) {
   switch (action.type) {
     case 'create': {
       return null;
