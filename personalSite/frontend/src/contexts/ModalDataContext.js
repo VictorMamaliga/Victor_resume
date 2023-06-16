@@ -12,7 +12,7 @@ export function modalDataReducer(project, action) {
             return { requestType: action.type, data: action.data };
         }
         case 'delete': {
-            return { requestType: action.type };
+            return { requestType: action.type, id: action.id };
         }
         default: {
             throw Error('Unknown action: ' + action.type);

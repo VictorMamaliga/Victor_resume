@@ -26,16 +26,21 @@ app.get('/api', async (req, res) => {
 })
 
 app.post('/api/posts', async (req, res) => {
-  console.log(req.body, typeof req.body)
   const { name, description, redirrect, imgURL } = req.body; 
   const projectsRef = db.collection('projects');
-
+  
   await projectsRef.add({
     name,
     description,
     redirrect,
     imgURL,
   });
+})
+
+app.post('/api/posts/delete', async (req, res) => {
+  console.log(req.body, typeof req.body)
+  const { id } = req.body;
+  await db.collection('projects').doc(id).delete();
 })
 
 app.listen(port, () => {

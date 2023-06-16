@@ -41,15 +41,7 @@ function App() {
             <footer>Numarul 1 in top</footer>
           </main>
           <Modal isOpen={isModalOpen} onToggleModal={() => setIsModalOpen(!isModalOpen)}>
-              {modalData?.requestType === 'delete' ? (
-                <>
-                  <h1>Are you sure?</h1>
-                  <button>Yes</button>
-                  <button>No</button>
-                </>
-              ) : (
-                <ProjectCreate  onToggleModal={() => setIsModalOpen(!isModalOpen)} />
-              )}
+            <ProjectCreate  onToggleModal={() => setIsModalOpen(!isModalOpen)} />
           </Modal>
         </ModalDataDispatchContext.Provider>
       </ModalDataContext.Provider>

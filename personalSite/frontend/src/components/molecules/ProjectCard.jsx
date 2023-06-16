@@ -18,7 +18,7 @@ const ProfileCard = ({ id, name, description, imgURL, redirrect, order, onToggle
   const handleDeleteProject = () => {
     dispatch({
       type: 'delete',
-      data: { id, name, description, imgURL, redirrect }
+      id
     });
 
     onToggleModal();
