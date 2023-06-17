@@ -1,11 +1,11 @@
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 
 import Header from "./components/organisms/Header";
 import Button from './components/atoms/Button';
 import ProjectList from "./components/molecules/ProjectList";
 import Modal from "./components/organisms/Modal";
 import ProjectCreate from './components/molecules/ProjectCreate';
-//import { projects } from './helpers';
+import { projects } from './helpers';
 import { ModalDataContext, ModalDataDispatchContext, modalDataReducer } from "./contexts/ModalDataContext";
 import useApi from "./api/useApi";
 import Marquee from "./components/molecules/Marquee";
@@ -14,22 +14,12 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, dispatch] = useReducer(modalDataReducer, null);
 
+
+
   console.log(modalData)
 
   // nu decomenta urmatoarea linie !!!!
-  const { projects } = useApi();
-      
-  const postare = () => {
-    console.log('iata clickul')
-    fetch('http://localhost:8080/api/posts', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      
-    })
-  }
+  const { projectsAPI, handleOnSubmitForm, createProject, editProject } = useApi(modalData);
 
   return (
     <>
@@ -38,7 +28,7 @@ function App() {
         <ModalDataDispatchContext.Provider value={dispatch}>
           <main>
             <Button text={'my button'} />
-            <ProjectList data={projects} onToggleModal={() => setIsModalOpen(!isModalOpen)} />
+            <ProjectList data={projectsAPI} onToggleModal={() => setIsModalOpen(!isModalOpen)} />
             <Marquee 
               title1="First part of title"
               title2="Second part of title"
@@ -52,7 +42,7 @@ function App() {
             
           </main>
           <Modal isOpen={isModalOpen} onToggleModal={() => setIsModalOpen(!isModalOpen)}>
-            <ProjectCreate  onToggleModal={() => setIsModalOpen(!isModalOpen)} />
+            <ProjectCreate onSubmitForm={createProject}  onToggleModal={() => setIsModalOpen(!isModalOpen)} />
           </Modal>
         </ModalDataDispatchContext.Provider>
       </ModalDataContext.Provider>
