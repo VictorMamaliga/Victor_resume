@@ -27,7 +27,7 @@ function App() {
         <ModalDataDispatchContext.Provider value={dispatch}>
           <main>
             <Button text={'my button'} />
-            <ProjectList data={projectsAPI}  onToggleModal={() => setIsModalOpen(!isModalOpen)} />
+            <ProjectList data={projects}  onToggleModal={() => setIsModalOpen(!isModalOpen)} />
             <footer>Numarul 1 in top</footer>
           </main>
           <Modal isOpen={isModalOpen} onToggleModal={() => setIsModalOpen(!isModalOpen)}>
