@@ -5,7 +5,7 @@ import Button from './components/atoms/Button';
 import ProjectList from "./components/molecules/ProjectList";
 import Modal from "./components/organisms/Modal";
 import ProjectCreate from './components/molecules/ProjectCreate';
-//import { projects } from './helpers';
+import { projects } from './helpers';
 import { ModalDataContext, ModalDataDispatchContext, modalDataReducer } from "./contexts/ModalDataContext";
 import useApi from "./api/useApi";
 
@@ -16,19 +16,9 @@ function App() {
   console.log(modalData)
 
   // nu decomenta urmatoarea linie !!!!
-  const { projects } = useApi();
+  const { projectsAPI, handleOnSubmitForm } = useApi();
       
-  const postare = () => {
-    console.log('iata clickul')
-    fetch('http://localhost:8080/api/posts', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      
-    })
-  }
+  
 
   return (
     <>
@@ -37,11 +27,11 @@ function App() {
         <ModalDataDispatchContext.Provider value={dispatch}>
           <main>
             <Button text={'my button'} />
-            <ProjectList data={projects} onToggleModal={() => setIsModalOpen(!isModalOpen)} />
+            <ProjectList data={projects}  onToggleModal={() => setIsModalOpen(!isModalOpen)} />
             <footer>Numarul 1 in top</footer>
           </main>
           <Modal isOpen={isModalOpen} onToggleModal={() => setIsModalOpen(!isModalOpen)}>
-            <ProjectCreate  onToggleModal={() => setIsModalOpen(!isModalOpen)} />
+            <ProjectCreate onSubmitForm={handleOnSubmitForm}  onToggleModal={() => setIsModalOpen(!isModalOpen)} />
           </Modal>
         </ModalDataDispatchContext.Provider>
       </ModalDataContext.Provider>

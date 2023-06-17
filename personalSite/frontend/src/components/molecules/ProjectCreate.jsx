@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react';
+
 import styles from './projectCreate.module.scss';
 import { ModalDataContext } from '../../contexts/ModalDataContext';
 
-const ProjectCreate = ({ onToggleModal }) => {
+const ProjectCreate = ({ onToggleModal, onSubmitForm }) => {
     const projectData = useContext(ModalDataContext);
     const [project, setProject] = useState(projectData);
 
@@ -30,34 +31,37 @@ const ProjectCreate = ({ onToggleModal }) => {
     console.log(projectData)
 
     const handleSubmit = event => {
-        const canCLose = false;
         event.preventDefault();
-        const projectRef = {};
 
-        for (let item of event.target) {
-            if (item.name) projectRef[item.name] = item.value;
-        }
 
-        if (projectData.requestType === 'edit') {
-            console.log('facem editare pe baza de date cu id: '+ projectData.data.id)
-        }
 
-        if (projectData.requestType === 'create') {
-            console.log('facem create in baza de date cu: ',projectRef)
+        // const canCLose = false;
+        // const projectRef = {};
+
+        // for (let item of event.target) {
+        //     if (item.name) projectRef[item.name] = item.value;
+        // }
+
+        // if (projectData.requestType === 'edit') {
+        //     console.log('facem editare pe baza de date cu id: '+ projectData.data.id)
+        // }
+
+        // if (projectData.requestType === 'create') {
+        //     console.log('facem create in baza de date cu: ',projectRef)
             
-            fetch('http://localhost:8080/api/posts', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(projectRef)
-            })
-            onToggleModal();
-        }
+        //     fetch('http://localhost:8080/api/posts', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Accept': 'application/json',
+        //             'Content-Type': 'application/json',
+        //         },
+        //         body: JSON.stringify(projectRef)
+        //     })
+        //     onToggleModal();
+        // }
 
 
-        if (canCLose) onToggleModal();
+        // if (canCLose) onToggleModal();
     }
 
     return (
@@ -68,7 +72,7 @@ const ProjectCreate = ({ onToggleModal }) => {
                 <button onClick={onToggleModal}>Cancel</button>
             </div>
         ) : (
-            <form onSubmit={handleSubmit} className={styles.form}>
+            <form onSubmit={onSubmitForm} className={styles.form}>
                 <label>
                     Name:
                     <input
