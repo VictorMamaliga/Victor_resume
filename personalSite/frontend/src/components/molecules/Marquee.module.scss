@@ -1,0 +1,96 @@
+.title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.titlePart1 {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.titlePart2 {
+  font-family: Verdana, sans-serif;
+  color: #666;
+}
+
+.titlePart3 {
+  font-family: "Courier New", Courier, monospace;
+  color: #999;
+}
+
+.word1 {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.word2 {
+  font-family: Verdana, sans-serif;
+  color: #666;
+}
+
+.word3 {
+  font-family: "Courier New", Courier, monospace;
+  color: #999;
+}
+
+
+  
+.marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    animation: none;
+    transition: animation 1s ease-in-out infinite;
+    position: relative;  // relative position here
+}
+
+.marquee:hover .marquee-content {
+    animation: marquee 50s linear infinite;
+}
+
+
+
+.marquee {
+    position: relative;
+    overflow: visible;
+  
+    &:hover .popup-image {
+      bottom: 0;
+      visibility: visible;
+      opacity: 1;
+      transform: rotate(15deg); // This will rotate the image counterclockwise
+      transition: bottom 0.5s linear, visibility 0s, opacity 0.5s linear, transform 0.5s linear; // Added transform here
+    }
+}
+  
+.popup-image {
+    bottom: -100px; 
+    right: 30px;
+    visibility: hidden;
+    opacity: 0;
+    transition: bottom 0.5s linear, visibility 0s 0.5s, opacity 0.5s linear, transform 0.5s linear; // Added transform here
+    position: absolute;
+    width: 100px;
+    transform: rotate(0deg); 
+}
+  
+  
+
+// .popup-image {
+//   visibility: hidden;
+//   opacity: 0;
+//   transition: top 0.5s linear, visibility 0s 0.5s, opacity 0.5s linear;
+//   position: absolute;
+//   right: -200px; // This will start the image off to the right of the container
+//   // Adjust these values to position the image where you want it
+//   top:10%; // This will center the image vertically within the div
+//   //transform: translateY(-50%);
+//   height: 100px;
+//   width: 100px; // Or your preferred size
+// }
+
+
+@keyframes marquee {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}

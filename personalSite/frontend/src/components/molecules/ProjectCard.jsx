@@ -26,16 +26,18 @@ const ProfileCard = ({ id, name, description, imgURL, redirrect, order, onToggle
 
   return (
     <div className={`${styles.profileCard} ${styles[order]}`}>
-      <div className={styles.profileInfo}>
-        <h2 className={styles.name}>{name}</h2>
-        <small className={styles.description}>{description}</small>
-      </div>
-      <div className={styles.profileImageWrapper}>
-        <div 
-          className={styles.profileImage} 
-          style={{backgroundImage: `url(${imgURL})`}}
-        /> 
-      </div>
+      <a href={redirrect} target="_blank">
+        <div className={styles.profileInfo}>
+          <h2 className={styles.name}>{name}</h2>
+          <small className={styles.description}>{description}</small>
+        </div>
+        <div className={styles.profileImageWrapper}>
+          <div 
+            className={styles.profileImage} 
+            style={{backgroundImage: `url(${imgURL})`}}
+          /> 
+        </div>
+      </a>
       <button onClick={handleEditProject}>Edit</button>
       <button onClick={handleDeleteProject}>Delete</button>
     </div>
