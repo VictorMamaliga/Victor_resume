@@ -8,9 +8,14 @@ const ProjectCreate = ({ onToggleModal, onSubmitForm }) => {
     const [formData, setFormData] = useState(modalData)
 
     const handleChange = event => {
+        const myData = {
+            ...formData.data,
+            [event.target.name]: event.target.value,
+        }
+
         setFormData({
             ...formData,
-            [event.target.name]: event.target.value
+            data: myData
         });
     }
 
@@ -28,7 +33,7 @@ const ProjectCreate = ({ onToggleModal, onSubmitForm }) => {
     //     onToggleModal();
     // }
 
-    console.log(modalData)
+    console.log(modalData, formData)
 
     const handleSubmit = event => {
         event.preventDefault();
