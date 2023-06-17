@@ -16,9 +16,15 @@ function App() {
   console.log(modalData)
 
   // nu decomenta urmatoarea linie !!!!
-  const { projectsAPI, handleOnSubmitForm } = useApi();
+  const { projectsAPI, handleOnSubmitForm, createProject } = useApi(modalData);
       
-  
+  const chooseMethod = () => {
+    switch (modalData?.requestType) {
+      case 'edit': {
+        return createProject;
+      }
+    }
+  }
 
   return (
     <>
@@ -31,7 +37,7 @@ function App() {
             <footer>Numarul 1 in top</footer>
           </main>
           <Modal isOpen={isModalOpen} onToggleModal={() => setIsModalOpen(!isModalOpen)}>
-            <ProjectCreate onSubmitForm={handleOnSubmitForm}  onToggleModal={() => setIsModalOpen(!isModalOpen)} />
+            <ProjectCreate onSubmitForm={chooseMethod()}  onToggleModal={() => setIsModalOpen(!isModalOpen)} />
           </Modal>
         </ModalDataDispatchContext.Provider>
       </ModalDataContext.Provider>

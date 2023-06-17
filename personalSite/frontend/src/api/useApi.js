@@ -4,10 +4,15 @@ export default function useApi(data) {
     const [projectsAPI, setProjectsAPI] = useState([]);
     console.log('useApi: ', data)
 
-    const handleOnSubmitForm = e => {
+    const createProject = e => {
         e.preventDefault();
         console.log(e)
     }
+    
+    // const createProject = e => {
+    //     e.preventDefault();
+    //     console.log('am editat un proiect')
+    // }
 
     useEffect(() => {
         // fetch('http://localhost:8080/api')
@@ -16,5 +21,5 @@ export default function useApi(data) {
         //     .catch(err => console.log(err));
     }, [])
 
-    return { projectsAPI, handleOnSubmitForm }
+    return { projectsAPI, createProject }
 }

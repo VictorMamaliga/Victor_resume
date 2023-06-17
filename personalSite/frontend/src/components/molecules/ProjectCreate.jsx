@@ -38,6 +38,7 @@ const ProjectCreate = ({ onToggleModal, onSubmitForm }) => {
         // const canCLose = false;
         // const projectRef = {};
 
+        // cred ca deja ai datale in "project"
         // for (let item of event.target) {
         //     if (item.name) projectRef[item.name] = item.value;
         // }
