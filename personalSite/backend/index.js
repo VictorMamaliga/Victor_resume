@@ -26,20 +26,16 @@ app.get('/api', async (req, res) => {
 })
 
 app.post('/api/posts', async (req, res) => {
-  const { name, description, redirrect, imgURL } = req.body; 
-  console.log(req.body)
   const projectsRef = db.collection('projects');
-  
-  await projectsRef.add({
-    name,
-    description,
-    redirrect,
-    imgURL,
-  });
+  await projectsRef.add(req.body);
+})
+
+app.post('/api/posts/edit', async (req, res) => {
+  const cityRef = db.collection('projects').doc(req.body.id);
+  const dbRes = await cityRef.update(req.body.data);
 })
 
 app.post('/api/posts/delete', async (req, res) => {
-  console.log(req.body, typeof req.body)
   await db.collection('projects').doc(req.body.id).delete();
 })
 

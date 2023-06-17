@@ -74,7 +74,7 @@ const ProjectCreate = ({ onToggleModal, onSubmitForm }) => {
         modalData?.requestType === 'delete' ? (
             <div>
                 <h1>Are you sure?</h1>
-                <button onClick={handleDeleteConfirm}>Yes</button>
+                <button onClick={onSubmitForm}>Yes</button>
                 <button onClick={onToggleModal}>Cancel</button>
             </div>
         ) : (
