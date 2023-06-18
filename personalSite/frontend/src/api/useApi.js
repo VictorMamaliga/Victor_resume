@@ -6,8 +6,9 @@ const deleteURL = 'http://localhost:8080/api/posts/delete';
 
 export default function useApi(modalData) {
     const [projectsAPI, setProjectsAPI] = useState([]);
+    const [apiResponseStatus, setApiResponseStatus] = useState(false);
 
-    const createProject = e => {
+    const handleOnSubmitForm = e => {
         e.preventDefault();
         const dataToSend = {};
         
@@ -42,19 +43,22 @@ export default function useApi(modalData) {
                 break;
             }
         }
-        
 
-        // fetch(dataToSend.url, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(dataToSend.body)
-        // })
+        console.log('deci trimitem', dataToSend)
 
+        fetch(dataToSend.url, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(dataToSend.body)
+        }).then(r => r.json()).then(r => setApiResponseStatus(true))
 
+    }
 
+    const handleApiResponseStatus = () => {
+        setApiResponseStatus(false);
     }
 
     // useEffect(() => {
@@ -64,5 +68,5 @@ export default function useApi(modalData) {
     //         .catch(err => console.log(err));
     // }, [])
 
-    return { projectsAPI, createProject }
+    return { projectsAPI, apiResponseStatus, handleOnSubmitForm, handleApiResponseStatus }
 }

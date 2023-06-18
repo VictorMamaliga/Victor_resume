@@ -1,6 +1,12 @@
 import styles from './Modal.module.scss';
 
-const Modal = ({ isOpen, children, onToggleModal }) => {
+const Modal = ({ isOpen, children, onToggleModal, onApiResponseStatus }) => {
+
+    const handleCloseAndResetModal = () => {
+        onToggleModal();
+        onApiResponseStatus();
+    }
+
     if (!isOpen) {
         return null;
     }
@@ -8,7 +14,7 @@ const Modal = ({ isOpen, children, onToggleModal }) => {
     return (
         <div className={styles.modalOverlay}>
             <div className={styles.modal}>
-                <button className={styles.closeButton} onClick={onToggleModal}>Close</button>
+                <button className={styles.closeButton} onClick={handleCloseAndResetModal}>Close</button>
                 {children}
             </div>
         </div>

@@ -25,18 +25,25 @@ app.get('/api', async (req, res) => {
   res.json(result)
 })
 
+// create
 app.post('/api/posts', async (req, res) => {
-  const projectsRef = db.collection('projects');
-  await projectsRef.add(req.body);
+  console.log(req.body)
+  // const projectsRef = db.collection('projects');
+  // await projectsRef.add(req.body);
+  res.status(200).json({ message: 'hai ca e success'})
 })
 
+// edit
 app.post('/api/posts/edit', async (req, res) => {
-  const cityRef = db.collection('projects').doc(req.body.id);
-  const dbRes = await cityRef.update(req.body.data);
+  // const cityRef = db.collection('projects').doc(req.body.id);
+  // const dbRes = await cityRef.update(req.body.data);
+  res.status(200).json({ message: 'hai ca e success'})
 })
 
+// delete
 app.post('/api/posts/delete', async (req, res) => {
-  await db.collection('projects').doc(req.body.id).delete();
+  // await db.collection('projects').doc(req.body.id).delete();
+  res.status(200).json({ message: 'hai ca e success'})
 })
 
 app.listen(port, () => {
