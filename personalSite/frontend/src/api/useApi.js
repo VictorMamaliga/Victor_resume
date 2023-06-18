@@ -61,12 +61,12 @@ export default function useApi(modalData) {
         setApiResponseStatus(false);
     }
 
-    // useEffect(() => {
-    //     fetch('http://localhost:8080/api')
-    //         .then(response => response.json())
-    //         .then(response => setProjectsAPI(response))
-    //         .catch(err => console.log(err));
-    // }, [])
+    useEffect(() => {
+        fetch('http://localhost:8080/api')
+            .then(response => response.json())
+            .then(response => setProjectsAPI(response))
+            .catch(err => console.log(err));
+    }, [])
 
     return { projectsAPI, apiResponseStatus, handleOnSubmitForm, handleApiResponseStatus }
 }
