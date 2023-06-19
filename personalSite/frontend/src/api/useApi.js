@@ -5,6 +5,7 @@ import { formatJSONStructure } from '../helpers';
 export default function useApi(modalData, handleAutoModalClose) {
     const [projectsAPI, setProjectsAPI] = useState([]);
     const [apiResponseStatus, setApiResponseStatus] = useState(false);
+    console.log(projectsAPI)
 
     const handleOnSubmitForm = e => {
         e.preventDefault();
@@ -37,7 +38,14 @@ export default function useApi(modalData, handleAutoModalClose) {
     useEffect(() => {
         fetch('http://localhost:8080/api')
             .then(response => response.json())
-            .then(response => setProjectsAPI(response))
+            .then(response => {
+                const packedData = [];
+
+                while (response.length) {
+                    packedData.push(response.splice(0, 2))
+                }
+                setProjectsAPI(packedData)
+            })
             .catch(err => console.log(err));
     }, [apiResponseStatus])
 

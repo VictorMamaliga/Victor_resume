@@ -3,20 +3,24 @@ import { ModalDataDispatchContext } from '../../contexts/ModalDataContext';
 
 import { useContext } from 'react';
 
-const ProfileCard = ({ project, order, onToggleModal }) => {
+const ProfileCard = ({ card, order, rowOrder, onToggleModal }) => {
   const dispatch = useContext(ModalDataDispatchContext);
-  const { id, name, description, imgURL, redirrect } = project;
+  const { id, name, description, imgURL, redirrect } = card;
 
-  const handleEditProject = () => {
+  const handleEditCard = e => {
+    e.stopPropagation();
+    
     dispatch({
       type: 'edit',
-      data: project,
+      data: card,
     });
-
+    
     onToggleModal();
   }
+  
+  const handleDeleteCard = () => {
+    e.stopPropagation();
 
-  const handleDeleteProject = () => {
     dispatch({
       type: 'delete',
       id,
@@ -25,22 +29,29 @@ const ProfileCard = ({ project, order, onToggleModal }) => {
     onToggleModal();
   }
 
+  const handleShuffle = () => {
+    if (rowOrder % 2 == 0) {
+      if (order) return "cardInverse";
+    } else {
+      if (!order) return "cardInverse"
+    }
+  }
+
   return (
-    <div className={`${styles.profileCard} ${styles[order]}`}>
-      <a href={redirrect} target="_blank">
-        <div className={styles.profileInfo}>
+    <div className={styles.card}>
+      <div className={styles[handleShuffle()]}>
+        <div>
           <h2 className={styles.name}>{name}</h2>
           <small className={styles.description}>{description}</small>
+          <p>
+            <button onClick={handleEditCard}>Edit</button>
+            <button onClick={handleDeleteCard}>Delete</button>
+          </p>
         </div>
-        <div className={styles.profileImageWrapper}>
-          <div 
-            className={styles.profileImage} 
-            style={{backgroundImage: `url(${imgURL})`}}
-          /> 
-        </div>
-      </a>
-      <button onClick={handleEditProject}>Edit</button>
-      <button onClick={handleDeleteProject}>Delete</button>
+        <a className={styles.cardImageWrapper} href={redirrect} target='_blank'>
+          <img src={imgURL} /> 
+        </a>
+      </div>
     </div>
   );
 };

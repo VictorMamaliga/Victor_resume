@@ -1,3 +1,12 @@
 .list {
     background-color: red;
+
+    &Right {
+        background-color: bisque;
+
+        > div {
+            margin-left: auto;
+        }
+    }
 }
+

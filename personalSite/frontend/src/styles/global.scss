@@ -25,3 +25,25 @@ footer {
     padding: 1rem;
     color: white;
 }
+
+// typography
+h1,
+h2 {
+    font-family: 'Bangers', sans-serif;
+    line-height: 0.7;
+}
+
+h2 {
+    font-size: clamp(30px, 5vw, 80px);
+}
+
+small,
+a {
+    font-family: cursive;
+    font-weight: bold;
+}
+
+button {
+    font-family: 'Permanent Marker', sans-serif;
+    font-weight: bold;
+}
