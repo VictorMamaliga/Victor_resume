@@ -44,25 +44,25 @@ export default function useApi(modalData) {
         }
         
 
-        fetch(dataToSend.url, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(dataToSend.body)
-        })
+        // fetch(dataToSend.url, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(dataToSend.body)
+        // })
 
 
 
     }
 
-    useEffect(() => {
-        fetch('http://localhost:8080/api')
-            .then(response => response.json())
-            .then(response => setProjectsAPI(response))
-            .catch(err => console.log(err));
-    }, [])
+    // useEffect(() => {
+    //     fetch('http://localhost:8080/api')
+    //         .then(response => response.json())
+    //         .then(response => setProjectsAPI(response))
+    //         .catch(err => console.log(err));
+    // }, [])
 
     return { projectsAPI, createProject }
 }

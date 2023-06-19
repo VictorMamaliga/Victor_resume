@@ -8,7 +8,7 @@ import ProjectCreate from './components/molecules/ProjectCreate';
 import { projects } from './helpers';
 import { ModalDataContext, ModalDataDispatchContext, modalDataReducer } from "./contexts/ModalDataContext";
 import useApi from "./api/useApi";
-import Marquee from "./components/molecules/Marquee";
+import MarqueeList from "./components/molecules/MarqueeList";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,6 +21,13 @@ function App() {
   // nu decomenta urmatoarea linie !!!!
   const { projectsAPI, handleOnSubmitForm, createProject, editProject } = useApi(modalData);
 
+
+
+    
+
+  
+  
+
   return (
     <>
       <Header />
@@ -28,16 +35,25 @@ function App() {
         <ModalDataDispatchContext.Provider value={dispatch}>
           <main>
             <Button text={'my button'} />
-            <ProjectList data={projectsAPI} onToggleModal={() => setIsModalOpen(!isModalOpen)} />
-            <Marquee 
-              title1="First part of title"
-              title2="Second part of title"
-              title3="Third part of title"
-              word1="First word"
-              word2="Second word"
-              word3="Third word"
-              buttonImage="https://i1.sndcdn.com/artworks-000021223010-8s64rf-t500x500.jpg"
+            <ProjectList data={projects} onToggleModal={() => setIsModalOpen(!isModalOpen)} />
+            <br />
+            <br />
+            <br />
+            <br />
+            <MarqueeList 
+                title1="First title"
+                title2="Second title"
+                title3="Thirdtitle"
+                word1="First word"
+                word2="Second word"
+                word3="Third word"
+                buttonImage="https://i1.sndcdn.com/artworks-000021223010-8s64rf-t500x500.jpg"
             />
+
+            <br />
+            <br />
+            <br />
+            <br />
             <footer>Numarul 1 in top</footer>
             
           </main>
