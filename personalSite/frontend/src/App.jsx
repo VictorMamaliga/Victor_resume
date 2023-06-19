@@ -13,8 +13,6 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, dispatch] = useReducer(modalDataReducer, null);
 
-
-
   console.log(modalData)
 
   // nu decomenta urmatoarea linie !!!!
@@ -30,12 +28,8 @@ function App() {
             <ProjectList data={projectsAPI}  onToggleModal={() => setIsModalOpen(!isModalOpen)} />
             <footer>Numarul 1 in top</footer>
           </main>
-          <Modal isOpen={isModalOpen} onToggleModal={() => setIsModalOpen(!isModalOpen)} onApiResponseStatus={handleApiResponseStatus}>
-            {apiResponseStatus ? (
-              <h1>Success</h1>
-            ) : (
-              <ProjectCreate apiResponseStatus={apiResponseStatus} onSubmitForm={handleOnSubmitForm}  onToggleModal={() => setIsModalOpen(!isModalOpen)} />
-            )}
+          <Modal isOpen={isModalOpen} apiResponseStatus={apiResponseStatus} onToggleModal={() => setIsModalOpen(!isModalOpen)} onApiResponseStatus={handleApiResponseStatus}>
+            <ProjectCreate onSubmitForm={handleOnSubmitForm}  onToggleModal={() => setIsModalOpen(!isModalOpen)} />
           </Modal>
         </ModalDataDispatchContext.Provider>
       </ModalDataContext.Provider>

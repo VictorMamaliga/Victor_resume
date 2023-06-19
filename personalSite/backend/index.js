@@ -36,14 +36,16 @@ app.post('/api/posts', async (req, res) => {
 // edit
 app.post('/api/posts/edit', async (req, res) => {
   const cityRef = db.collection('projects').doc(req.body.id);
-  const dbRes = await cityRef.update(req.body.data);
-  res.status(200).json({ message: 'hai ca e success'})
+  cityRef.update(req.body.data)
+    .then(() => res.status(200).json({ message: 'success' }))
+    .catch(() => res.status(400).json({ message: 'error' }))
 })
 
 // delete
 app.post('/api/posts/delete', async (req, res) => {
-  await db.collection('projects').doc(req.body.id).delete();
-  res.status(200).json({ message: 'hai ca e success'})
+  await db.collection('projects').doc(req.body.id).delete()
+    .then(() => res.status(200).json({ message: 'success' }))
+    .catch(() => res.status(400).json({ message: 'error' }))
 })
 
 app.listen(port, () => {

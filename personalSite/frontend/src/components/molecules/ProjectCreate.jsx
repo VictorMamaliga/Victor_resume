@@ -19,56 +19,7 @@ const ProjectCreate = ({ onToggleModal, onSubmitForm }) => {
         });
     }
 
-    // const handleDeleteConfirm = () => {
-    //     fetch('http://localhost:8080/api/posts/delete', {
-    //       method: 'POST',
-    //       headers: {
-    //         'Accept': 'application/json',
-    //         'Content-Type': 'application/json'
-    //       },
-    //       body: JSON.stringify({ id: modalData.id })
-    //     })
-    //     .then(r => r.json()).then(r => console.log(r))
-    //     console.log('confirm delete project with id:'+ modalData.id)
-    //     onToggleModal();
-    // }
-
     console.log(modalData, formData)
-
-    const handleSubmit = event => {
-        event.preventDefault();
-
-
-
-        // const canCLose = false;
-        // const projectRef = {};
-
-        // cred ca deja ai datale in "project"
-        // for (let item of event.target) {
-        //     if (item.name) projectRef[item.name] = item.value;
-        // }
-
-        // if (modalData.requestType === 'edit') {
-        //     console.log('facem editare pe baza de date cu id: '+ modalData.data.id)
-        // }
-
-        // if (modalData.requestType === 'create') {
-        //     console.log('facem create in baza de date cu: ',projectRef)
-            
-            // fetch('http://localhost:8080/api/posts', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Accept': 'application/json',
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(projectRef)
-            // })
-        //     onToggleModal();
-        // }
-
-
-        // if (canCLose) onToggleModal();
-    }
 
     return (
         modalData?.requestType === 'delete' ? (
