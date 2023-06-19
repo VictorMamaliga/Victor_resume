@@ -7,11 +7,7 @@ const Modal = ({ isOpen, apiResponseStatus, children, onToggleModal, onApiRespon
         onApiResponseStatus();
     }
 
-    if (!isOpen) {
-        return null;
-    }
-
-    return (
+    return isOpen && (
         <div className={styles.modalOverlay}>
             <div className={styles.modal}>
                 <button className={styles.closeButton} onClick={handleCloseAndResetModal}>Close</button>
@@ -20,7 +16,7 @@ const Modal = ({ isOpen, apiResponseStatus, children, onToggleModal, onApiRespon
                 {!apiResponseStatus && (children)}
             </div>
         </div>
-    );
+    )
 }
 
 export default Modal;

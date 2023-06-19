@@ -5,7 +5,7 @@ import { ModalDataContext } from '../../contexts/ModalDataContext';
 
 const ProjectCreate = ({ onToggleModal, onSubmitForm }) => {
     const modalData = useContext(ModalDataContext);
-    const [formData, setFormData] = useState(modalData)
+    const [formData, setFormData] = useState(modalData);
 
     const handleChange = event => {
         setFormData({
