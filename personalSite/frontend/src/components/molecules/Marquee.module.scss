@@ -10,11 +10,24 @@
 
 
 
+    &:hover .marquee .popup-image {
+        bottom: 0;
+        visibility: visible;
+        opacity: 1;
+        overflow: visible;
+        transform: rotate(15deg); // This will rotate the image counterclockwise
+        transition: bottom 0.5s linear, visibility 0s, opacity 0.5s linear, transform 0.5s linear; // Added transform here
+    } 
     &:hover .names {
         visibility: hidden;
 
     }
 
+    &:hover .marquee-content {
+        animation: marquee 3s linear infinite;
+        visibility: visible;
+        
+    }
     /* Align items to the right */
 
 }
@@ -43,10 +56,7 @@
     justify-content: space-between;
 }
 
-.marquee:hover .marquee-content {
-    animation: marquee 3s linear infinite;
-    visibility: visible;
-}
+
 
 .names {
     display: flex;
@@ -65,6 +75,7 @@
 .marquee {
     position: relative;
     white-space: nowrap;
+    width: 400px;
     //overflow: visible;
     display: flex;
     /* Use flexbox for easy alignment */
@@ -72,18 +83,11 @@
     //justify-content: flex-end;
 
     /* Arrange children vertically */
-    align-items: flex-end;
+    //align-items: flex-end;
     //animation: marquee 10s linear infinite;
     //overflow: visible;
 
-    &:hover .popup-image {
-        bottom: 0;
-        visibility: visible;
-        opacity: 1;
-        overflow: visible;
-        transform: rotate(15deg); // This will rotate the image counterclockwise
-        transition: bottom 0.5s linear, visibility 0s, opacity 0.5s linear, transform 0.5s linear; // Added transform here
-    }
+    
 
 
 }
