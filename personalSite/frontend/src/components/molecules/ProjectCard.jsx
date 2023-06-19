@@ -3,13 +3,14 @@ import { ModalDataDispatchContext } from '../../contexts/ModalDataContext';
 
 import { useContext } from 'react';
 
-const ProfileCard = ({ id, name, description, imgURL, redirrect, order, onToggleModal }) => {
+const ProfileCard = ({ project, order, onToggleModal }) => {
   const dispatch = useContext(ModalDataDispatchContext);
+  const { id, name, description, imgURL, redirrect } = project;
 
   const handleEditProject = () => {
     dispatch({
       type: 'edit',
-      data: { id, name, description, imgURL, redirrect }
+      data: project,
     });
 
     onToggleModal();

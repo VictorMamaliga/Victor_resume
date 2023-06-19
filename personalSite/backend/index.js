@@ -25,18 +25,27 @@ app.get('/api', async (req, res) => {
   res.json(result)
 })
 
-app.post('/api/posts', async (req, res) => {
-  const projectsRef = db.collection('projects');
-  await projectsRef.add(req.body);
+// create/edit
+app.post('/api/posts', (req, res) => {
+  if (!req.body.id) {
+    console.log('creem', req.body)
+    const projectsRef = db.collection('projects');
+    projectsRef.add(req.body.data)
+      .then(() => res.status(200).json({ message: 'success' }))
+      .catch(() => res.status(400).json({ message: 'error' }))
+  } else {
+    const projectRef = db.collection('projects').doc(req.body.id);
+    projectRef.update(req.body.data)
+      .then(() => res.status(200).json({ message: 'success' }))
+      .catch(() => res.status(400).json({ message: 'error' }))
+  }
 })
 
-app.post('/api/posts/edit', async (req, res) => {
-  const cityRef = db.collection('projects').doc(req.body.id);
-  const dbRes = await cityRef.update(req.body.data);
-})
-
-app.post('/api/posts/delete', async (req, res) => {
-  await db.collection('projects').doc(req.body.id).delete();
+// delete
+app.post('/api/posts/delete', (req, res) => {
+  db.collection('projects').doc(req.body.id).delete()
+    .then(() => res.status(200).json({ message: 'success' }))
+    .catch(() => res.status(400).json({ message: 'error' }))
 })
 
 app.listen(port, () => {
