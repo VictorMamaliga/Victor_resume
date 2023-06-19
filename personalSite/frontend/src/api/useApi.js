@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { formatJSONStructure } from '../helpers';
 
-export default function useApi(modalData) {
+export default function useApi(modalData, handleAutoModalClose) {
     const [projectsAPI, setProjectsAPI] = useState([]);
     const [apiResponseStatus, setApiResponseStatus] = useState(false);
 
@@ -18,9 +18,16 @@ export default function useApi(modalData) {
             },
             body: JSON.stringify(dataToSend.body)
         }).then(r => {
-            console.log(r.status);
             setApiResponseStatus(r.status);
+            handleTimerModalClose()
         }).catch(r => console.log(r.status))
+    }
+    
+    function handleTimerModalClose() {
+        setTimeout(() => {
+            handleAutoModalClose();
+            setApiResponseStatus(false);
+        }, 1500)
     }
 
     const handleApiResponseStatus = () => {

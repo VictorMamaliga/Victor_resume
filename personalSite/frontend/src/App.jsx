@@ -13,14 +13,11 @@ import MarqueeList from "./components/molecules/MarqueeList";
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, dispatch] = useReducer(modalDataReducer, null);
-  const { projectsAPI, apiResponseStatus, handleOnSubmitForm, handleApiResponseStatus } = useApi(modalData);
+  const { projectsAPI, apiResponseStatus, handleOnSubmitForm, handleApiResponseStatus } = useApi(modalData, handleAutoModalClose);
 
-
-
-    
-
-  
-  
+  function handleAutoModalClose() {
+    setIsModalOpen(false);
+  }
 
   return (
     <>
@@ -51,7 +48,7 @@ function App() {
             <footer>Numarul 1 in top</footer>
             
           </main>
-          <Modal isOpen={isModalOpen} apiResponseStatus={apiResponseStatus} onToggleModal={() => setIsModalOpen(!isModalOpen)} onApiResponseStatus={handleApiResponseStatus}>
+          <Modal isOpen={isModalOpen} apiResponseStatus={apiResponseStatus} onToggleModal={() => setIsModalOpen(!isModalOpen)}>
             <ProjectCreate onSubmitForm={handleOnSubmitForm}  onToggleModal={() => setIsModalOpen(!isModalOpen)} />
           </Modal>
         </ModalDataDispatchContext.Provider>
