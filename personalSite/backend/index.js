@@ -25,25 +25,25 @@ app.get('/api', async (req, res) => {
   res.json(result)
 })
 
-// create
-app.post('/api/posts', async (req, res) => {
-  console.log(req.body)
-  const projectsRef = db.collection('projects');
-  await projectsRef.add(req.body);
-  res.status(200).json({ message: 'hai ca e success'})
-})
-
-// edit
-app.post('/api/posts/edit', async (req, res) => {
-  const cityRef = db.collection('projects').doc(req.body.id);
-  cityRef.update(req.body.data)
-    .then(() => res.status(200).json({ message: 'success' }))
-    .catch(() => res.status(400).json({ message: 'error' }))
+// create/edit
+app.post('/api/posts', (req, res) => {
+  if (!req.body.id) {
+    console.log('creem', req.body)
+    const projectsRef = db.collection('projects');
+    projectsRef.add(req.body.data)
+      .then(() => res.status(200).json({ message: 'success' }))
+      .catch(() => res.status(400).json({ message: 'error' }))
+  } else {
+    const projectRef = db.collection('projects').doc(req.body.id);
+    projectRef.update(req.body.data)
+      .then(() => res.status(200).json({ message: 'success' }))
+      .catch(() => res.status(400).json({ message: 'error' }))
+  }
 })
 
 // delete
-app.post('/api/posts/delete', async (req, res) => {
-  await db.collection('projects').doc(req.body.id).delete()
+app.post('/api/posts/delete', (req, res) => {
+  db.collection('projects').doc(req.body.id).delete()
     .then(() => res.status(200).json({ message: 'success' }))
     .catch(() => res.status(400).json({ message: 'error' }))
 })

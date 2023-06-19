@@ -8,18 +8,11 @@ const ProjectCreate = ({ onToggleModal, onSubmitForm }) => {
     const [formData, setFormData] = useState(modalData)
 
     const handleChange = event => {
-        const myData = {
-            ...formData.data,
-            [event.target.name]: event.target.value,
-        }
-
         setFormData({
             ...formData,
-            data: myData
+            data: {[event.target.name]: event.target.value},
         });
     }
-
-    console.log(modalData, formData)
 
     return (
         modalData?.requestType === 'delete' ? (

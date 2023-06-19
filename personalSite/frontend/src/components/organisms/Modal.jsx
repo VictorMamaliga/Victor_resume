@@ -7,25 +7,6 @@ const Modal = ({ isOpen, apiResponseStatus, children, onToggleModal, onApiRespon
         onApiResponseStatus();
     }
 
-    console.log(apiResponseStatus, typeof apiResponseStatus)
-
-    const displayRequestStatus = () => {
-        switch (onApiResponseStatus) {
-            case false: {
-                return children;
-            }
-            case 200: {
-                return <h1>Success</h1>
-            }
-            case 400: {
-                return <h1>Error</h1>
-            }
-            // default: {
-            //     return null
-            // }
-        }
-    }
-
     if (!isOpen) {
         return null;
     }
