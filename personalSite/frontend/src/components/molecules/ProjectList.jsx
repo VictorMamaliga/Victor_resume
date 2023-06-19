@@ -17,7 +17,7 @@ export default function ProjectList({ data, onToggleModal }) {
 
     return (
         <section className={styles.list}>
-            {data.map(project => <ProjectCard key={project.id} id={project.id} name={project.name} description={project.description} imgURL={project.imgURL} redirrect={project.redirrect} onToggleModal={onToggleModal} />)}
+            {data.map(project => <ProjectCard key={project.id} project={project} onToggleModal={onToggleModal} />)}
             <button onClick={handleModalOpen}>Open Submit Project</button>
         </section>
     );

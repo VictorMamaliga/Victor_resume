@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react";
+import { useReducer, useState } from "react";
 
 import Header from "./components/organisms/Header";
 import Button from './components/atoms/Button';
@@ -13,13 +13,7 @@ import MarqueeList from "./components/molecules/MarqueeList";
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, dispatch] = useReducer(modalDataReducer, null);
-
-
-
-  console.log(modalData)
-
-  // nu decomenta urmatoarea linie !!!!
-  const { projectsAPI, handleOnSubmitForm, createProject, editProject } = useApi(modalData);
+  const { projectsAPI, apiResponseStatus, handleOnSubmitForm, handleApiResponseStatus } = useApi(modalData);
 
 
 
@@ -35,7 +29,7 @@ function App() {
         <ModalDataDispatchContext.Provider value={dispatch}>
           <main>
             <Button text={'my button'} />
-            <ProjectList data={projects} onToggleModal={() => setIsModalOpen(!isModalOpen)} />
+            <ProjectList data={projectsAPI} onToggleModal={() => setIsModalOpen(!isModalOpen)} />
             <br />
             <br />
             <br />
@@ -57,8 +51,8 @@ function App() {
             <footer>Numarul 1 in top</footer>
             
           </main>
-          <Modal isOpen={isModalOpen} onToggleModal={() => setIsModalOpen(!isModalOpen)}>
-            <ProjectCreate onSubmitForm={createProject}  onToggleModal={() => setIsModalOpen(!isModalOpen)} />
+          <Modal isOpen={isModalOpen} apiResponseStatus={apiResponseStatus} onToggleModal={() => setIsModalOpen(!isModalOpen)} onApiResponseStatus={handleApiResponseStatus}>
+            <ProjectCreate onSubmitForm={handleOnSubmitForm}  onToggleModal={() => setIsModalOpen(!isModalOpen)} />
           </Modal>
         </ModalDataDispatchContext.Provider>
       </ModalDataContext.Provider>
