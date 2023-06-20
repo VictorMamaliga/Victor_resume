@@ -1,6 +1,7 @@
 import styles from './projectList.module.scss';
 import ProjectCard from "./ProjectCard";
 import { ModalDataDispatchContext } from '../../contexts/ModalDataContext';
+import starImg from '../../assets/star.png';
 
 import { useContext } from 'react';
 
@@ -14,7 +15,7 @@ export default function ProjectList({ data, onToggleModal }) {
 
     return (
         <section id='second' className={styles.listSection}>
-            <h3><img src='../../assets/star.png' />My work</h3>
+            <h3><img src={starImg} />My work</h3>
             <div className={styles.list}>
                 {data.map((row, rowOrder) => {
                     return (

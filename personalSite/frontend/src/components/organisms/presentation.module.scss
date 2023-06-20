@@ -4,7 +4,21 @@
     padding-top: 4rem;
 
     &Available {
-        text-align: center;
+        display: flex;
+        justify-content: end;
+        align-items: start;
+        gap: toRem(20);
+        font-family: 'Permanent Marker', sans-serif;
+        margin-right: 30%;
+
+        img {
+            width: toRem(60);
+        }
+
+        span {
+            font-size: 26px;
+            align-self: end;
+        }
     }
 
     &Details {

@@ -1,10 +1,14 @@
 import styles from './presentation.module.scss';
+import starImg from '../../assets/star.png';
 
 export default function Presentation() {
     return (
         <section id='first'>
             <div className={styles.wrapper}>
-                <div className={styles.wrapperAvailable}>Available for work</div>
+                <h1 className={styles.wrapperAvailable}>
+                    <img src={starImg} />26
+                    <span>July <br /> available <br /> for work</span>
+                </h1>
                 <div className={styles.wrapperDetails}>
                     <div className={styles.wrapperDetailsHero}>
                         <h1>Software Development</h1>
