@@ -10,9 +10,9 @@ export default function Header() {
                 </div>
                 <div>
                     <ul>
-                        <li><a>accenti,</a></li>
-                        <li><a>capatos,</a></li>
-                        <li><a>mustati</a></li>
+                        <li><a href='#first'>accenti,</a></li>
+                        <li><a href='#second'>capatos,</a></li>
+                        <li><a href='#third'>mustati</a></li>
                     </ul>
                 </div>
             </nav>

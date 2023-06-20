@@ -1,0 +1,33 @@
+@import '../../styles/mixins.scss';
+
+.wrapper {
+    padding-top: 4rem;
+
+    &Available {
+        text-align: center;
+    }
+
+    &Details {
+        @include position(absolute, $bottom: 5vh);
+        display: flex;
+        align-items: flex-end;
+        gap: toRem(100);
+
+        &Hero {
+            flex-grow: 1;
+        }
+
+        &Description {
+            flex-basis: 45%;
+        }
+    }
+
+    button {
+        font-size: 24px;
+        border-radius: 50px;
+        padding: 1px 42px;
+        margin-left: auto;
+        display: block;
+        margin-top: 34px;
+    }
+}

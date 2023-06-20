@@ -10,6 +10,10 @@
     font-weight: inherit;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: var(--font-family-primary);
     font-weight: bold;
@@ -19,16 +23,22 @@ body {
 }
 
 main {
-    padding: var(--header-height) var(--padding-main) 0;
+    // padding: var(--header-height) var(--padding-main) 0;
+    padding: 0 var(--padding-main);
 }
 
-footer {
-    background-color: blue;
-    padding: 1rem;
-    color: white;
+section {
+    position: relative;
+    padding-top: var(--header-height);
+    height: calc(100vh - var(--header-height));
+    height: 100vh;
 }
 
 // typography
+h1 {
+    font-size: clamp(90px, 9vw, 210px);
+}
+
 h1,
 h2 {
     font-family: var(--font-family-title);
@@ -37,6 +47,10 @@ h2 {
 
 h2 {
     font-size: clamp(1.87rem, 4vw, 5rem);
+}
+
+h3 {
+    font-size: clamp(22px, 1.6vw, 2rem);
 }
 
 small {
@@ -54,4 +68,13 @@ button {
     padding: 0px toRem(4);
     border: 2px solid;
     cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+
+    li {
+        margin-left: var(--padding-nav-elements);
+    }
 }

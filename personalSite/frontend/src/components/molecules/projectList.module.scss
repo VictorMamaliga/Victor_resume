@@ -4,7 +4,7 @@
     padding: toRem(10) toRem(12);
     border-radius: toRem(12);
     width: 70%;
-    margin: 0 auto;
+    margin: 2rem auto 0;
     background-color: black;
 
     &Right {
@@ -16,6 +16,11 @@
     button {
         display: block;
         margin: 0 auto;
+    }
+
+    &Section {
+        height: unset;
+        min-height: 100vh;
     }
 }
 

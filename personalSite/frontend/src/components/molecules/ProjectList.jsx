@@ -13,15 +13,18 @@ export default function ProjectList({ data, onToggleModal }) {
     }
 
     return (
-        <section className={styles.list}>
-            {data.map((row, rowOrder) => {
-                return (
-                    <div key={rowOrder} className={rowOrder % 2 != 0 ? styles.listRight : null}>
-                        {row.map((card, order) => <ProjectCard key={card.id} card={card} order={order} rowOrder={rowOrder} onToggleModal={onToggleModal} />)}
-                    </div>
-                )
-            })}
-            <button onClick={handleModalOpen}>New Project</button>
+        <section id='second' className={styles.listSection}>
+            <h3><img src='../../assets/star.png' />My work</h3>
+            <div className={styles.list}>
+                {data.map((row, rowOrder) => {
+                    return (
+                        <div key={rowOrder} className={rowOrder % 2 != 0 ? styles.listRight : null}>
+                            {row.map((card, order) => <ProjectCard key={card.id} card={card} order={order} rowOrder={rowOrder} onToggleModal={onToggleModal} />)}
+                        </div>
+                    )
+                })}
+                <button onClick={handleModalOpen}>New Project</button>
+            </div>
         </section>
     );
 }

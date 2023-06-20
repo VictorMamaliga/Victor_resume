@@ -1,7 +1,6 @@
 import { useReducer, useState } from "react";
 
 import Header from "./components/organisms/Header";
-import Button from './components/atoms/Button';
 import ProjectList from "./components/molecules/ProjectList";
 import Modal from "./components/organisms/Modal";
 import ProjectCreate from './components/molecules/ProjectCreate';
@@ -9,6 +8,8 @@ import { projects } from './helpers';
 import { ModalDataContext, ModalDataDispatchContext, modalDataReducer } from "./contexts/ModalDataContext";
 import useApi from "./api/useApi";
 import MarqueeList from "./components/molecules/MarqueeList";
+import Presentation from "./components/organisms/Presentation";
+import Ending from "./components/organisms/Ending";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,28 +26,9 @@ function App() {
       <ModalDataContext.Provider value={modalData}>
         <ModalDataDispatchContext.Provider value={dispatch}>
           <main>
-            <Button text={'my button'} />
+            <Presentation />
             <ProjectList data={projectsAPI} onToggleModal={() => setIsModalOpen(!isModalOpen)} />
-            <br />
-            <br />
-            <br />
-            <br />
-            {/* <MarqueeList 
-                title1="First title"
-                title2="Second title"
-                title3="Thirdtitle"
-                word1="First word"
-                word2="Second word"
-                word3="Third word"
-                buttonImage="https://i1.sndcdn.com/artworks-000021223010-8s64rf-t500x500.jpg"
-            /> */}
-
-            <br />
-            <br />
-            <br />
-            <br />
-            <footer>Numarul 1 in top</footer>
-            
+            <Ending />
           </main>
           <Modal isOpen={isModalOpen} apiResponseStatus={apiResponseStatus} onToggleModal={() => setIsModalOpen(!isModalOpen)}>
             <ProjectCreate onSubmitForm={handleOnSubmitForm}  onToggleModal={() => setIsModalOpen(!isModalOpen)} />
