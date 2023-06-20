@@ -8,8 +8,6 @@ const ProfileCard = ({ card, order, rowOrder, onToggleModal }) => {
   const { id, name, description, imgURL, redirrect } = card;
 
   const handleEditCard = e => {
-    e.stopPropagation();
-    
     dispatch({
       type: 'edit',
       data: card,
@@ -19,8 +17,6 @@ const ProfileCard = ({ card, order, rowOrder, onToggleModal }) => {
   }
   
   const handleDeleteCard = () => {
-    e.stopPropagation();
-
     dispatch({
       type: 'delete',
       id,

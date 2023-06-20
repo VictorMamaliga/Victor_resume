@@ -7,17 +7,19 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: inherit;
+    font-weight: inherit;
 }
 
 body {
+    font-family: var(--font-family-primary);
+    font-weight: bold;
     background-color: var(--background-primary);
     color: var(--accent-primary);
+    background-color: red;
 }
 
 main {
     padding: var(--header-height) var(--padding-main) 0;
-    background-color: green;
 }
 
 footer {
@@ -29,21 +31,27 @@ footer {
 // typography
 h1,
 h2 {
-    font-family: 'Bangers', sans-serif;
+    font-family: var(--font-family-title);
     line-height: 0.7;
 }
 
 h2 {
-    font-size: clamp(30px, 5vw, 80px);
+    font-size: clamp(1.87rem, 4vw, 5rem);
+}
+
+small {
+    font-size: clamp(0.75rem, 0.8vw, 1rem);
 }
 
 small,
+span,
 a {
-    font-family: cursive;
-    font-weight: bold;
+    color: var(--accent-secondary);
 }
 
 button {
     font-family: 'Permanent Marker', sans-serif;
-    font-weight: bold;
+    padding: 0px toRem(4);
+    border: 2px solid;
+    cursor: pointer;
 }

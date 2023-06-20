@@ -21,7 +21,7 @@ export default function ProjectList({ data, onToggleModal }) {
                     </div>
                 )
             })}
-            <button onClick={handleModalOpen}>Open Submit Project</button>
+            <button onClick={handleModalOpen}>New Project</button>
         </section>
     );
 }

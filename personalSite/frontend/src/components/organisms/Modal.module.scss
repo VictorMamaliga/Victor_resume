@@ -1,5 +1,6 @@
-// Modal.module.scss
-.modalOverlay {
+@import '../../styles/mixins.scss';
+
+.modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -9,16 +10,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
 
-.modal {
-    background-color: white;
-    padding: 2em;
-    border-radius: 5px;
-    max-width: 500px;
-    width: 100%;
-}
-
-.closeButton {
-    float: right;
+    &Close {
+        @include position(absolute, $top: 3.25rem, $right: 3rem);
+        border-radius: 50%;
+        padding: toRem(2) toRem(7);
+    }
+    
+    > div {
+        position: relative;
+        background-color: white;
+        padding: 2em;
+        border-radius: 5px;
+        max-width: toRem(500);
+        width: 100%;
+    }
 }

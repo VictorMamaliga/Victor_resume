@@ -2,12 +2,18 @@
 
 .header {
     @include position(fixed, $left: var(--padding-main), $right: var(--padding-main));
-    padding: 1rem 0;
+    padding: 1rem toRem(23);
     border-bottom: 1px solid var(--accent-primary);
+    backdrop-filter: blur(10px);
+    background-color: rgb(0 0 0 / 80%);
+    border-bottom-left-radius: toRem(14);
+    border-bottom-right-radius: toRem(14);
+    z-index: 1;
 
     &Name {
         a {
             margin-right: var(--padding-nav-elements);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         }
     }
 

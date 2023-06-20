@@ -31,7 +31,7 @@ function App() {
             <br />
             <br />
             <br />
-            <MarqueeList 
+            {/* <MarqueeList 
                 title1="First title"
                 title2="Second title"
                 title3="Thirdtitle"
@@ -39,7 +39,7 @@ function App() {
                 word2="Second word"
                 word3="Third word"
                 buttonImage="https://i1.sndcdn.com/artworks-000021223010-8s64rf-t500x500.jpg"
-            />
+            /> */}
 
             <br />
             <br />

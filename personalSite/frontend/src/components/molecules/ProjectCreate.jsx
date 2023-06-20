@@ -31,7 +31,6 @@ const ProjectCreate = ({ onToggleModal, onSubmitForm }) => {
                         value={formData?.data?.name}
                         onChange={handleChange}
                         required
-                        className={styles.input}
                     />
                 </label>
                 <br />
@@ -43,7 +42,6 @@ const ProjectCreate = ({ onToggleModal, onSubmitForm }) => {
                         value={formData?.data?.description}
                         onChange={handleChange}
                         required
-                        className={styles.input}
                     />
                 </label>
                 <br />
@@ -55,7 +53,6 @@ const ProjectCreate = ({ onToggleModal, onSubmitForm }) => {
                         value={formData?.data?.redirrect}
                         onChange={handleChange}
                         required
-                        className={styles.input}
                     />
                 </label>
                 <label>
@@ -66,11 +63,10 @@ const ProjectCreate = ({ onToggleModal, onSubmitForm }) => {
                         value={formData?.data?.imgURL}
                         onChange={handleChange}
                         required
-                        className={styles.input}
                     />
                 </label>
                 <br />
-                <button type='submit' className={styles.button}>Submit Project</button>
+                <button type='submit'>Submit</button>
             </form>
 
         )

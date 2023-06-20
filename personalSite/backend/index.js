@@ -28,7 +28,6 @@ app.get('/api', async (req, res) => {
 // create/edit
 app.post('/api/posts', (req, res) => {
   if (!req.body.id) {
-    console.log('creem', req.body)
     const projectsRef = db.collection('projects');
     projectsRef.add(req.body.data)
       .then(() => res.status(200).json({ message: 'success' }))

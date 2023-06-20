@@ -6,7 +6,7 @@ export default function Header() {
             <nav>
                 <div className={styles.headerName}>
                     <a>Gutan Bregovih</a>
-                    <small>INTERPRET PRE/POST INTERBELIC TALENT</small>
+                    <span>INTERPRET PRE/POST INTERBELIC TALENT</span>
                 </div>
                 <div>
                     <ul>

@@ -1,12 +1,21 @@
+@import '../../styles/mixins.scss';
+
 .list {
-    background-color: red;
+    padding: toRem(10) toRem(12);
+    border-radius: toRem(12);
+    width: 70%;
+    margin: 0 auto;
+    background-color: black;
 
     &Right {
-        background-color: bisque;
-
         > div {
             margin-left: auto;
         }
+    }
+
+    button {
+        display: block;
+        margin: 0 auto;
     }
 }
 
