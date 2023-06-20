@@ -5,7 +5,8 @@
     border-radius: toRem(12);
     width: 70%;
     margin: 2rem auto 0;
-    background-color: black;
+    background-image: url('../../assets/universe.jpg');
+    // background-color: black;
 
     &Right {
         > div {
@@ -21,7 +22,8 @@
     &Section {
         height: unset;
         min-height: 100vh;
-         > h3 {
+
+        > h3 {
             display: flex;
             align-items: center;
             gap: 20px;
