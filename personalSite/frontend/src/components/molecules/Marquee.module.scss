@@ -161,10 +161,10 @@
 
 @keyframes marquee {
     0% {
-        transform: translateX(-20%);
+        transform: translate3d(calc(-25% + 1rem), 0, 0)
     }
 
     100% {
-        transform: translateX(-50%);
+        transform: translate3d(calc(-50% + 1rem), 0, 0)
     }
 }
