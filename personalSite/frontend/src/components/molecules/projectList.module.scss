@@ -3,10 +3,9 @@
 .list {
     padding: toRem(10) toRem(12);
     border-radius: toRem(12);
-    width: 70%;
-    margin: 2rem auto 0;
-    background-image: url('../../assets/universe.jpg');
-    // background-color: black;
+    max-width: min(85%, 1920px);
+    margin-top: 2rem;
+    margin-left: auto;
 
     &Right {
         > div {
@@ -22,16 +21,21 @@
     &Section {
         height: unset;
         min-height: 100vh;
-
+        
         > h3 {
             display: flex;
             align-items: center;
             gap: 20px;
-
+            
             img {
-                width: toRem(50);
+                width: 12rem;
+                filter: invert(44%) sepia(55%) saturate(451%) hue-rotate(349deg) brightness(88%) contrast(88%);
             }
         }
     }
 }
 
+button {
+    @include roundButton();
+    padding: 1px toRem(20);
+}

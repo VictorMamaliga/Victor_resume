@@ -7,24 +7,23 @@
 
         h3 {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: toRem(30);
         }
     }
 
     &Row {
-        margin-bottom: 10px;
+        margin-bottom: toRem(10);
 
         &Wrapper {
             min-width: toRem(750);
         }
 
         h3 {
+            @include roundButton();
             display: inline-block;
-            border: 2px solid;
-            border-radius: 50px;
-            padding: 2px 26px;
-            margin-bottom: 0;
+            padding: toRem(2) toRem(26);
             margin-right: 10px;
+            margin-bottom: unset;
         }
     }
 
@@ -49,7 +48,7 @@
             }
 
             h3 {
-                font-size: 20px;
+                font-size: toRem(20);
             }
         }
     }

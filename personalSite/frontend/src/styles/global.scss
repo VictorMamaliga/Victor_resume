@@ -1,5 +1,6 @@
 @import './variables.scss';
 @import './mixins.scss';
+@import './typography.scss';
 
 *,
 *::before,
@@ -8,6 +9,7 @@
     padding: 0;
     box-sizing: border-box;
     font-weight: inherit;
+    font-family: inherit;
 }
 
 html {
@@ -19,11 +21,9 @@ body {
     font-weight: bold;
     background-color: var(--background-primary);
     color: var(--accent-primary);
-    background-color: red;
 }
 
 main {
-    // padding: var(--header-height) var(--padding-main) 0;
     padding: 0 var(--padding-main);
 }
 
@@ -34,40 +34,10 @@ section {
     height: 100vh;
 }
 
-// typography
-h1 {
-    font-size: clamp(90px, 9vw, 210px);
-}
-
-h1,
-h2 {
-    font-family: var(--font-family-title);
-    line-height: 0.7;
-}
-
-h2 {
-    font-size: clamp(1.87rem, 4vw, 5rem);
-}
-
-h3 {
-    font-size: clamp(22px, 1.6vw, 2rem);
-}
-
-small {
-    font-size: clamp(0.75rem, 0.8vw, 1rem);
-}
-
 small,
 span,
 a {
     color: var(--accent-secondary);
-}
-
-button {
-    font-family: 'Permanent Marker', sans-serif;
-    padding: 0px toRem(4);
-    border: 2px solid;
-    cursor: pointer;
 }
 
 ul {
@@ -77,4 +47,9 @@ ul {
     li {
         margin-left: var(--padding-nav-elements);
     }
+}
+
+.posterWraper {
+    @include position(fixed, $top: 0, $right: 0, $bottom: 0, $left: 0);
+    z-index: -10;
 }

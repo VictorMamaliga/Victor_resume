@@ -8,7 +8,6 @@
         justify-content: end;
         align-items: start;
         gap: toRem(20);
-        font-family: 'Permanent Marker', sans-serif;
         margin-right: 30%;
 
         img {
@@ -16,7 +15,7 @@
         }
 
         span {
-            font-size: 1rem;
+            font-size: 1.3rem;
             align-self: end;
         }
     }
@@ -37,11 +36,11 @@
     }
 
     button {
-        font-size: 24px;
-        border-radius: 50px;
-        padding: 1px 42px;
+        @include roundButton();
+        padding: toRem(2) toRem(42);
         margin-left: auto;
         display: block;
-        margin-top: 34px;
+        margin-top: toRem(34);
+        font-size: 1.5rem;
     }
 }

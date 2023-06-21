@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 
 import Header from "./components/organisms/Header";
 import ProjectList from "./components/molecules/ProjectList";
@@ -10,6 +10,11 @@ import useApi from "./api/useApi";
 import MarqueeList from "./components/molecules/MarqueeList";
 import Presentation from "./components/organisms/Presentation";
 import Ending from "./components/organisms/Ending";
+
+
+
+
+
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,7 +30,7 @@ function App() {
       <Header />
       <ModalDataContext.Provider value={modalData}>
         <ModalDataDispatchContext.Provider value={dispatch}>
-          <main>
+          <main onScroll={() => console.log('george')}>
             <Presentation />
             <ProjectList data={projectsAPI} onToggleModal={() => setIsModalOpen(!isModalOpen)} />
             <Ending />
