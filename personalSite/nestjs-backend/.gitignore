@@ -35,4 +35,4 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 # firestore
-key.json
+/firebase/key.json

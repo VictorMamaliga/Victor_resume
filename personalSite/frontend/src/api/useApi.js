@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { formatJSONStructure } from '../helpers';
+import { formatJSONStructure, getProjectsURLType } from '../helpers';
 
 export default function useApi(modalData, handleAutoModalClose) {
     const [projectsAPI, setProjectsAPI] = useState([]);
@@ -19,6 +19,7 @@ export default function useApi(modalData, handleAutoModalClose) {
             },
             body: JSON.stringify(dataToSend.body)
         }).then(r => {
+            console.log(r, r.status)
             setApiResponseStatus(r.status);
             handleTimerModalClose()
         }).catch(r => console.log(r.status))
@@ -36,7 +37,7 @@ export default function useApi(modalData, handleAutoModalClose) {
     }
 
     useEffect(() => {
-        fetch('http://localhost:8080/api')
+        fetch(getProjectsURLType)
             .then(response => response.json())
             .then(response => {
                 const packedData = [];

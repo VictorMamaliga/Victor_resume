@@ -16,8 +16,9 @@ export const projects = [
 ];
 
 // types
-const createURLType = 'http://localhost:8080/api/posts';
-const deleteURLType = 'http://localhost:8080/api/posts/delete';
+export const getProjectsURLType = 'http://localhost:3333/projects';
+const createURLType = 'http://localhost:3333/projectss/create';
+const deleteURLType = 'http://localhost:3333/projects/delete';
 
 // api
 export function formatJSONStructure(modalData, event) {
