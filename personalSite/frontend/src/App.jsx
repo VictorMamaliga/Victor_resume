@@ -25,7 +25,7 @@ function App() {
       <ModalDataContext.Provider value={modalData}>
         <ModalDataDispatchContext.Provider value={dispatch}>
           <main>
-            <Button text={'my button'} />
+            <Button buttonText="Contact Tzanca Uraganu!" href="https://www.youtube.com/watch?v=0AO2p-xPPEo&ab_channel=TzancaUraganu"/>
             <ProjectList data={projectsAPI} onToggleModal={() => setIsModalOpen(!isModalOpen)} />
             <br />
             <br />

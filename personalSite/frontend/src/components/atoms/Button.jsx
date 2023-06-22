@@ -1,15 +1,18 @@
 import styles from './button.module.scss';
 
-const Button = ({ text }) => {
+const Button = ({ buttonText, href }) => {
+  const text = Array(10).fill(buttonText).join(' ');
+
   return (
-    <button className={styles.button}>
-      <div id='rssBlock'>
-        <p className={styles.cnnContents}>
-          <span className={styles.marqueeStyle}>continuous infinite text loop 1 continuous infinite text loop 2 </span>
-          <span className={styles.marqueeStyle2}>continuous infinite text loop 3 continuous infinite text loop 4</span>
-        </p>
-      </div>
-    </button>
+    <a href={href} target="_blank" >
+      <button>
+        <div className={styles.scroll}>
+          <div className={styles.mscroll}>
+            <span>{text}</span>
+          </div>
+        </div>
+      </button>
+    </a>
   );
 };
 
