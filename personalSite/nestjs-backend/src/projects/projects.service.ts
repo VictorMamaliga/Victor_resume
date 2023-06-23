@@ -33,9 +33,7 @@ export class ProjectsService {
     }
 
     async deleteProject(body) {
-        // db.collection('projects').doc(body.id).delete();
-        const res = await db.collection('projects').doc(body.id).delete();
-        console.log(res.id)
-        return res.id;
+        await db.collection('projects').doc(body.id).delete();
+        return { id: body.id };
     }
 }
