@@ -1,4 +1,4 @@
-export const projects = [
+export const projectsDummy = [
     {
         id: 'gdfi8jl58g',
         description: 'Numarul 1',
@@ -17,26 +17,15 @@ export const projects = [
 
 // types
 export const getProjectsURLType = 'http://localhost:3333/projects';
+export const createType = 'create';
+export const editType = 'edit';
+export const deleteType = 'delete';
 const createURLType = 'http://localhost:3333/projects/create';
-const deleteURLType = 'http://localhost:3333/projects/delete';
+const editURLType = 'http://localhost:3333/projectss/';
+const deleteURLType = 'http://localhost:3333/projects/delete/';
 const POSTType = 'POST';
-
-// api
-export function formatJSONStructure(modalData, event) {
-    if ( modalData.requestType !== 'delete') {
-        const dataToSend = { body: { data: {} } };
-        dataToSend.url = createURLType;
-        // if (modalData.data?.id) dataToSend.body.id = modalData.data?.id;
-        
-        for (let item of event.target) {
-            if (item.name) dataToSend.body.data[item.name] = item.value;
-        }
-
-        return dataToSend;
-    } else {
-        return { url: deleteURLType, body: { id: modalData.id }}
-    }
-}
+const PUTType = 'PUT';
+const DELETEType = 'DELETE';
 
 const headers = {
     'Accept': 'application/json',
@@ -44,30 +33,40 @@ const headers = {
 }
 
 export function fetcher(modalData, event) {
-    let method, URL;
     const body = {};
+    let method, URL;
+
+    console.log(modalData.requestType)
+
+    if (modalData.requestType !== deleteType) {
+        console.log(modalData.requestType)
+        for (let item of event.target) {
+            if (item.name) body[item.name] = item.value
+        }
+    }
+
 
     switch (modalData.requestType) {
-        case 'create': {
+        case createType: {
             method = POSTType;
             URL = createURLType;
-
-            for (let item of event.target) {
-                if (item.name) body[item.name] = item.value
-            }
+            break;
+        }
+        case editType: {
+            method = PUTType;
+            URL = editURLType + modalData.data.id;
+            break;
+        }
+        case deleteType: {
+            method = DELETEType;
+            URL = deleteURLType + modalData.id;
             break;
         }
     }
 
-    // return await {URL, method, headers, body}
-
     return fetch(URL, {
         method,
         headers,
-        body: JSON.stringify(body)
+        body: JSON.stringify(body),
     })
- 
-
-
-
 }

@@ -16,11 +16,7 @@ export class ProjectsService {
     }
 
     async createProject(body) {
-        console.log(body)
-
-        
         const project = await db.collection('projects').add(body);
-
         const projectRef = db.collection('projects').doc(project.id);
         const doc = await projectRef.get();
 
@@ -32,13 +28,12 @@ export class ProjectsService {
         const projectRef = db.collection('projects').doc(id);
         projectRef.update(body);
 
-        return body;
+        return { ...body, id };
 
     }
 
     async deleteProject(id) {
-        console.log(id)
-        // await db.collection('projects').doc(id).delete();
+        await db.collection('projects').doc(id).delete();
         return { id };
     }
 }

@@ -1,124 +1,56 @@
 import { useEffect, useState } from "react";
 
-import { fetcher, getProjectsURLType } from '../helpers';
+import { createType, deleteType, editType, fetcher, getProjectsURLType } from '../helpers';
 
 export default function useApi(modalData, handleAutoModalClose) {
     const [projectsAPI, setProjectsAPI] = useState(null);
     const [apiResponseStatus, setApiResponseStatus] = useState(false);
-    console.log(modalData)
 
     const handleOnSubmitForm = async e => {
         e.preventDefault();
 
         const response = await fetcher(modalData, e);
-        console.log(response)
 
-        if (!response.ok) console.log('facem sa fie bine')
+        if (!response.ok) setApiResponseStatus(404)
 
         if (response.ok) {
             const responseJSON = await response.json();
 
             switch (modalData.requestType) {
-                case 'create': {
+                case createType: {
                     setProjectsAPI([...projectsAPI, responseJSON]);
-                    // move these
-                    setApiResponseStatus(201);
-                    handleTimerModalClose();
+                    break;
+                }
+                case editType: {
+                    const newList = projectsAPI.map(el => {
+                        if (el.id === responseJSON.id) {
+                            return { ...responseJSON }
+                        } else {
+                            return el
+                        }
+                    });
+                    setProjectsAPI(newList);
+                    break;
+                }
+                case deleteType: {
+                    const newList = projectsAPI.filter(e => e.id !== responseJSON.id);
+                    setProjectsAPI(newList);
+                    break;
                 }
             }
+            setApiResponseStatus(201);
+            handleTimerModalClose();
         }
-        
-        // console.log(responseJSON)
-
-
-
-
-
-        // move this in a helper
-
-        // setProjectsAPI()
-
-
-
-        // fetch(dataToSend.url, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(dataToSend.body)
-        // })
-        // .then(r => r.json())
-        // .then(r => {
-        //     console.log(r)
-        //     setProjectsAPI([...projectsAPI, r]);
-        //     setApiResponseStatus(201);
-        //     handleTimerModalClose()
-        // })
-        // .catch(r => console.log(r))
-        
-
-
-        // const george = await fetch(`http://localhost:3333/projects/delete/${modalData.id}`, {
-        //     method: 'DELETE',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json',
-        //     },
-        // });
-        // console.log(george);
-        // const georgeJson = await george.json();
-        // console.log(georgeJson)
-
-
-
-
-        // .then(res => {
-        //     console.log(res);
-        //     res.json()
-        // }).then(res => {
-        //     console.log(res)
-        //     // const newList = projectsAPI.filter(e => e.id !== res.id);
-        //     // setApiResponseStatus(201);
-        //     // setProjectsAPI(newList);
-        //     // handleTimerModalClose();
-        // }).catch(er => console.log(er))
-
-        // fetch(`http://localhost:3333/projects/${modalData.data.id}`, {
-        //     method: 'PUT',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(dataToSend.body.data)
-        // })
-        // .then(res => res.json())
-        // .then(res => {
-        //     console.log(res)
-        //     const newList = projectsAPI.map(el => {
-        //         if (el.id === modalData.data.id) {
-        //             return { ...res }
-        //         } else {
-        //             return el
-        //         }
-        //     });
-
-        //     setProjectsAPI(newList);
-        //     setApiResponseStatus(201);
-        //     handleTimerModalClose();
-        // })
-        // .catch(err => console.log(err))
-
     }
     
     function handleTimerModalClose() {
         setTimeout(() => {
             handleAutoModalClose();
             setApiResponseStatus(false);
-        }, 1500)
+        }, 1000)
     }
 
-    const handleApiResponseStatus = () => {
+    const handleModalStatusOff = () => {
         setApiResponseStatus(false);
     }
 
@@ -129,5 +61,5 @@ export default function useApi(modalData, handleAutoModalClose) {
             .catch(err => console.log(err))
     }, [])
 
-    return { projectsAPI, apiResponseStatus, handleOnSubmitForm, handleApiResponseStatus }
+    return { projectsAPI, apiResponseStatus, handleOnSubmitForm, handleModalStatusOff }
 }
