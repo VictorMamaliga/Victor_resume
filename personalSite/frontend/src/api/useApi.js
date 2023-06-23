@@ -28,22 +28,47 @@ export default function useApi(modalData, handleAutoModalClose) {
         // })
         // .catch(r => console.log(r))
         
-        fetch('http://localhost:3333/projects/delete', {
-            method: 'DELETE',
+        // fetch('http://localhost:3333/projects/delete', {
+        //     method: 'DELETE',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(dataToSend.body)
+        // })
+        // .then(res => res.json())
+        // .then(res => {
+        //     const newList = projectsAPI.filter(e => e.id !== res.id);
+        //     setApiResponseStatus(201);
+        //     setProjectsAPI(newList);
+        //     handleTimerModalClose();
+        // })
+        // .catch(er => console.log(er))
+
+        fetch(`http://localhost:3333/projects/${modalData.data.id}`, {
+            method: 'PUT',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(dataToSend.body)
+            body: JSON.stringify(dataToSend.body.data)
         })
         .then(res => res.json())
         .then(res => {
-            const newList = projectsAPI.filter(e => e.id !== res.id);
-            setApiResponseStatus(201);
+            console.log(res)
+            const newList = projectsAPI.map(el => {
+                if (el.id === modalData.data.id) {
+                    return { ...res }
+                } else {
+                    return el
+                }
+            });
+
             setProjectsAPI(newList);
+            setApiResponseStatus(201);
             handleTimerModalClose();
         })
-        .catch(er => console.log(er))
+        .catch(err => console.log(err))
 
     }
     

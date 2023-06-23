@@ -27,9 +27,16 @@ export class ProjectsService {
 
             return { ...doc.data(), id: project.id };
         } else {
-            const projectRef = db.collection('projects').doc(body.id);
-            projectRef.update(body.data)
         }
+    }
+    
+    async editProject(body, id) {
+        console.log(body, id)
+        const projectRef = db.collection('projects').doc(id);
+        projectRef.update(body);
+
+        return body;
+
     }
 
     async deleteProject(body) {
