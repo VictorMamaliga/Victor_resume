@@ -5,14 +5,6 @@ import { ModalDataContext } from '../../contexts/ModalDataContext';
 
 const ProjectCreate = ({ onToggleModal, onSubmitForm }) => {
     const modalData = useContext(ModalDataContext);
-    const [formData, setFormData] = useState(modalData);
-
-    const handleChange = event => {
-        setFormData({
-            ...formData,
-            data: {[event.target.name]: event.target.value},
-        });
-    }
 
     return (
         modalData?.requestType === 'delete' ? (
@@ -28,8 +20,7 @@ const ProjectCreate = ({ onToggleModal, onSubmitForm }) => {
                     <input
                         type='text'
                         name='name'
-                        value={formData?.data?.name}
-                        onChange={handleChange}
+                        defaultValue={modalData?.data?.name}
                         required
                     />
                 </label>
@@ -39,8 +30,7 @@ const ProjectCreate = ({ onToggleModal, onSubmitForm }) => {
                     <input
                         type='text'
                         name='description'
-                        value={formData?.data?.description}
-                        onChange={handleChange}
+                        defaultValue={modalData?.data?.description}
                         required
                     />
                 </label>
@@ -50,8 +40,7 @@ const ProjectCreate = ({ onToggleModal, onSubmitForm }) => {
                     <input
                         type='string'
                         name='redirrect'
-                        value={formData?.data?.redirrect}
-                        onChange={handleChange}
+                        defaultValue={modalData?.data?.redirrect}
                         required
                     />
                 </label>
@@ -60,8 +49,7 @@ const ProjectCreate = ({ onToggleModal, onSubmitForm }) => {
                     <input
                         type='string'
                         name='imgURL'
-                        value={formData?.data?.imgURL}
-                        onChange={handleChange}
+                        defaultValue={modalData?.data?.imgURL}
                         required
                     />
                 </label>

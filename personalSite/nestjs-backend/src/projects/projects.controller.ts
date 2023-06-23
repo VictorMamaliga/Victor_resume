@@ -20,8 +20,8 @@ export class ProjectsController {
         return this.projectsService.editProject(request.body, id);
     }
 
-    @Delete('delete')
-    deleteProject(@Req() request: Request) {
-        return this.projectsService.deleteProject(request.body);
+    @Delete('delete/:id')
+    deleteProject(@Param('id') id: string) {
+        return this.projectsService.deleteProject(id);
     }
 }

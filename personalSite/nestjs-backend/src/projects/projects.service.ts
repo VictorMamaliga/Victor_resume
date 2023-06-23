@@ -39,8 +39,9 @@ export class ProjectsService {
 
     }
 
-    async deleteProject(body) {
-        await db.collection('projects').doc(body.id).delete();
-        return { id: body.id };
+    async deleteProject(id) {
+        console.log(id)
+        // await db.collection('projects').doc(id).delete();
+        return { id };
     }
 }
