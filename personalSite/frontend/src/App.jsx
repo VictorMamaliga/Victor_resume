@@ -4,23 +4,17 @@ import Header from "./components/organisms/Header";
 import ProjectList from "./components/molecules/ProjectList";
 import Modal from "./components/organisms/Modal";
 import ProjectCreate from './components/molecules/ProjectCreate';
-import { projects } from './helpers';
 import { ModalDataContext, ModalDataDispatchContext, modalDataReducer } from "./contexts/ModalDataContext";
 import useApi from "./api/useApi";
-import MarqueeList from "./components/molecules/MarqueeList";
 import Presentation from "./components/organisms/Presentation";
 import Ending from "./components/organisms/Ending";
-
-
-
-
-
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, dispatch] = useReducer(modalDataReducer, null);
   const { projectsAPI, apiResponseStatus, handleOnSubmitForm, handleApiResponseStatus } = useApi(modalData, handleAutoModalClose);
 
+  console.log(projectsAPI)
   function handleAutoModalClose() {
     setIsModalOpen(false);
   }
@@ -30,7 +24,7 @@ function App() {
       <Header />
       <ModalDataContext.Provider value={modalData}>
         <ModalDataDispatchContext.Provider value={dispatch}>
-          <main onScroll={() => console.log('george')}>
+          <main>
             <Presentation />
             <ProjectList data={projectsAPI} onToggleModal={() => setIsModalOpen(!isModalOpen)} />
             <Ending />

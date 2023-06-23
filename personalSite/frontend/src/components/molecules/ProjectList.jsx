@@ -13,11 +13,23 @@ export default function ProjectList({ data, onToggleModal }) {
         onToggleModal();
     }
 
+    const processDataa = () => {
+        if (data) {
+            const copy = [...data];
+            const packedData = [];
+
+            while (copy.length) {
+                packedData.push(copy.splice(0, 2))
+            }
+            return packedData;
+        }
+    }
+
     return (
         <section id='second' className={styles.listSection}>
             <h3><img src={tattoo} />Work</h3>
             <div className={styles.list}>
-                {data.map((row, rowOrder) => {
+                {processDataa() && processDataa().map((row, rowOrder) => {
                     return (
                         <div key={rowOrder} className={rowOrder % 2 != 0 ? styles.listRight : null}>
                             {row.map((card, order) => <ProjectCard key={card.id} card={card} order={order} rowOrder={rowOrder} onToggleModal={onToggleModal} />)}

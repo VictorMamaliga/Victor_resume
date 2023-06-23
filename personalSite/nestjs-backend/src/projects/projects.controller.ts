@@ -6,8 +6,8 @@ export class ProjectsController {
     constructor(private projectsService: ProjectsService) {}
 
     @Get()
-    getAll() {
-        return this.projectsService.getAll()
+    getAllProjects() {
+        return this.projectsService.getAllProjects();
     }
 
     @Post('create')

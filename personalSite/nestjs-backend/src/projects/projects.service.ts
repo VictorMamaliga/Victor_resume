@@ -1,26 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { db } from '../../firebase/config';
 
-const projects = [
-    {
-        id: 'gdfi8jl58g',
-        description: 'Numarul 1',
-        imgURL: 'https://i.ytimg.com/vi/XelWZr_B7E4/maxresdefault.jpg',
-        name: 'Nicolae Guta',
-        redirrect: 'https://google.com'
-    },
-    {
-        id: 'gdfi8jlfdfdf58g',
-        description: 'E cel mai tarffe',
-        imgURL: 'https://i.ytimg.com/vi/XelWZr_B7E4/maxresdefault.jpg',
-        name: 'Adrian minuntxdfhxdf56456',
-        redirrect: 'https://google.com'
-    }
-];
-
 @Injectable()
 export class ProjectsService {
-    async getAll() {
+    async getAllProjects() {
         const projectsRef = db.collection('projects');
         const snapshot = await projectsRef.get();
         const result = [];
@@ -35,17 +18,24 @@ export class ProjectsService {
     async createProject(body) {
         console.log(body)
 
+        
         if (!body.id) {
-            const projectsRef = db.collection('projects');
-            projectsRef.add(body.data);
+            const project = await db.collection('projects').add(body.data);
+
+            const projectRef = db.collection('projects').doc(project.id);
+            const doc = await projectRef.get();
+
+            return { ...doc.data(), id: project.id };
         } else {
             const projectRef = db.collection('projects').doc(body.id);
             projectRef.update(body.data)
         }
-        return 'astae'
     }
 
-    deleteProject(body) {
-        db.collection('projects').doc(body.id).delete();
+    async deleteProject(body) {
+        // db.collection('projects').doc(body.id).delete();
+        const res = await db.collection('projects').doc(body.id).delete();
+        console.log(res.id)
+        return res.id;
     }
 }

@@ -17,7 +17,7 @@ export const projects = [
 
 // types
 export const getProjectsURLType = 'http://localhost:3333/projects';
-const createURLType = 'http://localhost:3333/projectss/create';
+const createURLType = 'http://localhost:3333/projects/create';
 const deleteURLType = 'http://localhost:3333/projects/delete';
 
 // api
