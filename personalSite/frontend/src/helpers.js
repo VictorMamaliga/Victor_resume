@@ -19,6 +19,7 @@ export const projects = [
 export const getProjectsURLType = 'http://localhost:3333/projects';
 const createURLType = 'http://localhost:3333/projects/create';
 const deleteURLType = 'http://localhost:3333/projects/delete';
+const POSTType = 'POST';
 
 // api
 export function formatJSONStructure(modalData, event) {
@@ -35,4 +36,38 @@ export function formatJSONStructure(modalData, event) {
     } else {
         return { url: deleteURLType, body: { id: modalData.id }}
     }
+}
+
+const headers = {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+}
+
+export function fetcher(modalData, event) {
+    let method, URL;
+    const body = {};
+
+    switch (modalData.requestType) {
+        case 'create': {
+            method = POSTType;
+            URL = createURLType;
+
+            for (let item of event.target) {
+                if (item.name) body[item.name] = item.value
+            }
+            break;
+        }
+    }
+
+    // return await {URL, method, headers, body}
+
+    return fetch(URL, {
+        method,
+        headers,
+        body: JSON.stringify(body)
+    })
+ 
+
+
+
 }

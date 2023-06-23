@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { formatJSONStructure, getProjectsURLType } from '../helpers';
+import { fetcher, getProjectsURLType } from '../helpers';
 
 export default function useApi(modalData, handleAutoModalClose) {
     const [projectsAPI, setProjectsAPI] = useState(null);
@@ -9,7 +9,36 @@ export default function useApi(modalData, handleAutoModalClose) {
 
     const handleOnSubmitForm = async e => {
         e.preventDefault();
-        const dataToSend = formatJSONStructure(modalData, e);
+
+        const response = await fetcher(modalData, e);
+        console.log(response)
+
+        if (!response.ok) console.log('facem sa fie bine')
+
+        if (response.ok) {
+            const responseJSON = await response.json();
+
+            switch (modalData.requestType) {
+                case 'create': {
+                    setProjectsAPI([...projectsAPI, responseJSON]);
+                    // move these
+                    setApiResponseStatus(201);
+                    handleTimerModalClose();
+                }
+            }
+        }
+        
+        // console.log(responseJSON)
+
+
+
+
+
+        // move this in a helper
+
+        // setProjectsAPI()
+
+
 
         // fetch(dataToSend.url, {
         //     method: 'POST',
@@ -28,16 +57,22 @@ export default function useApi(modalData, handleAutoModalClose) {
         // })
         // .catch(r => console.log(r))
         
-        const george = await fetch(`http://localhost:3333/projects/delete/${modalData.id}`, {
-            method: 'DELETE',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-        });
-        console.log(george);
-        const georgeJson = await george.json();
-        console.log(georgeJson)
+
+
+        // const george = await fetch(`http://localhost:3333/projects/delete/${modalData.id}`, {
+        //     method: 'DELETE',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json',
+        //     },
+        // });
+        // console.log(george);
+        // const georgeJson = await george.json();
+        // console.log(georgeJson)
+
+
+
+
         // .then(res => {
         //     console.log(res);
         //     res.json()

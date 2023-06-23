@@ -19,15 +19,12 @@ export class ProjectsService {
         console.log(body)
 
         
-        if (!body.id) {
-            const project = await db.collection('projects').add(body.data);
+        const project = await db.collection('projects').add(body);
 
-            const projectRef = db.collection('projects').doc(project.id);
-            const doc = await projectRef.get();
+        const projectRef = db.collection('projects').doc(project.id);
+        const doc = await projectRef.get();
 
-            return { ...doc.data(), id: project.id };
-        } else {
-        }
+        return { ...doc.data(), id: project.id };
     }
     
     async editProject(body, id) {
