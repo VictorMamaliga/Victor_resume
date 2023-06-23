@@ -11,7 +11,6 @@ export class ProjectsService {
         snapshot.forEach(doc => {
             result.push({id: doc.id, ...doc.data()})
         })
-
         return result;
     }
 
@@ -19,17 +18,13 @@ export class ProjectsService {
         const project = await db.collection('projects').add(body);
         const projectRef = db.collection('projects').doc(project.id);
         const doc = await projectRef.get();
-
         return { ...doc.data(), id: project.id };
     }
     
     async editProject(body, id) {
-        console.log(body, id)
         const projectRef = db.collection('projects').doc(id);
-        projectRef.update(body);
-
+        await  projectRef.update(body);
         return { ...body, id };
-
     }
 
     async deleteProject(id) {
