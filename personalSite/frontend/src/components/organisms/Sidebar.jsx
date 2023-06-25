@@ -1,9 +1,13 @@
-import styles from './sidebar.module.scss';
+import './sidebar.scss';
 
-export default function Sidebar() {
+export default function Sidebar({sidebarIsOpen, onSidebarIsOpen}) {
+
     return (
-        <div className={styles.sidebar}>
-            <span>X</span>
+        <>
+        <div className={`sidebarOverlay ${sidebarIsOpen ? 'active' : ''}`}>
+        </div>
+        <div className={`sidebar ${!sidebarIsOpen ? 'open' : ''}`}>
+            <span onClick={onSidebarIsOpen}>X</span>
             <ul>
                 <li><a href="">Mancare</a></li>
                 <li><a href="">Bautura</a></li>
@@ -12,5 +16,6 @@ export default function Sidebar() {
                 <li><a href=""></a></li>
             </ul>
         </div>
+        </>
     );
 }

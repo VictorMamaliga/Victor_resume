@@ -13,6 +13,7 @@ import Sidebar from "./components/organisms/Sidebar";
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, dispatch] = useReducer(modalDataReducer, null);
+  const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const { projectsAPI, apiResponseStatus, handleOnSubmitForm, handleModalStatusOff } = useApi(modalData, handleAutoModalClose);
 
@@ -25,13 +26,17 @@ function App() {
     setIsModalOpen(false);
   }
 
+  const handleSidebarToggle = () => {
+    setSidebarIsOpen(!sidebarIsOpen);
+  }
+
   return (
     <>
-      <Header />
+      <Header onSidebarIsOpen={handleSidebarToggle} />
       <ModalDataContext.Provider value={modalData}>
         <ModalDataDispatchContext.Provider value={dispatch}>
           <main>
-            <Sidebar />
+            <Sidebar sidebarIsOpen={sidebarIsOpen} onSidebarIsOpen={handleSidebarToggle} />
             <Presentation />
             <ProjectList data={projectsAPI} onToggleModal={() => setIsModalOpen(!isModalOpen)} />
             <Ending />
