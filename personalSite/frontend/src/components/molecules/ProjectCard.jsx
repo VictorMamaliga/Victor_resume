@@ -15,10 +15,25 @@ const ProjectCard = ({ onToggleModal, onSubmitForm }) => {
             </div>
         ) : (
             <div className={styles.card}>
-                <div className="wrapper">
+                <div className={styles.cardWrapper}>
                     <img src={modalData?.data?.imgURL} />
                 </div>
-                <form onSubmit={onSubmitForm} className={styles.form}>
+                <div className={styles.cardDetails}>
+                    <h3>George Ionita</h3>
+                    <div>
+                        <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet corporis laudantium nostrum earum error magni voluptate eaque maiores, velit libero?</h4>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+                {/* <form onSubmit={onSubmitForm} className={styles.form}>
                     <label>
                         Name:
                         <input
@@ -59,7 +74,7 @@ const ProjectCard = ({ onToggleModal, onSubmitForm }) => {
                     </label>
                     <br />
                     <button type='submit'>Submit</button>
-                </form>
+                </form> */}
             </div>
 
         )

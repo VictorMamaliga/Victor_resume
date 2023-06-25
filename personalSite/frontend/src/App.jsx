@@ -8,10 +8,12 @@ import ProjectCard from './components/molecules/ProjectCard';
 import useApi from "./api/useApi";
 import Presentation from "./components/organisms/Presentation";
 import Ending from "./components/organisms/Ending";
+import Sidebar from "./components/organisms/Sidebar";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, dispatch] = useReducer(modalDataReducer, null);
+  const [editMode, setEditMode] = useState(false);
   const { projectsAPI, apiResponseStatus, handleOnSubmitForm, handleModalStatusOff } = useApi(modalData, handleAutoModalClose);
 
   function handleAutoModalClose() {
@@ -29,6 +31,7 @@ function App() {
       <ModalDataContext.Provider value={modalData}>
         <ModalDataDispatchContext.Provider value={dispatch}>
           <main>
+            <Sidebar />
             <Presentation />
             <ProjectList data={projectsAPI} onToggleModal={() => setIsModalOpen(!isModalOpen)} />
             <Ending />

@@ -9,5 +9,10 @@
     width: 100%;
     object-fit: cover;
     height: 100%;
+    transition: all .3s ease-in-out;
+    
+    &:hover {
+      opacity: 0.4;
+    }
   }
 }

@@ -2,12 +2,31 @@
 
 .card {
   display: flex;
+  flex-direction: column;
 
+  &Wrapper {
+    height: toRem(500);
+    max-height: 55vh;
+    margin-bottom: 2rem;
+
+    + div {
+      h3 {
+        text-align: right;
+        margin-bottom: 1rem;
+      }
+    }
+  }
   > * {
-    flex-basis: 50%;
 
     img {
+      object-fit: cover;
       width: 100%;
+      height: 100%;
+    }
+  }
+
+  &Details {
+    > * {
     }
   }
 
