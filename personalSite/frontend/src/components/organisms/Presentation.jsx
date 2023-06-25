@@ -1,6 +1,4 @@
 import styles from './presentation.module.scss';
-import starImg from '../../assets/tattoo.png';
-import hieroglyph from '../../assets/hieroglyph.jpg';
 import { useEffect, useRef } from 'react';
 
 export default function Presentation() {
@@ -20,8 +18,6 @@ export default function Presentation() {
     }
 
     useEffect(() => {
-        console.log(posterRef);
-        console.log(window)
         window.addEventListener('scroll', handleScroll);
 
         return () => window.removeEventListener('scroll', handleScroll);
@@ -51,7 +47,6 @@ export default function Presentation() {
                 </div>
             </section>
             <div ref={posterRef} id='poster' className="posterWraper">
-                <img src={hieroglyph} />
             </div>
         </>
     );

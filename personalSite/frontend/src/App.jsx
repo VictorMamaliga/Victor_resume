@@ -4,7 +4,7 @@ import { ModalDataContext, ModalDataDispatchContext, modalDataReducer } from "./
 import Header from "./components/organisms/Header";
 import ProjectList from "./components/molecules/ProjectList";
 import Modal from "./components/organisms/Modal";
-import ProjectCreate from './components/molecules/ProjectCreate';
+import ProjectCard from './components/molecules/ProjectCard';
 import useApi from "./api/useApi";
 import Presentation from "./components/organisms/Presentation";
 import Ending from "./components/organisms/Ending";
@@ -34,7 +34,7 @@ function App() {
             <Ending />
           </main>
           <Modal isOpen={isModalOpen} apiResponseStatus={apiResponseStatus} onToggleModal={handleModalReset}>
-            <ProjectCreate onSubmitForm={handleOnSubmitForm}  onToggleModal={() => setIsModalOpen(!isModalOpen)} />
+            <ProjectCard onSubmitForm={handleOnSubmitForm}  onToggleModal={() => setIsModalOpen(!isModalOpen)} />
           </Modal>
         </ModalDataDispatchContext.Provider>
       </ModalDataContext.Provider>

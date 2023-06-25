@@ -11,10 +11,6 @@
     justify-content: center;
     align-items: center;
 
-    &Wrapper {
-        background-image: url('../../assets/papyrus.avif');
-    }
-
     &Close {
         @include position(absolute, $top: 3.25rem, $right: 3rem);
         border-radius: 50%;
@@ -26,7 +22,7 @@
         background-color: white;
         padding: 2em;
         border-radius: 5px;
-        max-width: toRem(500);
+        max-width: 70%;
         width: 100%;
     }
 }

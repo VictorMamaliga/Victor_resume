@@ -1,0 +1,13 @@
+@import '../../styles/mixins.scss';
+
+.card {
+  margin-bottom: 2.5rem;
+  flex-basis: 50%;
+  flex-basis: calc(50% - toRem(10));
+
+  img {
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+  }
+}

@@ -24,7 +24,6 @@ body {
 }
 
 main {
-    padding: 0 var(--padding-main);
     max-width: var(--container-width);
     margin: 0 auto;
 }
@@ -32,8 +31,7 @@ main {
 section {
     position: relative;
     padding-top: var(--header-height);
-    height: calc(100vh - var(--header-height));
-    height: 100vh;
+    min-height: 100vh;
 }
 
 small,

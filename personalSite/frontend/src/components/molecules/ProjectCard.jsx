@@ -1,56 +1,69 @@
+import React, { useContext, useState } from 'react';
+
 import styles from './projectCard.module.scss';
-import { ModalDataDispatchContext } from '../../contexts/ModalDataContext';
+import { ModalDataContext } from '../../contexts/ModalDataContext';
 
-import { useContext } from 'react';
+const ProjectCard = ({ onToggleModal, onSubmitForm }) => {
+    const modalData = useContext(ModalDataContext);
 
-const ProfileCard = ({ card, order, rowOrder, onToggleModal }) => {
-  const dispatch = useContext(ModalDataDispatchContext);
-  const { id, name, description, imgURL, redirrect } = card;
+    return (
+        modalData?.requestType === 'delete' ? (
+            <div>
+                <h1>Are you sure?</h1>
+                <button onClick={onSubmitForm}>Yes</button>
+                <button onClick={onToggleModal}>Cancel</button>
+            </div>
+        ) : (
+            <div className={styles.card}>
+                <div className="wrapper">
+                    <img src={modalData?.data?.imgURL} />
+                </div>
+                <form onSubmit={onSubmitForm} className={styles.form}>
+                    <label>
+                        Name:
+                        <input
+                            type='text'
+                            name='name'
+                            defaultValue={modalData?.data?.name}
+                            required
+                            />
+                    </label>
+                    <br />
+                    <label>
+                        Description:
+                        <input
+                            type='text'
+                            name='description'
+                            defaultValue={modalData?.data?.description}
+                            required
+                            />
+                    </label>
+                    <br />
+                    <label>
+                        Project Link:
+                        <input
+                            type='string'
+                            name='redirrect'
+                            defaultValue={modalData?.data?.redirrect}
+                            required
+                            />
+                    </label>
+                    <label>
+                        Image URL:
+                        <input
+                            type='string'
+                            name='imgURL'
+                            defaultValue={modalData?.data?.imgURL}
+                            required
+                            />
+                    </label>
+                    <br />
+                    <button type='submit'>Submit</button>
+                </form>
+            </div>
 
-  const handleEditCard = e => {
-    dispatch({
-      type: 'edit',
-      data: card,
-    });
-    
-    onToggleModal();
-  }
-  
-  const handleDeleteCard = () => {
-    dispatch({
-      type: 'delete',
-      id,
-    });
+        )
+    );
+}
 
-    onToggleModal();
-  }
-
-  const handleShuffle = () => {
-    if (rowOrder % 2 == 0) {
-      if (order) return "cardInverse";
-    } else {
-      if (!order) return "cardInverse"
-    }
-  }
-
-  return (
-    <div className={styles.card}>
-      <div className={styles[handleShuffle()]}>
-        <div>
-          <h2 className={styles.name}>{name}</h2>
-          <small className={styles.description}>{description}</small>
-          <p>
-            <button onClick={handleEditCard}>Edit</button>
-            <button onClick={handleDeleteCard}>Delete</button>
-          </p>
-        </div>
-        <a className={styles.cardImageWrapper} href={redirrect} target='_blank'>
-          <img src={imgURL} /> 
-        </a>
-      </div>
-    </div>
-  );
-};
-  
-
-export default ProfileCard;
+export default ProjectCard;
