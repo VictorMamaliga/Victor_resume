@@ -25,6 +25,8 @@ body {
 
 main {
     padding: 0 var(--padding-main);
+    max-width: var(--container-width);
+    margin: 0 auto;
 }
 
 section {
