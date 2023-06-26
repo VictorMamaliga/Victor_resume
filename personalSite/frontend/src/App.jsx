@@ -9,12 +9,13 @@ import useApi from "./api/useApi";
 import Presentation from "./components/organisms/Presentation";
 import Ending from "./components/organisms/Ending";
 import Sidebar from "./components/organisms/Sidebar";
+import ProjectEditForm from "./components/molecules/ProjectEditForm";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, dispatch] = useReducer(modalDataReducer, null);
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
-  const [editMode, setEditMode] = useState(false);
+  const [editMode, setEditMode] = useState(false)
   const { projectsAPI, apiResponseStatus, handleOnSubmitForm, handleModalStatusOff } = useApi(modalData, handleAutoModalClose);
 
   function handleAutoModalClose() {
@@ -36,13 +37,17 @@ function App() {
       <ModalDataContext.Provider value={modalData}>
         <ModalDataDispatchContext.Provider value={dispatch}>
           <main>
-            <Sidebar sidebarIsOpen={sidebarIsOpen} onSidebarIsOpen={handleSidebarToggle} />
+            <Sidebar projectsAPI={projectsAPI} editMode={editMode} sidebarIsOpen={sidebarIsOpen} onSidebarIsOpen={handleSidebarToggle} onEditMode={() => setEditMode(!editMode)} onToggleModal={() => setIsModalOpen(!isModalOpen)} />
             <Presentation />
             <ProjectList data={projectsAPI} onToggleModal={() => setIsModalOpen(!isModalOpen)} />
             <Ending />
           </main>
           <Modal isOpen={isModalOpen} apiResponseStatus={apiResponseStatus} onToggleModal={handleModalReset}>
-            <ProjectCard onSubmitForm={handleOnSubmitForm}  onToggleModal={() => setIsModalOpen(!isModalOpen)} />
+            {editMode ? (
+              <ProjectEditForm onSubmitForm={handleOnSubmitForm} />
+            ) : (
+              <ProjectCard  onToggleModal={() => setIsModalOpen(!isModalOpen)} />
+            )}
           </Modal>
         </ModalDataDispatchContext.Provider>
       </ModalDataContext.Provider>

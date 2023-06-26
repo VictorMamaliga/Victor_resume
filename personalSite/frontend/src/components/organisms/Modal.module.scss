@@ -10,6 +10,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 33;
 
     &Close {
         @include position(absolute, $top: 3.25rem, $right: 3rem);

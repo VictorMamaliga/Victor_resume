@@ -3,31 +3,21 @@ import { ModalDataDispatchContext } from '../../contexts/ModalDataContext';
 
 import { useContext } from 'react';
 
-const ProfilPreview = ({ card, order, rowOrder, onToggleModal }) => {
+const ProfilPreview = ({ card, onToggleModal }) => {
   const dispatch = useContext(ModalDataDispatchContext);
-  const { id, name, description, imgURL, redirrect } = card;
 
-  const handleEditCard = e => {
+  const handleCardView = () => {
     dispatch({
-      type: 'edit',
+      type: 'view',
       data: card,
-    });
-    
-    onToggleModal();
-  }
-  
-  const handleDeleteCard = () => {
-    dispatch({
-      type: 'delete',
-      id,
-    });
+    })
 
-    onToggleModal();
+    onToggleModal()
   }
 
   return (
-    <div className={styles.card} onClick={handleEditCard}>
-      <img src={imgURL} /> 
+    <div className={styles.card} onClick={handleCardView}>
+      <img src={card.imgURL} /> 
     </div>
   );
 };

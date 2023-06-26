@@ -5,6 +5,9 @@ export const ModalDataDispatchContext = createContext(null);
 
 export function modalDataReducer(project, action) {
     switch (action.type) {
+        case 'view': {
+            return { requestType: action.type, data: action.data }
+        }
         case 'create': {
             return { requestType: action.type };
         }

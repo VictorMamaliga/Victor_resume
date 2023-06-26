@@ -24,57 +24,6 @@ const ProjectCard = ({ onToggleModal, onSubmitForm }) => {
                         <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet corporis laudantium nostrum earum error magni voluptate eaque maiores, velit libero?</h4>
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
-                {/* <form onSubmit={onSubmitForm} className={styles.form}>
-                    <label>
-                        Name:
-                        <input
-                            type='text'
-                            name='name'
-                            defaultValue={modalData?.data?.name}
-                            required
-                            />
-                    </label>
-                    <br />
-                    <label>
-                        Description:
-                        <input
-                            type='text'
-                            name='description'
-                            defaultValue={modalData?.data?.description}
-                            required
-                            />
-                    </label>
-                    <br />
-                    <label>
-                        Project Link:
-                        <input
-                            type='string'
-                            name='redirrect'
-                            defaultValue={modalData?.data?.redirrect}
-                            required
-                            />
-                    </label>
-                    <label>
-                        Image URL:
-                        <input
-                            type='string'
-                            name='imgURL'
-                            defaultValue={modalData?.data?.imgURL}
-                            required
-                            />
-                    </label>
-                    <br />
-                    <button type='submit'>Submit</button>
-                </form> */}
             </div>
 
         )
