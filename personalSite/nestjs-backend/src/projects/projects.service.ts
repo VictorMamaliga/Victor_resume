@@ -27,6 +27,15 @@ export class ProjectsService {
         return { ...body, id };
     }
 
+    async setVisibility(body, id) {
+        const visibility = body.isVisible;
+        body = { ...body, isVisible: !visibility }
+        console.log({ ...body, isVisible: !visibility })
+        const projectRef = db.collection('projects').doc(id);
+        await projectRef.update(body);
+        return { id };
+    }
+
     async deleteProject(id) {
         await db.collection('projects').doc(id).delete();
         return { id };

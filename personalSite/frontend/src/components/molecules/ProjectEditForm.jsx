@@ -6,6 +6,21 @@ import { ModalDataContext } from "../../contexts/ModalDataContext";
 export default function ProjectEditForm({onSubmitForm}) {
     const modalData = useContext(ModalDataContext);
 
+    if (modalData.requestType === 'delete') return (
+        <>
+            <h1>are you sure delete?</h1>
+            <span onClick={onSubmitForm}>yes</span>
+        </>
+
+    )
+    if (modalData.requestType === 'visibility') return (
+        <>
+            <h1>are you sure delete?</h1>
+            <span onClick={onSubmitForm}>yes</span>
+        </>
+
+    )
+
     return modalData.requestType === 'delete' ? (
         <h1>are you sure delete?</h1>
     ) : (

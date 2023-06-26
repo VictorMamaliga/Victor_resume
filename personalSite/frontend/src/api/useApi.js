@@ -6,9 +6,12 @@ export default function useApi(modalData, handleAutoModalClose) {
     const [projectsAPI, setProjectsAPI] = useState(null);
     const [apiResponseStatus, setApiResponseStatus] = useState(false);
 
+    
     const handleOnSubmitForm = async e => {
-        e.preventDefault();
-
+        if (e) e.preventDefault;
+        // e.preventDefault();
+        
+        console.log(modalData)
         const response = await fetcher(modalData, e);
 
         if (!response.ok) setApiResponseStatus(404)
@@ -34,6 +37,17 @@ export default function useApi(modalData, handleAutoModalClose) {
                 }
                 case deleteType: {
                     const newList = projectsAPI.filter(e => e.id !== responseJSON.id);
+                    setProjectsAPI(newList);
+                    break;
+                }
+                case 'visibility': {
+                    const newList = projectsAPI.map(el => {
+                        if (el.id === responseJSON.id) {
+                            return { ...el, isVisible: !el.isVisible }
+                        } else {
+                            return el
+                        }
+                    })
                     setProjectsAPI(newList);
                     break;
                 }

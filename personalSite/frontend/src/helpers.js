@@ -33,12 +33,19 @@ const headers = {
 }
 
 export function fetcher(modalData, event) {
-    const body = {};
+    let body = {};
     let method, URL;
 
-    console.log(modalData.requestType)
+    console.log(modalData)
 
-    if (modalData.requestType !== deleteType) {
+    if (modalData.requestType === createType) {
+        console.log(modalData.requestType)
+        for (let item of event.target) {
+            if (item.name) body[item.name] = item.value
+        }
+    }
+
+    if (modalData.requestType === editType) {
         console.log(modalData.requestType)
         for (let item of event.target) {
             if (item.name) body[item.name] = item.value
@@ -48,21 +55,33 @@ export function fetcher(modalData, event) {
 
     switch (modalData.requestType) {
         case createType: {
+            console.log(1)
             method = POSTType;
             URL = createURLType;
             break;
         }
         case editType: {
+            console.log(12)
             method = PUTType;
             URL = editURLType + modalData.data.id;
             break;
         }
         case deleteType: {
+            console.log(13)
             method = DELETEType;
             URL = deleteURLType + modalData.id;
             break;
         }
+        case 'visibility': {
+            console.log(14)
+            method = 'PUT';
+            URL = `http://localhost:3333/projects/visibility/${modalData.data.id}`;
+            body = modalData.data;
+            break;
+        }
     }
+
+    console.log(body)
 
     return fetch(URL, {
         method,

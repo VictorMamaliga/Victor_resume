@@ -20,6 +20,11 @@ export class ProjectsController {
         return this.projectsService.editProject(request.body, id);
     }
 
+    @Put('visibility/:id')
+    setVisibility(@Req() request: Request, @Param('id') id: string) {
+        return this.projectsService.setVisibility(request.body, id);
+    }
+
     @Delete('delete/:id')
     deleteProject(@Param('id') id: string) {
         return this.projectsService.deleteProject(id);

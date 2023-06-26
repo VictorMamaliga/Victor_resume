@@ -14,6 +14,9 @@ export function modalDataReducer(project, action) {
         case 'edit': {
             return { requestType: action.type, data: action.data };
         }
+        case 'visibility': {
+            return { requestType: action.type, data: action.data}
+        }
         case 'delete': {
             return { requestType: action.type, id: action.id };
         }

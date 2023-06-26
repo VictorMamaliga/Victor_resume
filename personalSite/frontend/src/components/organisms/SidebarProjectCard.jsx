@@ -6,9 +6,10 @@ import { ModalDataDispatchContext } from '../../contexts/ModalDataContext';
 import deleteIcon from '../../assets/icons/trash.svg';
 import editIcon from '../../assets/icons/edit.svg';
 
-export default function SidebarProjectCard({card, onToggleModal}) {
+export default function SidebarProjectCard({card, onToggleModal, onSubmitForm}) {
     const [visible, setIsVisible] = useState(false);
     const dispatch = useContext(ModalDataDispatchContext);
+    console.log(card)
 
     const handleEditCard = () => {
         dispatch({
@@ -27,6 +28,15 @@ export default function SidebarProjectCard({card, onToggleModal}) {
 
         onToggleModal();
     }
+    
+    const handleToggleVisibility = () => {
+        dispatch({
+            type: 'visibility',
+            data: card,
+        });
+        
+        onToggleModal();
+    }
 
     return (
         <div className={styles.card}>
@@ -36,7 +46,7 @@ export default function SidebarProjectCard({card, onToggleModal}) {
             <div className={styles.cardDetails}>
                 <div className="visibility">
                 <label>
-                    <Switch uncheckedIcon={false} checkedIcon={false} onChange={() => setIsVisible(!visible)} checked={visible} />
+                    <Switch uncheckedIcon={false} checkedIcon={false} onChange={handleToggleVisibility} checked={card.isVisible} />
                     <span>Visible</span>
                 </label>
                 </div>
