@@ -2,15 +2,8 @@ import { useState } from 'react';
 import './sidebar.scss';
 import SidebarProjectCard from './SidebarProjectCard';
 
-export default function Sidebar({projectsAPI, editMode, sidebarIsOpen, onSidebarIsOpen, onEditMode, onToggleModal}) {
+export default function Sidebar({projectsAPI, editMode, sidebarIsOpen, onSidebarIsOpen, onEditMode, onToggleModal, onSidebarReset}) {
     console.log(projectsAPI)
-
-    const handleResetSidebar = () => {
-        onSidebarIsOpen();
-        setTimeout(() => {
-            onEditMode()
-        }, 600);
-    }
 
     return (
         <div className='sidebar'>
@@ -18,7 +11,7 @@ export default function Sidebar({projectsAPI, editMode, sidebarIsOpen, onSidebar
             </div>
             <aside className={`${!sidebarIsOpen ? 'open' : ''}`}>
                 {editMode && <span className='back' onClick={onEditMode}>back</span>}
-                <span onClick={handleResetSidebar}>X</span>
+                <span onClick={onSidebarReset}>X</span>
                 <div className='sidebarContent'>
                     {editMode ? (
                         projectsAPI && projectsAPI.map(e => <SidebarProjectCard key={e.id} card={e} onToggleModal={onToggleModal} />)

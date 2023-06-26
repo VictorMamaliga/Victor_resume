@@ -15,22 +15,23 @@
             opacity: 0.8;
         }
     }
-    
+
     &Content {
-        flex-grow: 1;
         padding: 0 1rem;
+        margin-top: toRem(100);
     }
 }
 
 aside {
     @include position(fixed, $top: 0, $right: 0);
-    width: 50%;
+    width: 35%;
+    min-width: toRem(600);
     height: 100%;
-    display: flex;
-    align-items: center;
+    display: block;
     background-color: var(--accent-secondary);
     transition: all 0.6s;
     z-index: 20;
+    overflow: auto;
 
     &.open {
         right: -50%;
@@ -51,6 +52,7 @@ aside {
 
         &.back {
             left: 2rem;
+            right: unset;
         }
     }
 
