@@ -9,6 +9,7 @@ import useApi from "./api/useApi";
 import Sidebar from "./components/organisms/Sidebar";
 import ProjectEditForm from "./components/molecules/ProjectEditForm";
 import AboutMe from "./components/organisms/AboutMe";
+import MyOffers from "./components/organisms/MyOffers";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -44,6 +45,7 @@ function App() {
             <Sidebar projectsAPI={projectsAPI} editMode={editMode} sidebarIsOpen={sidebarIsOpen} onSidebarIsOpen={handleSidebarToggle} onEditMode={() => setEditMode(!editMode)} onToggleModal={() => setIsModalOpen(!isModalOpen)} onSidebarReset={handleSidebarReset} onSubmitForm={handleOnSubmitForm} />
             <AboutMe />
             <ProjectList data={projectsAPI} onToggleModal={() => setIsModalOpen(!isModalOpen)} />
+            <MyOffers />
           </main>
           <Modal isOpen={isModalOpen} apiResponseStatus={apiResponseStatus} onToggleModal={handleModalReset}>
             {editMode ? (
