@@ -6,7 +6,6 @@ import ProjectList from "./components/molecules/ProjectList";
 import Modal from "./components/organisms/Modal";
 import ProjectCard from './components/molecules/ProjectCard';
 import useApi from "./api/useApi";
-import Presentation from "./components/organisms/Presentation";
 import Ending from "./components/organisms/Ending";
 import Sidebar from "./components/organisms/Sidebar";
 import ProjectEditForm from "./components/molecules/ProjectEditForm";
@@ -43,7 +42,6 @@ function App() {
         <ModalDataDispatchContext.Provider value={dispatch}>
           <main>
             <Sidebar projectsAPI={projectsAPI} editMode={editMode} sidebarIsOpen={sidebarIsOpen} onSidebarIsOpen={handleSidebarToggle} onEditMode={() => setEditMode(!editMode)} onToggleModal={() => setIsModalOpen(!isModalOpen)} onSidebarReset={handleSidebarReset} onSubmitForm={handleOnSubmitForm} />
-            <Presentation />
             <ProjectList data={projectsAPI} onToggleModal={() => setIsModalOpen(!isModalOpen)} />
             <Ending />
           </main>

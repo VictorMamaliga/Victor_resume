@@ -1,11 +1,30 @@
 @import '../../styles/mixins.scss';
 
 .header {
-    @include position(fixed, $left: 0, $right: 0);
-    padding: 2rem 0;
-    backdrop-filter: blur(10px);
-    background-color: rgb(0 0 0 / 80%);
-    z-index: 10;
+    &Top {
+        @include position(fixed, $top: 0, $left: 0, $right: 0);
+        padding: 2rem 0;
+        background-color: transparent;
+        z-index: 10;
+        transition: all 0.3s;
+    }
+
+    &Welcome {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            @include position(absolute, $top: 0, $left: 0);
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+    }
     
     &Container {
         display: flex;
@@ -26,25 +45,14 @@
             height: 2px;
             display: block;
         }
-    }
 
-    &Name {
-        a {
-            margin-right: var(--padding-nav-elements);
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        &:hover {
+            span {
+                &:nth-child(odd) {
+                    margin: 0 auto;
+                    width: 15px;
+                }
+            }
         }
-    }
-
-    nav {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    progress {
-        @include position(absolute, $bottom: -1px, $left: 0);
-        width: 100%;
-        height: 1px;
-        border: none;
-        background: transparent;
     }
 }
