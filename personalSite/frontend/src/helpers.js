@@ -19,9 +19,11 @@ export const projectsDummy = [
 export const getProjectsURLType = 'http://localhost:3333/projects';
 export const createType = 'create';
 export const editType = 'edit';
+export const visibilityType = 'visibility';
 export const deleteType = 'delete';
 const createURLType = 'http://localhost:3333/projects/create';
 const editURLType = 'http://localhost:3333/projects/';
+const visibilityURLType = 'http://localhost:3333/projects/visibility/';
 const deleteURLType = 'http://localhost:3333/projects/delete/';
 const POSTType = 'POST';
 const PUTType = 'PUT';
@@ -38,19 +40,19 @@ export function fetcher(modalData, event) {
 
     console.log(modalData)
 
-    if (modalData.requestType === createType) {
-        console.log(modalData.requestType)
+    if (modalData.requestType === createType || modalData.requestType === editType) {
+        console.log(modalData.requestType, 'am intrat sefu')
         for (let item of event.target) {
             if (item.name) body[item.name] = item.value
         }
     }
 
-    if (modalData.requestType === editType) {
-        console.log(modalData.requestType)
-        for (let item of event.target) {
-            if (item.name) body[item.name] = item.value
-        }
-    }
+    // if (modalData.requestType === editType) {
+    //     console.log(modalData.requestType)
+    //     for (let item of event.target) {
+    //         if (item.name) body[item.name] = item.value
+    //     }
+    // }
 
 
     switch (modalData.requestType) {
@@ -72,11 +74,11 @@ export function fetcher(modalData, event) {
             URL = deleteURLType + modalData.id;
             break;
         }
-        case 'visibility': {
+        case visibilityType: {
             console.log(14)
-            method = 'PUT';
-            URL = `http://localhost:3333/projects/visibility/${modalData.data.id}`;
-            body = modalData.data;
+            method = PUTType;
+            URL = visibilityURLType + modalData.data.id;
+            body = { visibility: modalData.data.isVisible }
             break;
         }
     }

@@ -8,7 +8,7 @@ export default function useApi(modalData, handleAutoModalClose) {
 
     
     const handleOnSubmitForm = async e => {
-        if (e) e.preventDefault;
+        if (e) e.preventDefault();
         // e.preventDefault();
         
         console.log(modalData)

@@ -6,8 +6,7 @@ import { ModalDataDispatchContext } from '../../contexts/ModalDataContext';
 import deleteIcon from '../../assets/icons/trash.svg';
 import editIcon from '../../assets/icons/edit.svg';
 
-export default function SidebarProjectCard({card, onToggleModal, onSubmitForm}) {
-    const [visible, setIsVisible] = useState(false);
+export default function SidebarProjectCard({card, onToggleModal}) {
     const dispatch = useContext(ModalDataDispatchContext);
     console.log(card)
 
@@ -18,7 +17,7 @@ export default function SidebarProjectCard({card, onToggleModal, onSubmitForm}) 
         });
         
         onToggleModal();
-      }
+    }
       
     const handleDeleteCard = () => {
         dispatch({
@@ -32,7 +31,7 @@ export default function SidebarProjectCard({card, onToggleModal, onSubmitForm}) 
     const handleToggleVisibility = () => {
         dispatch({
             type: 'visibility',
-            data: card,
+            data: { id: card.id, isVisible: card.isVisible },
         });
         
         onToggleModal();
@@ -44,9 +43,9 @@ export default function SidebarProjectCard({card, onToggleModal, onSubmitForm}) 
                 <img src={card.imgURL}/>
             </div>
             <div className={styles.cardDetails}>
-                <div className="visibility">
+                <div>
                 <label>
-                    <Switch uncheckedIcon={false} checkedIcon={false} onChange={handleToggleVisibility} checked={card.isVisible} />
+                    <Switch onColor={'#0d0673'} offColor={'#712727'} handleDiameter={22} height={25} width={48} uncheckedIcon={false} checkedIcon={false} onChange={handleToggleVisibility} checked={card.isVisible} />
                     <span>Visible</span>
                 </label>
                 </div>
@@ -54,7 +53,7 @@ export default function SidebarProjectCard({card, onToggleModal, onSubmitForm}) 
                     <div><img className={styles.cardDelete} src={deleteIcon} onClick={handleDeleteCard} /></div>
                     <div><img className={styles.cardEdit} src={editIcon} onClick={handleEditCard} /></div>
                 </div>
-                <h3>I am a sidebar project</h3>
+                <h3>{card.name}</h3>
             </div>
         </div>
     );

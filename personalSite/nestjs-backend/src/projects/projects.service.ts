@@ -28,11 +28,8 @@ export class ProjectsService {
     }
 
     async setVisibility(body, id) {
-        const visibility = body.isVisible;
-        body = { ...body, isVisible: !visibility }
-        console.log({ ...body, isVisible: !visibility })
         const projectRef = db.collection('projects').doc(id);
-        await projectRef.update(body);
+        await projectRef.update({isVisible: !body.visibility});
         return { id };
     }
 
