@@ -10,7 +10,7 @@ const ProjectCard = ({ onToggleModal, onSubmitForm }) => {
         if (modalData?.requestType === 'delete' || modalData?.requestType === 'visibility') {
             return (
                 <div>
-                    <h1>Are you sure?</h1>
+                    <h4>Are you sure?</h4>
                     <button onClick={onSubmitForm}>Yes</button>
                     <button onClick={onToggleModal}>Cancel</button>
                 </div>

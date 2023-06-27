@@ -1,16 +1,9 @@
-@font-face {
-    font-family: egyptian;
-    src: url('../assets/Lordstorydemo-L3zgy.ttf');
-}
-
 h1 {
     font-size: clamp(90px, 9vw, 12.12rem);
 }
 
 h1,
 h2 {
-    line-height: 0.7;
-    font-family: egyptian;
     font-weight: 400;
 }
 
@@ -24,8 +17,4 @@ h3 {
 
 small {
     font-size: clamp(0.75rem, 0.8vw, 1rem);
-}
-
-button {
-    
 }

@@ -1,22 +1,8 @@
 @import '../../styles/mixins.scss';
 
-.list {
+.projectsList {
     margin-top: 2rem;
     display: flex;
     flex-wrap: wrap;
     gap: toRem(20);
-
-    button {
-        display: block;
-        margin: 0 auto;
-    }
-
-    &Section {
-        
-    }
-}
-
-button {
-    @include roundButton();
-    padding: 1px toRem(20);
 }

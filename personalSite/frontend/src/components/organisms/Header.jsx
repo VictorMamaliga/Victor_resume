@@ -24,7 +24,7 @@ export default function Header({onSidebarIsOpen}) {
     return (
         <header className={styles.header}>
             <div ref={headerRef} className={styles.headerTop}>
-                <div className={styles.headerContainer}>
+                <div className="container">
                     <a href="" className="name">George</a>
                     <div className={styles.headerHamburger} onClick={onSidebarIsOpen}>
                         <span></span>

@@ -23,15 +23,18 @@ body {
     color: var(--accent-primary);
 }
 
-main {
-    max-width: var(--container-width);
-    margin: 0 auto;
+section {
+    background-color: black;
+    padding: 6rem 0;
+
+    &:nth-child(even) {
+        background-color: #0f1113;
+    }
 }
 
-section {
-    position: relative;
-    padding-top: var(--header-height);
-    min-height: 100vh;
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
 }
 
 small,
@@ -39,6 +42,21 @@ span,
 a {
     color: var(--accent-secondary);
     text-decoration: none;
+}
+
+small {
+    display: flex;
+    align-items: center;
+    gap: toRem(7);
+    margin-bottom: 3rem;
+
+    &::before {
+        content: '';
+        background-color: var(--accent-secondary);
+        display: block;
+        height: 2px;
+        width: toRem(40);
+    }
 }
 
 ul {

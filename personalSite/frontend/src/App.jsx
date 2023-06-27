@@ -6,9 +6,9 @@ import ProjectList from "./components/molecules/ProjectList";
 import Modal from "./components/organisms/Modal";
 import ProjectCard from './components/molecules/ProjectCard';
 import useApi from "./api/useApi";
-import Ending from "./components/organisms/Ending";
 import Sidebar from "./components/organisms/Sidebar";
 import ProjectEditForm from "./components/molecules/ProjectEditForm";
+import AboutMe from "./components/organisms/AboutMe";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -42,8 +42,8 @@ function App() {
         <ModalDataDispatchContext.Provider value={dispatch}>
           <main>
             <Sidebar projectsAPI={projectsAPI} editMode={editMode} sidebarIsOpen={sidebarIsOpen} onSidebarIsOpen={handleSidebarToggle} onEditMode={() => setEditMode(!editMode)} onToggleModal={() => setIsModalOpen(!isModalOpen)} onSidebarReset={handleSidebarReset} onSubmitForm={handleOnSubmitForm} />
+            <AboutMe />
             <ProjectList data={projectsAPI} onToggleModal={() => setIsModalOpen(!isModalOpen)} />
-            <Ending />
           </main>
           <Modal isOpen={isModalOpen} apiResponseStatus={apiResponseStatus} onToggleModal={handleModalReset}>
             {editMode ? (
