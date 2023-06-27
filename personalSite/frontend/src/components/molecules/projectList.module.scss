@@ -1,8 +1,11 @@
 @import '../../styles/mixins.scss';
+@import '../../styles/breakpoints.scss';
 
 .projectsList {
-    margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: toRem(20);
+    @media (min-width: $media-breakpoint-M) {
+        display: flex;
+        flex-wrap: wrap;
+        gap: toRem(20);
+
+    }
 }

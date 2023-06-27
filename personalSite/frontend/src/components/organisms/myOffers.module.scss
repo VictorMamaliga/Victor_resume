@@ -1,20 +1,30 @@
 @import '../../styles/mixins.scss';
+@import '../../styles/breakpoints.scss';
 
 .myOffers {
+    @media (min-width: $media-breakpoint-XS) {
+        justify-content: space-between;
+        gap: 5rem;
+        flex-wrap: nowrap;
+    }
     display: flex;
-    justify-content: space-between;
-    gap: 5rem;
+    flex-wrap: wrap;
 
     > div {
+        @media (min-width: $media-breakpoint-XS) {
+            gap: 3rem;
+        }
         display: flex;
         flex-direction: column;
-        gap: 3rem;
+        gap: 1rem;
+        margin-bottom: 4rem;
     }
 
     &Image {
-        flex-shrink: 0;
-        aspect-ratio: 1;
-        width: toRem(50);
+        @media (min-width: $media-breakpoint-XS) {
+            width: toRem(50);
+        }
+        width: toRem(35);
 
         img {
             width: unset;

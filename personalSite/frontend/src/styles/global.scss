@@ -1,6 +1,7 @@
 @import './variables.scss';
 @import './mixins.scss';
 @import './typography.scss';
+@import './breakpoints.scss';
 
 *,
 *::before,
@@ -35,6 +36,18 @@ section {
 .container {
     max-width: var(--container-width);
     margin: 0 auto;
+}
+
+@media (max-width: $media-breakpoint-M) {
+    .container {
+        --container-width: 80%
+    }
+}
+
+@media (max-width: $media-breakpoint-S) {
+    .container {
+        --container-width: 90%
+    }
 }
 
 small,

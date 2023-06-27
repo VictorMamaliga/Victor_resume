@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import Switch from "react-switch";
 
 import styles from './sidebarProjectCard.module.scss';
