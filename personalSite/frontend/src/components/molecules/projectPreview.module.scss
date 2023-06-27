@@ -6,9 +6,6 @@
   flex-basis: calc(50% - toRem(10));
 
   img {
-    width: 100%;
-    object-fit: cover;
-    height: 100%;
     transition: all .3s ease-in-out;
     
     &:hover {
