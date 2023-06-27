@@ -63,6 +63,14 @@ export default function ProjectEditForm({onSubmitForm}) {
                 required
                 />
         </label>
+        <label>
+            Is Visible
+            <input
+                type='checkbox'
+                name='isVisible'
+                defaultChecked={modalData?.data?.isVisible || false}
+                />
+        </label>
         <br />
         <button type='submit'>Submit</button>
     </form>

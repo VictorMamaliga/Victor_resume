@@ -43,17 +43,10 @@ export function fetcher(modalData, event) {
     if (modalData.requestType === createType || modalData.requestType === editType) {
         console.log(modalData.requestType, 'am intrat sefu')
         for (let item of event.target) {
-            if (item.name) body[item.name] = item.value
+            if (item.name && item.name !== 'isVisible') body[item.name] = item.value;
+            if (item.name === 'isVisible') body.isVisible = item.checked;
         }
     }
-
-    // if (modalData.requestType === editType) {
-    //     console.log(modalData.requestType)
-    //     for (let item of event.target) {
-    //         if (item.name) body[item.name] = item.value
-    //     }
-    // }
-
 
     switch (modalData.requestType) {
         case createType: {

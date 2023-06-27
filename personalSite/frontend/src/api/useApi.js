@@ -11,7 +11,7 @@ export default function useApi(modalData, handleAutoModalClose) {
         if (e) e.preventDefault();
         // e.preventDefault();
         
-        console.log(modalData)
+        console.log(e)
         const response = await fetcher(modalData, e);
 
         if (!response.ok) setApiResponseStatus(404)

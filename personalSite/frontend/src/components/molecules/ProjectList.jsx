@@ -14,7 +14,7 @@ export default function ProjectList({ data, onToggleModal }) {
     return (
         <section id='second' className={styles.listSection}>
             <div className={styles.list}>
-                {data && data.map(card => <ProjectPreview key={card.id} card={card} onToggleModal={onToggleModal} />)}
+                {data && data.map(card => card.isVisible && <ProjectPreview key={card.id} card={card} onToggleModal={onToggleModal} />)}
             </div>
             <button onClick={handleModalOpen}>New Project</button>
         </section>

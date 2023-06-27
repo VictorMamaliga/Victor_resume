@@ -8,7 +8,6 @@ import editIcon from '../../assets/icons/edit.svg';
 
 export default function SidebarProjectCard({card, onToggleModal}) {
     const dispatch = useContext(ModalDataDispatchContext);
-    console.log(card)
 
     const handleEditCard = () => {
         dispatch({
@@ -50,8 +49,8 @@ export default function SidebarProjectCard({card, onToggleModal}) {
                 </label>
                 </div>
                 <div className={styles.cardActions}>
-                    <div><img className={styles.cardDelete} src={deleteIcon} onClick={handleDeleteCard} /></div>
-                    <div><img className={styles.cardEdit} src={editIcon} onClick={handleEditCard} /></div>
+                    <div onClick={handleDeleteCard}><img className={styles.cardDelete} src={deleteIcon} /></div>
+                    <div onClick={handleEditCard}><img className={styles.cardEdit} src={editIcon} /></div>
                 </div>
                 <h3>{card.name}</h3>
             </div>
