@@ -1,21 +1,13 @@
 import styles from './projectEditForm.module.scss';
 
-import { useContext } from "react";
-import { ModalDataContext, ModalDataDispatchContext } from "../../contexts/ModalDataContext";
+import { useContext, useState } from "react";
+import { ModalDataContext } from "../../contexts/ModalDataContext";
 import { Upload } from 'upload-js';
 
 export default function ProjectEditForm({onSubmitForm}) {
     const modalData = useContext(ModalDataContext);
-    const dispatch = useContext(ModalDataDispatchContext);
-    console.log(modalData)
-
-    // const handleCreateProject = () => {
-    //     dispatch({
-    //       type: 'create',
-    //     });
-        
-    //     onToggleModal();
-    // }
+    const [iUrl, setIUrl] = useState(modalData?.data?.imgURL);
+    const [status, setStatus] = useState(false);
 
     const handleImageUpload = async e => {
         if (e.target.files[0]) {
@@ -25,11 +17,10 @@ export default function ProjectEditForm({onSubmitForm}) {
             });
 
             try {
+                setStatus(true)
                 const { fileUrl, filePath } = await upload.uploadFile(file);
-                dispatch({
-                    type: modalData.requestType,
-                    data: { ...modalData.data, imgURL: fileUrl },
-                })
+                setIUrl(fileUrl)
+                setStatus(false)
             } catch (err) {
                 console.log(err)
             }
@@ -38,7 +29,7 @@ export default function ProjectEditForm({onSubmitForm}) {
 
     return (modalData.requestType === 'delete' || modalData.requestType === 'visibility') ? (
         <>
-            <h4>are you sure delete?</h4>
+            <h4>are you sure?</h4>
             <span onClick={onSubmitForm}>yes</span>
         </>
     ) : (
@@ -80,11 +71,13 @@ export default function ProjectEditForm({onSubmitForm}) {
             <label>
                 Image URL:
                 <input
+                    onChange={e => setIUrl(e.target.value)}
                     type='string'
                     name='imgURL'
-                    defaultValue={modalData?.data?.imgURL}
+                    value={iUrl}
                     required
-                    />
+                />
+                {status && <span>Loading</span>}
             </label>
             <label>
                 Is Visible
