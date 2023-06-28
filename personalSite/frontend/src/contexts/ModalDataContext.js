@@ -9,7 +9,7 @@ export function modalDataReducer(project, action) {
             return { requestType: action.type, data: action.data }
         }
         case 'create': {
-            return { requestType: action.type };
+            return { requestType: action.type, data: action.data };
         }
         case 'edit': {
             return { requestType: action.type, data: action.data };

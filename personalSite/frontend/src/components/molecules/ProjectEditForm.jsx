@@ -1,10 +1,40 @@
 import styles from './projectEditForm.module.scss';
 
 import { useContext } from "react";
-import { ModalDataContext } from "../../contexts/ModalDataContext";
+import { ModalDataContext, ModalDataDispatchContext } from "../../contexts/ModalDataContext";
+import { Upload } from 'upload-js';
 
 export default function ProjectEditForm({onSubmitForm}) {
     const modalData = useContext(ModalDataContext);
+    const dispatch = useContext(ModalDataDispatchContext);
+    console.log(modalData)
+
+    // const handleCreateProject = () => {
+    //     dispatch({
+    //       type: 'create',
+    //     });
+        
+    //     onToggleModal();
+    // }
+
+    const handleImageUpload = async e => {
+        if (e.target.files[0]) {
+            const file = e.target.files[0];
+            const upload = Upload({
+                apiKey: "public_W142i2QFQESQNm6Gbd3VFoqfLSbL"
+            });
+
+            try {
+                const { fileUrl, filePath } = await upload.uploadFile(file);
+                dispatch({
+                    type: modalData.requestType,
+                    data: { ...modalData.data, imgURL: fileUrl },
+                })
+            } catch (err) {
+                console.log(err)
+            }
+        }
+    }
 
     return (modalData.requestType === 'delete' || modalData.requestType === 'visibility') ? (
         <>
@@ -22,7 +52,6 @@ export default function ProjectEditForm({onSubmitForm}) {
                     required
                     />
             </label>
-            <br />
             <label>
                 Description:
                 <input
@@ -32,7 +61,13 @@ export default function ProjectEditForm({onSubmitForm}) {
                     required
                     />
             </label>
-            <br />
+            <label>
+                upload image
+                <input
+                    type='file'
+                    onChange={handleImageUpload}
+                    />
+            </label>
             <label>
                 Project Link:
                 <input
