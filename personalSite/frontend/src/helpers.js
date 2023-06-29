@@ -17,6 +17,7 @@ export const projectsDummy = [
 
 // types
 export const getProjectsURLType = 'http://localhost:3333/projects';
+export const viewType = 'view';
 export const createType = 'create';
 export const editType = 'edit';
 export const visibilityType = 'visibility';

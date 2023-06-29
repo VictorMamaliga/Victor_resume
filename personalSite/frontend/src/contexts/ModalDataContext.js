@@ -1,23 +1,24 @@
 import { createContext } from "react";
+import { createType, deleteType, editType, viewType, visibilityType } from "../helpers";
 
 export const ModalDataContext = createContext(null);
 export const ModalDataDispatchContext = createContext(null);
 
 export function modalDataReducer(project, action) {
     switch (action.type) {
-        case 'view': {
+        case viewType: {
             return { requestType: action.type, data: action.data }
         }
-        case 'create': {
+        case createType: {
             return { requestType: action.type, data: action.data };
         }
-        case 'edit': {
+        case editType: {
             return { requestType: action.type, data: action.data };
         }
-        case 'visibility': {
+        case visibilityType: {
             return { requestType: action.type, data: action.data}
         }
-        case 'delete': {
+        case deleteType: {
             return { requestType: action.type, id: action.id };
         }
         default: {

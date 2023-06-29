@@ -45,7 +45,7 @@
             span {
                 &:nth-child(odd) {
                     margin: 0 auto;
-                    width: 15px;
+                    width: toRem(15);
                 }
             }
         }

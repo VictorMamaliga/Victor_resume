@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+
 import './sidebar.scss';
 import SidebarProjectCard from './SidebarProjectCard';
 import { ModalDataDispatchContext } from '../../contexts/ModalDataContext';
@@ -16,8 +17,7 @@ export default function Sidebar({projectsAPI, editMode, sidebarIsOpen, onSidebar
 
     return (
         <div className='sidebar'>
-            <div className={`sidebarOverlay ${sidebarIsOpen ? 'active' : ''}`}>
-            </div>
+            <div className={`sidebarOverlay ${sidebarIsOpen ? 'active' : ''}`}></div>
             <aside className={`${!sidebarIsOpen ? 'open' : ''}`}>
                 {editMode && <span className='back' onClick={onEditMode}>back</span>}
                 <span onClick={onSidebarReset}>X</span>

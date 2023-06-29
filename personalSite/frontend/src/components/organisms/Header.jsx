@@ -6,7 +6,7 @@ export default function Header({onSidebarIsOpen}) {
     const headerRef = useRef(null);
 
     const handleScroll = () => {
-        if (window.scrollY > 100) {
+        if (window.scrollY > 150) {
             headerRef.current.style.backgroundColor = 'black';
             headerRef.current.style.padding = '2rem 0';
         } else {
@@ -35,7 +35,7 @@ export default function Header({onSidebarIsOpen}) {
             </div>
             <div className={styles.headerWelcome}>
                 <img src={leatherImg} alt='' />
-                <h2>george Ionita</h2>
+                <h2>George Ionita</h2>
                 <span>I design minimal websites</span>
             </div>
         </header>
