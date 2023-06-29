@@ -5,13 +5,14 @@ import styles from './sidebarProjectCard.module.scss';
 import { ModalDataDispatchContext } from '../../contexts/ModalDataContext';
 import deleteIcon from '../../assets/icons/trash.svg';
 import editIcon from '../../assets/icons/edit.svg';
+import { deleteType, editType } from '../../helpers';
 
 export default function SidebarProjectCard({card, onToggleModal}) {
     const dispatch = useContext(ModalDataDispatchContext);
 
     const handleEditCard = () => {
         dispatch({
-          type: 'edit',
+          type: editType,
           data: card,
         });
         
@@ -20,7 +21,7 @@ export default function SidebarProjectCard({card, onToggleModal}) {
       
     const handleDeleteCard = () => {
         dispatch({
-            type: 'delete',
+            type: deleteType,
             id: card.id,
         });
 
@@ -29,7 +30,7 @@ export default function SidebarProjectCard({card, onToggleModal}) {
     
     const handleToggleVisibility = () => {
         dispatch({
-            type: 'visibility',
+            type: visibilityType,
             data: { id: card.id, isVisible: card.isVisible },
         });
         

@@ -3,13 +3,14 @@ import { useContext } from 'react';
 import './sidebar.scss';
 import SidebarProjectCard from './SidebarProjectCard';
 import { ModalDataDispatchContext } from '../../contexts/ModalDataContext';
+import { createType } from '../../helpers';
 
 export default function Sidebar({projectsAPI, editMode, sidebarIsOpen, onSidebarIsOpen, onEditMode, onToggleModal, onSidebarReset, onSubmitForm}) {
     const dispatch = useContext(ModalDataDispatchContext);
 
     const handleCreateProject = () => {
         dispatch({
-          type: 'create',
+          type: createType,
         });
         
         onToggleModal();
@@ -24,19 +25,16 @@ export default function Sidebar({projectsAPI, editMode, sidebarIsOpen, onSidebar
                 <div className='sidebarContent'>
                     <ul>
                         <li onClick={onSidebarIsOpen}>
-                            <a href="#first">Mancare</a>
+                            <a href="#home">Home</a>
+                        </li>
+                        <li onClick={onSidebarIsOpen}>
+                            <a href="#about-me">About me</a>
+                        </li>
+                        <li onClick={onSidebarIsOpen}>
+                            <a href="#portofolio">Portofolio</a>
                         </li>
                         <li onClick={onEditMode}>
-                            <a>Bautura</a>
-                        </li>
-                        <li>
-                            <a href="">Tigari</a>
-                        </li>
-                        <li>
-                            <a href=""></a>
-                        </li>
-                        <li>
-                            <a href=""></a>
+                            <a>Edit Works</a>
                         </li>
                     </ul>
                     <div className={`sidebarProjects ${editMode && 'open'}`}>

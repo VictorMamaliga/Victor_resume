@@ -24,11 +24,10 @@ body {
 }
 
 section {
-    background-color: black;
     padding: 6rem 0;
 
     &:nth-child(even) {
-        background-color: #0f1113;
+        background-color: var(--background-secondary);
     }
 }
 

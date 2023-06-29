@@ -3,7 +3,7 @@ import ProjectPreview from "./ProjectPreview";
 
 export default function ProjectList({ data, onToggleModal }) {
     return (
-        <section id='second'>
+        <section id='portofolio'>
             <div className="container">
                     <small>Featured Works.</small>
                     <div className={styles.projectsList}>

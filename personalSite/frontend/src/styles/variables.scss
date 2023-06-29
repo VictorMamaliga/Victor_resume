@@ -1,8 +1,13 @@
 :root {
     // colors
-    --background-primary: #131313;
+    --background-primary: black;
+    --background-secondary: #0f1113;
+    --background-action-buttons: #232020;
+    --background-action-buttons-hover: #2d2b2b;
     --accent-primary: #f5eee6;
     --accent-secondary: #efd8c3;
+    --card-edit-background: #191a19;
+    --card-edit-border: #333333;
 
     // layouts
     --padding-main: 1.75rem;
@@ -12,7 +17,6 @@
 
     // typography
     --font-family-primary: cursive, sans-serif;
-    --font-family-title: 'Bangers', sans-serif;
 
     // breakpoints
     --media-breakpoint-L: 75rem;

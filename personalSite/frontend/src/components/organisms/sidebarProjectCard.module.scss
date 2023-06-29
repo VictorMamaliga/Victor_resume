@@ -7,12 +7,12 @@
         gap: 2rem;
 
     }
-    background-color: #191a19;
+    background-color: var(--card-edit-background);
     position: relative;
     margin-top: 2rem;
     padding: 1rem;
-    border: 1px solid #333333;
-    border-radius: 8px;
+    border: 1px solid var(--card-edit-border);
+    border-radius: toRem(8);
 
     &Image {
         @media (min-width: $media-breakpoint-XS) {
@@ -35,8 +35,8 @@
                 width: toRem(55);
                 margin-top: unset;
             }
-            background-color: #232020;
-            border-radius: 10px;
+            background-color: var(--background-action-buttons);
+            border-radius: toRem(10);
             height: toRem(50);
             display: flex;
             justify-content: center;
@@ -45,7 +45,7 @@
             margin-top: 1rem;
 
             &:hover {
-                background-color: #2d2b2b;
+                background-color: var(--background-action-buttons-hover);
             }
         }
         
@@ -86,9 +86,5 @@
     
     &Edit {
         filter: invert(9%) sepia(99%) saturate(7498%) hue-rotate(248deg) brightness(91%) contrast(144%);
-    }
-
-    &Hide {
-        filter: invert(22%) sepia(0%) saturate(1734%) hue-rotate(222deg) brightness(92%) contrast(78%);
     }
 }

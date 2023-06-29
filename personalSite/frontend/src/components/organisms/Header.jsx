@@ -33,7 +33,7 @@ export default function Header({onSidebarIsOpen}) {
                     </div>
                 </div>
             </div>
-            <div className={styles.headerWelcome}>
+            <div id='home' className={styles.headerWelcome}>
                 <img src={leatherImg} alt='' />
                 <h2>George Ionita</h2>
                 <span>I design minimal websites</span>

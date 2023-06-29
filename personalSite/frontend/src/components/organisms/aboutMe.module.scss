@@ -1,6 +1,6 @@
 @import '../../styles/mixins.scss';
 
-.aboutme {
+.aboutMe {
     > div {
         @media (max-width: $media-breakpoint-L) {
             display: block;
