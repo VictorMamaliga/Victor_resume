@@ -39,10 +39,7 @@ export function fetcher(modalData, event) {
     let body = {};
     let method, URL;
 
-    console.log(modalData)
-
     if (modalData.requestType === createType || modalData.requestType === editType) {
-        console.log(modalData.requestType, 'am intrat sefu')
         for (let item of event.target) {
             if (item.name && item.name !== 'isVisible') body[item.name] = item.value;
             if (item.name === 'isVisible') body.isVisible = item.checked;
@@ -51,25 +48,21 @@ export function fetcher(modalData, event) {
 
     switch (modalData.requestType) {
         case createType: {
-            console.log(1)
             method = POSTType;
             URL = createURLType;
             break;
         }
         case editType: {
-            console.log(12)
             method = PUTType;
             URL = editURLType + modalData.data.id;
             break;
         }
         case deleteType: {
-            console.log(13)
             method = DELETEType;
             URL = deleteURLType + modalData.id;
             break;
         }
         case visibilityType: {
-            console.log(14)
             method = PUTType;
             URL = visibilityURLType + modalData.data.id;
             body = { visibility: modalData.data.isVisible }

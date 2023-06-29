@@ -5,7 +5,7 @@ import styles from './sidebarProjectCard.module.scss';
 import { ModalDataDispatchContext } from '../../contexts/ModalDataContext';
 import deleteIcon from '../../assets/icons/trash.svg';
 import editIcon from '../../assets/icons/edit.svg';
-import { deleteType, editType } from '../../helpers';
+import { deleteType, editType, visibilityType } from '../../helpers';
 
 export default function SidebarProjectCard({card, onToggleModal}) {
     const dispatch = useContext(ModalDataDispatchContext);
