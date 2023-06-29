@@ -3,6 +3,7 @@ import styles from './projectEditForm.module.scss';
 import { useContext, useState } from "react";
 import { ModalDataContext } from "../../contexts/ModalDataContext";
 import { Upload } from 'upload-js';
+import { deleteType, visibilityType } from '../../helpers';
 
 export default function ProjectEditForm({onSubmitForm}) {
     const modalData = useContext(ModalDataContext);
@@ -27,7 +28,7 @@ export default function ProjectEditForm({onSubmitForm}) {
         }
     }
 
-    return (modalData.requestType === 'delete' || modalData.requestType === 'visibility') ? (
+    return (modalData.requestType === deleteType || modalData.requestType === visibilityType) ? (
         <>
             <h4>are you sure?</h4>
             <span onClick={onSubmitForm}>yes</span>
@@ -53,7 +54,7 @@ export default function ProjectEditForm({onSubmitForm}) {
                     />
             </label>
             <label>
-                upload image
+                Upload image
                 <input
                     type='file'
                     onChange={handleImageUpload}

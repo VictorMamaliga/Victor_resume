@@ -15,6 +15,10 @@ export const projectsDummy = [
     }
 ];
 
+// Switch colors
+export const onColor = '#0d0673';
+export const offColor = '#712727';
+
 // types
 export const getProjectsURLType = 'http://localhost:3333/projects';
 export const viewType = 'view';
@@ -69,8 +73,6 @@ export function fetcher(modalData, event) {
             break;
         }
     }
-
-    console.log(body)
 
     return fetch(URL, {
         method,

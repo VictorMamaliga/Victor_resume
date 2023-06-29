@@ -1,14 +1,15 @@
+import { useContext } from 'react';
+
 import styles from './projectPreview.module.scss';
 import { ModalDataDispatchContext } from '../../contexts/ModalDataContext';
-
-import { useContext } from 'react';
+import { viewType } from '../../helpers';
 
 const ProfilPreview = ({ card, onToggleModal }) => {
   const dispatch = useContext(ModalDataDispatchContext);
 
   const handleCardView = () => {
     dispatch({
-      type: 'view',
+      type: viewType,
       data: card,
     })
 

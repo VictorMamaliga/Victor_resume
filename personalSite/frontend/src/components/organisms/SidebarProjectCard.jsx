@@ -5,7 +5,7 @@ import styles from './sidebarProjectCard.module.scss';
 import { ModalDataDispatchContext } from '../../contexts/ModalDataContext';
 import deleteIcon from '../../assets/icons/trash.svg';
 import editIcon from '../../assets/icons/edit.svg';
-import { deleteType, editType, visibilityType } from '../../helpers';
+import { deleteType, editType, offColor, onColor, visibilityType } from '../../helpers';
 
 export default function SidebarProjectCard({card, onToggleModal}) {
     const dispatch = useContext(ModalDataDispatchContext);
@@ -45,7 +45,7 @@ export default function SidebarProjectCard({card, onToggleModal}) {
             <div className={styles.cardDetails}>
                 <div>
                 <label>
-                    <Switch onColor={'#0d0673'} offColor={'#712727'} handleDiameter={22} height={25} width={48} uncheckedIcon={false} checkedIcon={false} onChange={handleToggleVisibility} checked={card.isVisible} />
+                    <Switch onColor={onColor} offColor={offColor} handleDiameter={22} height={25} width={48} uncheckedIcon={false} checkedIcon={false} onChange={handleToggleVisibility} checked={card.isVisible} />
                     <span>Visible</span>
                 </label>
                 </div>
