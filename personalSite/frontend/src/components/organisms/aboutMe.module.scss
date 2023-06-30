@@ -15,6 +15,19 @@
         > * {
             margin-bottom: 2rem;
         }
+
+        h3 {
+            font-size: 2rem;
+        }
+
+        span {
+            display: inline-block;
+            margin-top: 3rem;
+            color: var(--accent-secondary);
+            font-weight: 100;
+            border-bottom: 1px solid var(--accent-secondary);
+            padding-bottom: 4px;
+        }
     }
     
     &Image {

@@ -18,13 +18,65 @@
         width: 100%;
         height: 100vh;
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        align-items: end;
+        padding: 0 3rem 4rem;
 
         img {
             @include position(absolute, $top: 0, $left: 0);
             z-index: -1;
+        }
+
+        h1 {
+            font-size: clamp(40px, 4vw, 80px);
+            font-weight: 100;
+        }
+
+        span {
+            color: var(--accent-secondary);
+        }
+    }
+
+    &Split {
+        @include position(absolute, $top: 0, $bottom: 0);
+        z-index: 0;
+        width: 50%;
+
+        &:first-child {
+            left: 0;
+            padding-top: 7rem;
+            padding-left: 10rem;
+        }
+
+        &:nth-child(2) {
+            right: 0;
+        }
+    }
+
+    &Decorations {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 1rem;
+        z-index: 0;
+        width: 100%;
+
+        > div {
+            background-color: var(--card-edit-background);
+            opacity: 0.6;
+            flex-basis: 16.66%;
+            padding: 2rem 1rem;
+
+            h3 {
+                margin-bottom: 1rem;
+                font-size: 48px;
+                font-weight: 100;
+            }
+            
+            p {
+                margin-top: 1rem;
+                font-weight: 100;
+                
+            }
         }
     }
     

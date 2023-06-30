@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
+
 import styles from './header.module.scss';
-import leatherImg from '../../assets/leather.jpg';
+import kittenImg from '../../assets/kitten.jpg';
 
 export default function Header({onSidebarIsOpen}) {
     const headerRef = useRef(null);
@@ -34,9 +35,40 @@ export default function Header({onSidebarIsOpen}) {
                 </div>
             </div>
             <div id='home' className={styles.headerWelcome}>
-                <img src={leatherImg} alt='' />
-                <h2>George Ionita</h2>
-                <span>I design minimal websites</span>
+                <div className={styles.headerSplit}>
+                    <h1>We are a fully integrated <span>Software development</span> tool</h1>
+                </div>
+                <div className={styles.headerSplit}>
+                    <img src={kittenImg} alt='' />
+                </div>
+
+                <div className={styles.headerDecorations}>
+                    <div>
+                        <h3>01</h3>
+                        <h4>Mie imi plac ciresele amare</h4>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. </p>
+                    </div>
+                    <div>
+                        <h3>02</h3>
+                        <h4>Mie imi plac ananasurile</h4>
+                    </div>
+                    <div>
+                        <h3>03</h3>
+                        <h4>Mie imi plac castravetii</h4>
+                    </div>
+                    <div>
+                        <h3>04</h3>
+                        <h4>Mie imi plac ciresele ducli</h4>
+                    </div>
+                    <div>
+                        <h3>05</h3>
+                        <h4>Mie imi plac pepenii</h4>
+                    </div>
+                    <div>
+                        <h3>06</h3>
+                        <h4>Mie imi plac de dabuleni</h4>
+                    </div>
+                </div>
             </div>
         </header>
     );

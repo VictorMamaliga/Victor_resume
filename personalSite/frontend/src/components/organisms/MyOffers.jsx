@@ -14,27 +14,27 @@ export default function MyOffers() {
                             <img src={pieIcon} alt="" />
                         </div>
                         <h3>Niste titlu</h3>
-                        <h4>
+                        <p>
                             Eram odata cu gandul in alta parte si am mintit ca mi-e foame.
-                        </h4>
+                        </p>
                     </div>
                     <div>
                         <div className={styles.myOffersImage}>
                             <img src={cubeIcon} alt="" />
                         </div>
                         <h3>Prima mea serbare</h3>
-                        <h4>
+                        <p>
                             Erau atat de multe persoane incat m-am balbait
-                        </h4>
+                        </p>
                     </div>
                     <div>
                         <div className={styles.myOffersImage}>
                             <img src={layerIcon} alt="" />
                         </div>
                         <h3>Viata de dupa</h3>
-                        <h4>
+                        <p>
                             Se zice ca nu o sa mai fii niciodata cum ai fost dupa ce iti aduci aminte de unde ai plecat
-                        </h4>
+                        </p>
                     </div>
                 </div>
             </div>
