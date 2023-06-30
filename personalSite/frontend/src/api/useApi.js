@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { createType, deleteType, editType, fetcher, getProjectsURLType } from '../helpers';
+import { createType, deleteType, editType, fetcher, getProjectsURLType, visibilityType } from '../helpers';
 
 export default function useApi(modalData, handleAutoModalClose) {
     const [projectsAPI, setProjectsAPI] = useState(null);
@@ -37,7 +37,7 @@ export default function useApi(modalData, handleAutoModalClose) {
                     setProjectsAPI(newList);
                     break;
                 }
-                case 'visibility': {
+                case visibilityType: {
                     const newList = projectsAPI.map(el => {
                         if (el.id === responseJSON.id) {
                             return { ...el, isVisible: !el.isVisible }

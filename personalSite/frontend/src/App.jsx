@@ -1,4 +1,5 @@
 import { useReducer, useState } from "react";
+import Slider from "react-slick";
 
 import { ModalDataContext, ModalDataDispatchContext, modalDataReducer } from "./contexts/ModalDataContext";
 import Header from "./components/organisms/Header";
@@ -10,6 +11,14 @@ import Sidebar from "./components/organisms/Sidebar";
 import ProjectEditForm from "./components/molecules/ProjectEditForm";
 import AboutMe from "./components/organisms/AboutMe";
 import MyOffers from "./components/organisms/MyOffers";
+
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1
+};
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -46,6 +55,26 @@ function App() {
             <AboutMe />
             <MyOffers />
             <ProjectList data={projectsAPI} onToggleModal={() => setIsModalOpen(!isModalOpen)} />
+            <Slider {...settings}>
+          <div>
+            <h3>1</h3>
+          </div>
+          <div>
+            <h3>2</h3>
+          </div>
+          <div>
+            <h3>3</h3>
+          </div>
+          <div>
+            <h3>4</h3>
+          </div>
+          <div>
+            <h3>5</h3>
+          </div>
+          <div>
+            <h3>6</h3>
+          </div>
+        </Slider>
           </main>
           <Modal isOpen={isModalOpen} apiResponseStatus={apiResponseStatus} onToggleModal={handleModalReset}>
             {editMode ? (
