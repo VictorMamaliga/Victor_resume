@@ -3,6 +3,9 @@
 .card {
   display: flex;
   flex-direction: column;
+  background-color: var(--accent-primary);
+  color: var(--background-primary);
+  border-radius: toRem(8);
 
   &Wrapper {
     @media (max-width: $media-breakpoint-XS) {
@@ -10,12 +13,15 @@
     }
     height: toRem(500);
     max-height: 55vh;
-    margin-bottom: 2rem;
 
     + div {
+      padding: 1rem;
+      
       h3 {
         text-align: right;
         margin-bottom: 1rem;
+        font-weight: 300;
+        font-size: toRem(26);
       }
     }
   }

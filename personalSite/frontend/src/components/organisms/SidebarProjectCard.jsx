@@ -45,7 +45,7 @@ export default function SidebarProjectCard({card, onToggleModal}) {
             <div className={styles.cardDetails}>
                 <div>
                 <label>
-                    <Switch onColor={onColor} offColor={offColor} handleDiameter={22} height={25} width={48} uncheckedIcon={false} checkedIcon={false} onChange={handleToggleVisibility} checked={card.isVisible} />
+                    <Switch onColor={onColor} offColor={offColor} handleDiameter={22} height={25} width={48} uncheckedIcon={false} checkedIcon={false} onChange={handleToggleVisibility} checked={card ? card.isVisible : null} />
                     <span>Visible</span>
                 </label>
                 </div>
