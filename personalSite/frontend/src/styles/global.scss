@@ -86,5 +86,16 @@ img {
 }
 
 .slick-slider {
-    width: 50%;
+    // width: 50%;
+    .slick-dots {
+        bottom: toRem(-40);
+        li,
+        .slick-active {
+            button {
+                &::before {
+                    color: var(--accent-secondary);
+                }
+            }
+        }
+    }
 }
