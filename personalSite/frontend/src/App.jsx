@@ -11,6 +11,7 @@ import ProjectEditForm from "./components/molecules/ProjectEditForm";
 import AboutMe from "./components/organisms/AboutMe";
 import MyOffers from "./components/organisms/MyOffers";
 import Testimonials from "./components/organisms/Testimonials";
+import Contact from "./components/organisms/Contact";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -48,6 +49,7 @@ function App() {
             <MyOffers />
             <ProjectList data={projectsAPI} onToggleModal={() => setIsModalOpen(!isModalOpen)} />
             <Testimonials />
+            <Contact />
           </main>
           <Modal isOpen={isModalOpen} apiResponseStatus={apiResponseStatus} onToggleModal={handleModalReset}>
             {editMode ? (

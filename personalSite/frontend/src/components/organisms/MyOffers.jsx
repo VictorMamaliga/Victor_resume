@@ -10,8 +10,8 @@ export default function MyOffers() {
                 <small>What I Offer.</small>
                 <div className={styles.myOffers}>
                     <div>
-                        <div className={styles.myOffersImage}>
-                            <img src={pieIcon} alt="" />
+                        <div className='icon-container'>
+                            <img src={pieIcon} />
                         </div>
                         <h3>Niste titlu</h3>
                         <p>
@@ -19,8 +19,8 @@ export default function MyOffers() {
                         </p>
                     </div>
                     <div>
-                        <div className={styles.myOffersImage}>
-                            <img src={cubeIcon} alt="" />
+                        <div className='icon-container'>
+                            <img src={cubeIcon} />
                         </div>
                         <h3>Prima mea serbare</h3>
                         <p>
@@ -28,8 +28,8 @@ export default function MyOffers() {
                         </p>
                     </div>
                     <div>
-                        <div className={styles.myOffersImage}>
-                            <img src={layerIcon} alt="" />
+                        <div className='icon-container'>
+                            <img src={layerIcon} />
                         </div>
                         <h3>Viata de dupa</h3>
                         <p>

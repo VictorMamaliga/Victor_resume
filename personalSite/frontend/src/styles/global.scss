@@ -72,11 +72,6 @@ small {
 
 ul {
     list-style-type: none;
-    display: flex;
-
-    li {
-        margin-left: var(--padding-nav-elements);
-    }
 }
 
 img {
@@ -86,7 +81,6 @@ img {
 }
 
 .slick-slider {
-    // width: 50%;
     .slick-dots {
         bottom: toRem(-40);
         li,
@@ -97,5 +91,32 @@ img {
                 }
             }
         }
+    }
+}
+
+.icon-container {
+    @media (min-width: $media-breakpoint-XS) {
+        width: toRem(50);
+    }
+    width: toRem(35);
+
+    img {
+        width: unset;
+        height: unset;
+        filter: invert(100%) sepia(0%) saturate(2%) hue-rotate(203deg) brightness(113%) contrast(101%);
+    }
+}
+
+.input-container {
+    border-bottom: 1px solid var(--accent-secondary);
+    padding: 0.8rem 0;
+
+    input,
+    textarea {
+        all: unset;
+        width: 100%;
+    }
+
+    textarea {
     }
 }
