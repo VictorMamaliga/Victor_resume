@@ -41,9 +41,9 @@
 
 aside {
     @media (min-width: $media-breakpoint-M) {
-        width: 35%;
+        width: 30%;
         max-width: toRem(666);
-        min-width: 30rem;
+        min-width: 25rem;
     }
     @include position(fixed, $top: 0, $right: 0);
     display: block;

@@ -85,12 +85,19 @@
             opacity: 0.6;
             padding: 2rem 1rem;
             transition: all 0.3s;
-
+            
             &:hover {
-                padding-top: toRem(50);
+                p {
+                    display: block;
+                }
             }
-
-
+            
+            p {
+                display: none;
+                margin-top: 1rem;
+                font-weight: 100;
+            }
+            
             h3 {
                 @media (max-width: $media-breakpoint-L) {
                     font-size: 24px;
@@ -100,11 +107,6 @@
                 font-weight: 100;
             }
             
-            p {
-                margin-top: 1rem;
-                font-weight: 100;
-                
-            }
         }
     }
     
