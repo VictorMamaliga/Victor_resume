@@ -35,51 +35,15 @@ export default function ProjectEditForm({onSubmitForm}) {
         </>
     ) : (
         <form onSubmit={onSubmitForm} className={styles.form}>
-            <label>
-                Name:
+            <div className='input-container'>
+                <span>Title</span>
                 <input
                     type='text'
                     name='name'
                     defaultValue={modalData?.data?.name}
                     required
                     />
-            </label>
-            <label>
-                Description:
-                <input
-                    type='text'
-                    name='description'
-                    defaultValue={modalData?.data?.description}
-                    required
-                    />
-            </label>
-            <label>
-                Upload image
-                <input
-                    type='file'
-                    onChange={handleImageUpload}
-                    />
-            </label>
-            <label>
-                Project Link:
-                <input
-                    type='string'
-                    name='redirrect'
-                    defaultValue={modalData?.data?.redirrect}
-                    required
-                    />
-            </label>
-            <label>
-                Image URL:
-                <input
-                    onChange={e => setIUrl(e.target.value)}
-                    type='string'
-                    name='imgURL'
-                    value={iUrl}
-                    required
-                />
-                {status && <span>Loading</span>}
-            </label>
+            </div>
             <label>
                 Is Visible
                 <input
@@ -88,6 +52,47 @@ export default function ProjectEditForm({onSubmitForm}) {
                     defaultChecked={modalData?.data?.isVisible || false}
                     />
             </label>
+            <div className='input-container'>
+                <span>Description</span>
+                <input
+                    type='textarea'
+                    name='description'
+                    defaultValue={modalData?.data?.description}
+                    required
+                    />
+            </div>
+            <fieldset>
+                <span>Image URL</span>
+                <div className='input-container'>
+                    <input
+                        onChange={e => setIUrl(e.target.value)}
+                        type='string'
+                        name='imgURL'
+                        value={iUrl}
+                        required
+                    />
+                    {/* {status && <span>Loading</span>} */}
+                </div>
+                <h3>or</h3>
+                <div className={styles.formImage}>
+                    <input
+                        type='file'
+                        onChange={handleImageUpload}
+                    />
+                    <div>
+                        <img src={modalData?.data?.imgURL} alt="" />
+                    </div>
+                </div>
+            </fieldset>
+            <div className='input-container'>
+                <span>Project URL</span>
+                <input
+                    type='string'
+                    name='redirrect'
+                    defaultValue={modalData?.data?.redirrect}
+                    required
+                    />
+            </div>
             <br />
             <button type='submit'>Submit</button>
         </form>

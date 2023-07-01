@@ -1,27 +1,72 @@
+@import '../../styles/mixins.scss';
+
 .form {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2rem;
+  row-gap: 2rem;
+  padding: 5rem 3rem 2rem;
+
+  > * {
+    position: relative;
+    flex-basis: calc(50% - 1rem);
+
+  }
+
+  span {
+    font-family: cursive;
+    font-size: toRem(12);
+    color: var(--accent-secondary);
+  }
+
+  label {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    gap: 1em;
-    padding: 2em;
-  
+    align-items: center;
+    gap: 2rem;
+
     input {
-      width: 100%;
-      padding: 0.7em;
-      font-size: 1em;
-      border-radius: 10px;
-      border: 1px solid;
-      outline: none;
-      background-color: var(--accent-primary);
-    
-      &:focus {
-        border: 2px solid var(--background-primary);
-      }
-    }
-    
-    button {
-      border-radius: toRem(50);
-      padding: toRem(4) toRem(40);
+      aspect-ratio: 1;
+      width: toRem(20);
     }
   }
+
+  > div {
+    &:nth-child(3),
+    &:nth-child(5) {
+      flex-basis: 100%;
+    }
+  }
+
+  fieldset {
+    padding: 1rem;
+    flex-basis: 100%;
+
+    h3 {
+      text-align: center;
+      margin: 0.5rem 0;
+    }
+  }
+
+  &Image {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    > * {
+      // flex-basis: 50%;
+    }
+
+    div {
+      aspect-ratio: 1;
+      flex-basis: 30%;
+    }
+  }
+
+  button {
+    @include position(absolute, $bottom: 2rem, $left: 50%);
+    transform: translateX(-50%);
+    padding: 0.5rem 3rem;
+    border-radius: 50px;
+  }
+}
