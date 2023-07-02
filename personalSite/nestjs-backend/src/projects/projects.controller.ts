@@ -1,5 +1,6 @@
-import { Controller, Get, Post, Put, Delete, Req, Param } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Req, Param, UseInterceptors, UploadedFile, Res } from '@nestjs/common';
 import { ProjectsService } from './projects.service';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('projects')
 export class ProjectsController {
@@ -14,6 +15,20 @@ export class ProjectsController {
     createProject(@Req() request: Request) {
         return this.projectsService.createProject(request.body);
     }
+
+    @Post('george')
+    @UseInterceptors(FileInterceptor('file'))
+    createGeorge(@UploadedFile() file: Express.Multer.File, @Res() res: Response) {
+        return this.projectsService.createGeorge(file, res);
+    }
+
+//     @Post('signin')
+//   async signIn(@Body() account, @Res() res: Response) {
+//     const result = await this.appService.signIn(account);
+//     res.send({
+//       result
+//     });
+//   }
 
     @Put(':id')
     editProject(@Req() request: Request, @Param('id') id: string) {

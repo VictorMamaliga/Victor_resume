@@ -18,7 +18,9 @@ function App() {
   const [modalData, dispatch] = useReducer(modalDataReducer, null);
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
   const [editMode, setEditMode] = useState(false)
+  const [george, setGeorge] = useState(null);
   const { projectsAPI, apiResponseStatus, handleOnSubmitForm, handleModalStatusOff } = useApi(modalData, handleAutoModalClose);
+  // console.log(george)
 
   function handleAutoModalClose() {
     setIsModalOpen(false);
@@ -38,12 +40,30 @@ function App() {
     setTimeout(() => setEditMode(false), 600);
   }
 
+  const handleGeorge = async e => {
+    console.log(e)
+    const myFile = e.target.files[0];
+
+    let formData = new FormData();
+    formData.append('file', myFile);
+    console.log(formData)
+
+    //posibil sa mearga si cu .then
+    const response = await fetch('http://localhost:3333/projects/george', {
+      method: 'POST',
+      body: formData,
+    });
+    const responseJson = await response.json();
+    console.log(responseJson)
+  }
+
   return (
     <>
       <Header onSidebarIsOpen={handleSidebarToggle} />
       <ModalDataContext.Provider value={modalData}>
         <ModalDataDispatchContext.Provider value={dispatch}>
           <main>
+            <input onChange={handleGeorge} type="file" />
             <Sidebar projectsAPI={projectsAPI} editMode={editMode} sidebarIsOpen={sidebarIsOpen} onSidebarIsOpen={handleSidebarToggle} onEditMode={() => setEditMode(!editMode)} onToggleModal={() => setIsModalOpen(!isModalOpen)} onSidebarReset={handleSidebarReset} onSubmitForm={handleOnSubmitForm} />
             <AboutMe />
             <MyOffers />

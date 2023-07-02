@@ -1,9 +1,11 @@
-import myJson from './key.json';
-const { initializeApp, cert } = require('firebase-admin/app');
-const { getFirestore } = require('firebase-admin/firestore');
+const admin = require('firebase-admin');
+import serviceAccount from './key.json';
 
-initializeApp({
-    credential: cert(myJson)
-});
 
-export const db = getFirestore();
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    storageBucket: 'gs://personal-website-cd86a.appspot.com',
+  });
+
+export const db = admin.firestore();
+export const bucket = admin.storage().bucket();
