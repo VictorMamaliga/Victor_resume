@@ -5,7 +5,6 @@ import { ModalDataContext } from '../../contexts/ModalDataContext';
 
 const ProjectCard = ({ onToggleModal, onSubmitForm }) => {
     const modalData = useContext(ModalDataContext);
-    console.log(modalData)
 
         if (modalData?.requestType === 'delete' || modalData?.requestType === 'visibility') {
             return (
