@@ -26,10 +26,12 @@ export const createType = 'create';
 export const editType = 'edit';
 export const visibilityType = 'visibility';
 export const deleteType = 'delete';
+const imageUploadType = 'imageUpload';
+export const imageUploadRequestTypeObject = { requestType: imageUploadType };
 const createURLType = 'http://localhost:3333/projects/create';
 const editURLType = 'http://localhost:3333/projects/';
 const visibilityURLType = 'http://localhost:3333/projects/visibility/';
-const mediaUploadType = 'http://localhost:3333/projects/mediaupload';
+const imageUploadURLType = 'http://localhost:3333/projects/imageupload';
 const deleteURLType = 'http://localhost:3333/projects/delete/';
 const POSTType = 'POST';
 const PUTType = 'PUT';
@@ -73,11 +75,29 @@ export function fetcher(modalData, event) {
             body = { visibility: modalData.data.isVisible }
             break;
         }
+        case imageUploadType: {
+            if (event?.target?.files[0]) {
+                URL = imageUploadURLType;
+                method = POSTType;
+                const myFile = event.target.files[0];
+                const formData = new FormData();
+                formData.append('file', myFile);
+                body = formData;
+            }
+            break;
+        }
     }
 
-    return fetch(URL, {
-        method,
-        headers,
-        body: JSON.stringify(body),
-    })
+    if (modalData.requestType === imageUploadType) {
+        return fetch(URL, {
+            method,
+            body,
+        })
+    } else {
+        return fetch(URL, {
+            method,
+            headers,
+            body: JSON.stringify(body),
+        })
+    }
 }

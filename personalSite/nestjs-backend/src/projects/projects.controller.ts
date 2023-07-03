@@ -16,7 +16,7 @@ export class ProjectsController {
         return this.projectsService.createProject(request.body);
     }
 
-    @Post('mediaupload')
+    @Post('imageupload')
     @UseInterceptors(FileInterceptor('file'))
     uploadImage(@UploadedFile() file: Express.Multer.File, @Res() res: Response) {
         return this.projectsService.uploadImage(file, res);

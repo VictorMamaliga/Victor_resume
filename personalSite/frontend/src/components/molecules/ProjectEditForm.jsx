@@ -1,10 +1,11 @@
 // TODO: more efficient way to render image and imageURL:12/13
+// delete unused images from storage (send form data)
 
 import styles from './projectEditForm.module.scss';
 
 import { useContext, useState } from "react";
 import { ModalDataContext, ModalDataDispatchContext } from "../../contexts/ModalDataContext";
-import { deleteType, visibilityType } from '../../helpers';
+import { deleteType, fetcher, imageUploadRequestTypeObject, visibilityType } from '../../helpers';
 
 export default function ProjectEditForm({onSubmitForm}) {
     const modalData = useContext(ModalDataContext);
@@ -13,24 +14,18 @@ export default function ProjectEditForm({onSubmitForm}) {
     const [loading, setIsLoading] = useState(false);
 
     const handleImageUpload = async e => {
-        if (e.target.files[0]) {
-            const myFile = e.target.files[0];
-            const formData = new FormData();
-            formData.append('file', myFile);
+        setIsLoading(true);
+        const response = await fetcher(imageUploadRequestTypeObject, e);
 
-            //posibil sa mearga si cu .then
-            setIsLoading(true);
-            const response = await fetch('http://localhost:3333/projects/mediaupload', {
-              method: 'POST',
-              body: formData,
-            });
+        if (!response.ok) console.log(response) // check
+        if (response.ok) {
             const responseJson = await response.json();
-            console.log(responseJson)
 
             dispatch({
                 type: modalData.requestType,
-                data: { ...modalData.data, imgURL: responseJson.url }
-            });
+                data: { ...modalData.data, imgURL: responseJson.url },
+            })
+
             setImageUrl(responseJson.url);
             setIsLoading(false);
         }
