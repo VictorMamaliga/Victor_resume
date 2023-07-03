@@ -21,33 +21,27 @@ export class ProjectsService {
         return { ...doc.data(), id: project.id };
     }
 
-    async createGeorge(body, res) {
-        console.log(body)
+    async uploadImage(body, res) {
         let storageUrl;
-
-        const file = body;
-        const fileName = 'georgeTest11';
+        const fileName = Date.now() + '_' + body.originalname;
         const fileUpload = bucket.file(fileName);
 
         const blobStream = fileUpload.createWriteStream({
             metadata: {
-            contentType: file.mimetype,
+            contentType: body.mimetype,
             },
         });
 
         blobStream.on('error', (error) => {
-            console.error('Error uploading image:', error);
-            // res.status(500).send('Error uploading image.');
+            res.status(404).json({ message: 'Could not upload image'});
         });
 
         blobStream.on('finish', () => {
             storageUrl = `https://firebasestorage.googleapis.com/v0/b/${bucket.name}/o/${encodeURIComponent(fileUpload.name)}?alt=media`;
-            res.status(200).json({mircea: storageUrl});
-            // return { storageUrl: publicUrl };
+            res.status(200).json({ url: storageUrl });
         });
 
-        blobStream.end(file.buffer);
-        // return {mircea: storageUrl}
+        blobStream.end(body.buffer);
     }
     
     async editProject(body, id) {

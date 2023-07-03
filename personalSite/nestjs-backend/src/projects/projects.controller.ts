@@ -16,19 +16,11 @@ export class ProjectsController {
         return this.projectsService.createProject(request.body);
     }
 
-    @Post('george')
+    @Post('mediaupload')
     @UseInterceptors(FileInterceptor('file'))
-    createGeorge(@UploadedFile() file: Express.Multer.File, @Res() res: Response) {
-        return this.projectsService.createGeorge(file, res);
+    uploadImage(@UploadedFile() file: Express.Multer.File, @Res() res: Response) {
+        return this.projectsService.uploadImage(file, res);
     }
-
-//     @Post('signin')
-//   async signIn(@Body() account, @Res() res: Response) {
-//     const result = await this.appService.signIn(account);
-//     res.send({
-//       result
-//     });
-//   }
 
     @Put(':id')
     editProject(@Req() request: Request, @Param('id') id: string) {

@@ -29,6 +29,7 @@ export const deleteType = 'delete';
 const createURLType = 'http://localhost:3333/projects/create';
 const editURLType = 'http://localhost:3333/projects/';
 const visibilityURLType = 'http://localhost:3333/projects/visibility/';
+const mediaUploadType = 'http://localhost:3333/projects/mediaupload';
 const deleteURLType = 'http://localhost:3333/projects/delete/';
 const POSTType = 'POST';
 const PUTType = 'PUT';

@@ -4,7 +4,6 @@ import styles from './projectEditForm.module.scss';
 
 import { useContext, useState } from "react";
 import { ModalDataContext, ModalDataDispatchContext } from "../../contexts/ModalDataContext";
-import { Upload } from 'upload-js';
 import { deleteType, visibilityType } from '../../helpers';
 
 export default function ProjectEditForm({onSubmitForm}) {
@@ -15,23 +14,25 @@ export default function ProjectEditForm({onSubmitForm}) {
 
     const handleImageUpload = async e => {
         if (e.target.files[0]) {
-            const file = e.target.files[0];
-            const upload = Upload({
-                apiKey: "public_W142i2QFQESQNm6Gbd3VFoqfLSbL"
-            });
+            const myFile = e.target.files[0];
+            const formData = new FormData();
+            formData.append('file', myFile);
 
-            try {
-                setIsLoading(true);
-                const { fileUrl, filePath } = await upload.uploadFile(file);
-                dispatch({
-                    type: modalData.requestType,
-                    data: { ...modalData.data, imgURL: fileUrl }
-                });
-                setImageUrl(fileUrl);
-                setIsLoading(false)
-            } catch (err) {
-                console.log(err)
-            }
+            //posibil sa mearga si cu .then
+            setIsLoading(true);
+            const response = await fetch('http://localhost:3333/projects/mediaupload', {
+              method: 'POST',
+              body: formData,
+            });
+            const responseJson = await response.json();
+            console.log(responseJson)
+
+            dispatch({
+                type: modalData.requestType,
+                data: { ...modalData.data, imgURL: responseJson.url }
+            });
+            setImageUrl(responseJson.url);
+            setIsLoading(false);
         }
     }
 
