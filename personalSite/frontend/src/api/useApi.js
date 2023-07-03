@@ -5,7 +5,6 @@ import { createType, deleteType, editType, fetcher, getProjectsURLType, visibili
 export default function useApi(modalData, handleAutoModalClose) {
     const [projectsAPI, setProjectsAPI] = useState(null);
     const [apiResponseStatus, setApiResponseStatus] = useState(false);
-
     
     const handleOnSubmitForm = async e => {
         if (e) e.preventDefault();
