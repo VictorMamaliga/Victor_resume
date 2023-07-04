@@ -1,11 +1,15 @@
 const admin = require('firebase-admin');
-import serviceAccount from './key.json';
 
+const firebaseConfig = {
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+  clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+};
 
 admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    storageBucket: 'gs://personal-website-cd86a.appspot.com',
-  });
+  credential: admin.credential.cert(firebaseConfig),
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+});
 
 export const db = admin.firestore();
 export const bucket = admin.storage().bucket();
