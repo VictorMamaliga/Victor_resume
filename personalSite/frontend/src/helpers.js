@@ -20,19 +20,19 @@ export const onColor = '#0d0673';
 export const offColor = '#712727';
 
 // types
-export const getProjectsURLType = 'http://localhost:3333/projects';
 export const viewType = 'view';
 export const createType = 'create';
 export const editType = 'edit';
 export const visibilityType = 'visibility';
 export const deleteType = 'delete';
 const imageUploadType = 'imageUpload';
+export const baseURL = import.meta.env.MODE === 'production' ? 'https://showcase-projects-cccc1f78f6bc.herokuapp.com/projects' : 'http://localhost:3333/projects';
 export const imageUploadRequestTypeObject = { requestType: imageUploadType };
-const createURLType = 'http://localhost:3333/projects/create';
-const editURLType = 'http://localhost:3333/projects/';
-const visibilityURLType = 'http://localhost:3333/projects/visibility/';
-const imageUploadURLType = 'http://localhost:3333/projects/imageupload';
-const deleteURLType = 'http://localhost:3333/projects/delete/';
+export const getProjectsURLType = 'http://localhost:3333/projects';
+const createURLType = baseURL + '/create';
+const visibilityURLType = baseURL + '/visibility/';
+const imageUploadURLType = baseURL +'/imageupload';
+const deleteURLType = baseURL + '/delete/';
 const POSTType = 'POST';
 const PUTType = 'PUT';
 const DELETEType = 'DELETE';
@@ -61,7 +61,7 @@ export function fetcher(modalData, event) {
         }
         case editType: {
             method = PUTType;
-            URL = editURLType + modalData.data.id;
+            URL = baseURL + modalData.data.id;
             break;
         }
         case deleteType: {

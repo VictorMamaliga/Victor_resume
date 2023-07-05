@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { createType, deleteType, editType, fetcher, getProjectsURLType, visibilityType } from '../helpers';
+import { createType, deleteType, editType, fetcher, baseURL, visibilityType } from '../helpers';
 
 export default function useApi(modalData, handleAutoModalClose) {
     const [projectsAPI, setProjectsAPI] = useState(null);
@@ -65,7 +65,7 @@ export default function useApi(modalData, handleAutoModalClose) {
     }
 
     useEffect(() => {
-        fetch(getProjectsURLType)
+        fetch(baseURL)
             .then(response => response.json())
             .then(response => setProjectsAPI(response))
             .catch(err => console.log(err))
