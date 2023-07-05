@@ -4,6 +4,7 @@ import './sidebar.scss';
 import SidebarProjectCard from './SidebarProjectCard';
 import { ModalDataDispatchContext } from '../../contexts/ModalDataContext';
 import { createType } from '../../helpers';
+import closeIcon from '../../assets/icons/close.svg';
 
 export default function Sidebar({projectsAPI, editMode, sidebarIsOpen, onSidebarIsOpen, onEditMode, onToggleModal, onSidebarReset, onSubmitForm}) {
     const dispatch = useContext(ModalDataDispatchContext);
@@ -21,7 +22,9 @@ export default function Sidebar({projectsAPI, editMode, sidebarIsOpen, onSidebar
             <div className={`sidebarOverlay ${sidebarIsOpen ? 'active' : ''}`}></div>
             <aside className={`${!sidebarIsOpen ? 'open' : ''}`}>
                 {editMode && <span className='back' onClick={onEditMode}>back</span>}
-                <span onClick={onSidebarReset}>X</span>
+                <div onClick={onSidebarReset}>
+                    <img src={closeIcon} />
+                </div>
                 <div className='sidebarContent'>
                     <ul>
                         <li onClick={onSidebarIsOpen}>

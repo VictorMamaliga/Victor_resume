@@ -1,10 +1,13 @@
 import styles from './Modal.module.scss';
+import closeIcon from '../../assets/icons/close.svg'
 
 const Modal = ({ isOpen, apiResponseStatus, children, onToggleModal }) => {
     return isOpen && (
         <div className={styles.modal}>
             <div className={styles.modalWrapper}>
-                <button className={styles.modalClose} onClick={() => onToggleModal()}>X</button>
+                <div className={styles.modalClose} onClick={() => onToggleModal()}>
+                    <img src={closeIcon} alt="" />
+                </div>
                 {apiResponseStatus == 201 && (<h4 className='api-response-status'>Success</h4>)}
                 {apiResponseStatus == 404 && (<h4 className='api-response-status'>Error</h4>)}
                 {!apiResponseStatus && (children)}

@@ -12,6 +12,11 @@
             display: flex;
             justify-content: space-between;
         }
+
+        a {
+            font-size: toRem(20);
+            font-weight: 900;
+        }
     }
 
     &Welcome {
@@ -28,7 +33,7 @@
         }
 
         h1 {
-            font-size: clamp(30px, 4vw, 80px);
+            font-size: clamp(2.5rem, 4vw, 5rem);
             font-weight: 100;
         }
 
@@ -95,7 +100,8 @@
             p {
                 display: none;
                 margin-top: 1rem;
-                font-weight: 100;
+                font-weight: 300;
+                color: var(--accent-secondary);
             }
             
             h3 {
@@ -107,6 +113,10 @@
                 font-weight: 100;
             }
             
+        }
+
+        h4 {
+            font-size: toRem(18);
         }
     }
     

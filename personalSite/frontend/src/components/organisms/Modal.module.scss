@@ -13,8 +13,12 @@
     &Close {
         @include position(absolute, $top: 1.37rem, $right: 1.37rem);
         border-radius: 50%;
-        padding: toRem(2) toRem(7);
         z-index: 1;
+
+        img {
+            width: toRem(30);
+            filter: invert(95%) sepia(44%) saturate(0%) hue-rotate(332deg) brightness(102%) contrast(103%);
+        }
     }
     
     > div {

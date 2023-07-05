@@ -26,7 +26,7 @@ export default function Header({onSidebarIsOpen}) {
         <header className={styles.header}>
             <div ref={headerRef} className={styles.headerTop}>
                 <div className="container">
-                    <a href="" className="name">George</a>
+                    <a href="" className="name">Presentation</a>
                     <div className={styles.headerHamburger} onClick={onSidebarIsOpen}>
                         <span></span>
                         <span></span>
@@ -45,33 +45,33 @@ export default function Header({onSidebarIsOpen}) {
             <div className={styles.headerDecorations}>
                 <div>
                     <h3>01</h3>
-                    <h4>Mie imi plac ciresele amare</h4>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. </p>
+                    <h4>Efficient Code Crafting</h4>
+                    <p>Building Robust Software Solutions</p>
                 </div>
                 <div>
                     <h3>02</h3>
-                    <h4>Mie imi plac ananasurile</h4>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. </p>
+                    <h4>Innovation Unleashed</h4>
+                    <p>Powering the Future with Software Development</p>
                 </div>
                 <div>
                     <h3>03</h3>
-                    <h4>Mie imi plac castravetii</h4>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. </p>
+                    <h4>Seamless User Experiences</h4>
+                    <p>Crafting Intuitive Software Interfaces</p>
                 </div>
                 <div>
                     <h3>04</h3>
-                    <h4>Mie imi plac ciresele ducli</h4>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. </p>
+                    <h4>Agile Development</h4>
+                    <p>Adapting and Delivering Software at Speed</p>
                 </div>
                 <div>
                     <h3>05</h3>
-                    <h4>Mie imi plac pepenii</h4>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. </p>
+                    <h4>Secure Solutions</h4>
+                    <p>Building Trustworthy Software Systems</p>
                 </div>
                 <div>
                     <h3>06</h3>
-                    <h4>Mie imi plac de dabuleni</h4>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. </p>
+                    <h4>Collaborative Development</h4>
+                    <p>Uniting Teams for Successful Software</p>
                 </div>
             </div>
         </header>

@@ -13,27 +13,27 @@ export default function MyOffers() {
                         <div className='icon-container'>
                             <img src={pieIcon} />
                         </div>
-                        <h3>Niste titlu</h3>
+                        <h3>Performance Benchmarking</h3>
                         <p>
-                            Eram odata cu gandul in alta parte si am mintit ca mi-e foame.
+                            Tracking and Enhancing Software Performance Metrics
                         </p>
                     </div>
                     <div>
                         <div className='icon-container'>
                             <img src={cubeIcon} />
                         </div>
-                        <h3>Prima mea serbare</h3>
+                        <h3>Optimizing Speed</h3>
                         <p>
-                            Erau atat de multe persoane incat m-am balbait
+                            Measuring and Improving Performance Metrics
                         </p>
                     </div>
                     <div>
                         <div className='icon-container'>
                             <img src={layerIcon} />
                         </div>
-                        <h3>Viata de dupa</h3>
+                        <h3>Efficiency Matters</h3>
                         <p>
-                            Se zice ca nu o sa mai fii niciodata cum ai fost dupa ce iti aduci aminte de unde ai plecat
+                            Key Performance Metrics for Software Performance Evaluation
                         </p>
                     </div>
                 </div>

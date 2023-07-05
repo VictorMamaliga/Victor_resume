@@ -100,5 +100,14 @@ aside {
             background-color: var(--card-edit-background);
         }
     }
+
+    > div:first-child {
+        @include position(absolute, $top: 2rem, $right: 3rem);
+
+        > img {
+            width: toRem(34);
+            filter: invert(95%) sepia(44%) saturate(0%) hue-rotate(332deg) brightness(102%) contrast(103%);
+        }
+    }
 }
 
