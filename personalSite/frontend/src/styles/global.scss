@@ -122,3 +122,21 @@ img {
 .api-response-status {
     padding: 1rem;
 }
+
+.sidebar-close {
+    @include position(absolute, $top: 2rem);
+
+    &.close {
+        right: 3rem;
+    }
+
+    &.return {
+        left: 3rem;
+    }
+    
+
+    img {
+        width: toRem(34);
+        filter: invert(95%) sepia(44%) saturate(0%) hue-rotate(332deg) brightness(102%) contrast(103%);
+    }
+}

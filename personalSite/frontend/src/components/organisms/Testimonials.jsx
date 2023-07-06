@@ -22,37 +22,19 @@ export default function Testimonials()  {
                         <div className={styles.testimonialsItem}>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur atque eum quod. 
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatura</p>
-                            <h3>Titlu smecher dada</h3>
+                            <h3>Software development team</h3>
                             <span>job description</span>
                         </div>
                         <div className={styles.testimonialsItem}>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur atque eum quod. 
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatura</p>
-                            <h3>Titlu smecher dada</h3>
+                            <h3>UX design team</h3>
                             <span>job description</span>
                         </div>
                         <div className={styles.testimonialsItem}>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur atque eum quod. 
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatura</p>
-                            <h3>Titlu smecher dada</h3>
-                            <span>job description</span>
-                        </div>
-                        <div className={styles.testimonialsItem}>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur atque eum quod. 
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatura</p>
-                            <h3>Titlu smecher dada</h3>
-                            <span>job description</span>
-                        </div>
-                        <div className={styles.testimonialsItem}>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur atque eum quod. 
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatura</p>
-                            <h3>Titlu smecher dada</h3>
-                            <span>job description</span>
-                        </div>
-                        <div className={styles.testimonialsItem}>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur atque eum quod. 
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatura</p>
-                            <h3>Titlu smecher dada</h3>
+                            <h3>Management and resources</h3>
                             <span>job description</span>
                         </div>
                     </Slider>
