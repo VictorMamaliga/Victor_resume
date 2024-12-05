@@ -1,4 +1,4 @@
-export const projects = [
+export const projectsDummy = [
     {
         id: 'gdfi8jl58g',
         description: 'Numarul 1',
@@ -15,23 +15,89 @@ export const projects = [
     }
 ];
 
+// Switch colors
+export const onColor = '#0d0673';
+export const offColor = '#712727';
+
 // types
-const createURLType = 'http://localhost:8080/api/posts';
-const deleteURLType = 'http://localhost:8080/api/posts/delete';
+export const getProjectsURLType = 'http://localhost:3333/projects';
+export const viewType = 'view';
+export const createType = 'create';
+export const editType = 'edit';
+export const visibilityType = 'visibility';
+export const deleteType = 'delete';
+const imageUploadType = 'imageUpload';
+export const imageUploadRequestTypeObject = { requestType: imageUploadType };
+const createURLType = 'http://localhost:3333/projects/create';
+const editURLType = 'http://localhost:3333/projects/';
+const visibilityURLType = 'http://localhost:3333/projects/visibility/';
+const imageUploadURLType = 'http://localhost:3333/projects/imageupload';
+const deleteURLType = 'http://localhost:3333/projects/delete/';
+const POSTType = 'POST';
+const PUTType = 'PUT';
+const DELETEType = 'DELETE';
 
-// api
-export function formatJSONStructure(modalData, event) {
-    if ( modalData.requestType !== 'delete') {
-        const dataToSend = { body: { data: {} } };
-        dataToSend.url = createURLType;
-        if (modalData.data?.id) dataToSend.body.id = modalData.data?.id;
-        
+const headers = {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+}
+
+export function fetcher(modalData, event) {
+    let body = {};
+    let method, URL;
+
+    if (modalData.requestType === createType || modalData.requestType === editType) {
         for (let item of event.target) {
-            if (item.name) dataToSend.body.data[item.name] = item.value;
+            if (item.name && item.name !== 'isVisible') body[item.name] = item.value;
+            if (item.name === 'isVisible') body.isVisible = item.checked;
         }
+    }
 
-        return dataToSend;
+    switch (modalData.requestType) {
+        case createType: {
+            method = POSTType;
+            URL = createURLType;
+            break;
+        }
+        case editType: {
+            method = PUTType;
+            URL = editURLType + modalData.data.id;
+            break;
+        }
+        case deleteType: {
+            method = DELETEType;
+            URL = deleteURLType + modalData.id;
+            break;
+        }
+        case visibilityType: {
+            method = PUTType;
+            URL = visibilityURLType + modalData.data.id;
+            body = { visibility: modalData.data.isVisible }
+            break;
+        }
+        case imageUploadType: {
+            if (event?.target?.files[0]) {
+                URL = imageUploadURLType;
+                method = POSTType;
+                const myFile = event.target.files[0];
+                const formData = new FormData();
+                formData.append('file', myFile);
+                body = formData;
+            }
+            break;
+        }
+    }
+
+    if (modalData.requestType === imageUploadType) {
+        return fetch(URL, {
+            method,
+            body,
+        })
     } else {
-        return { url: deleteURLType, body: { id: modalData.id }}
+        return fetch(URL, {
+            method,
+            headers,
+            body: JSON.stringify(body),
+        })
     }
 }
